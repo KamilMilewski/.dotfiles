@@ -20,15 +20,27 @@ source ~/.bash_locale
 # here goes prompt customization:
 #
 # Load version control information
+# http://zsh.sourceforge.net/Doc/Release/User-Contributions.html#Version-Control-Information
 autoload -Uz vcs_info
 precmd() { vcs_info }
+
+# Allow usage of "%u" in git formats (check for unstaged changes)
+zstyle ':vcs_info:*' check-for-changes true
+
 # Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats '%b'
+# %b - branch name
+# %u - indicate unstaged changes
+# %c - indicate staged changes
+# %a - indicate git action going on, like merge/rebase
+# To change default string, i.e. for %u
+# zstyle ':vcs_info:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' formats '%b %u%c %a'
+
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 PROMPT='
 %B%F{67}${PWD/#$HOME/~}%f%b %F{243}${vcs_info_msg_0_}%f
-%B%F{96}>%f%b'
+%B%F{96}> %f%b'
 # end of prompt customization
 
 # asdf version manager config
