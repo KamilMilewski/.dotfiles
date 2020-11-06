@@ -34,9 +34,11 @@ zstyle ':vcs_info:*' check-for-changes true
 # %a - indicate git action going on, like merge/rebase
 # To change default string, i.e. for %u
 # zstyle ':vcs_info:*' unstagedstr '*'
+
 zstyle ':vcs_info:git:*' formats '%b %u%c %a'
 
-# Set up the prompt (with git branch name)
+# Set up the prompt
+# vcs_info_msg_0_ - git info
 setopt PROMPT_SUBST
 PROMPT='
 %B%F{67}${PWD/#$HOME/~}%f%b %F{243}${vcs_info_msg_0_}%f
