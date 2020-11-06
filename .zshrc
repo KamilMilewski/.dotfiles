@@ -52,6 +52,7 @@ PROMPT='
 alias ls='ls --color=auto'
 alias notes_status="(cd ~/Work/notes && git status && git diff)"
 alias notes_save="(cd ~/Work/notes && git pull && git add . && git commit -m 'save point' && git push)"
+alias dotfiles_save="(cd ~/Misc/dotfiles && git pull && git add . && git commit -m 'save point' && git push)"
 alias g="git"
 # ruby/rails
 alias be="bundle exec"
@@ -67,6 +68,24 @@ dbregen() {
   bin/rails db:environment:set RAILS_ENV=test
   bundle exec rake db:drop db:create db:migrate RAILS_ENV=test
 }
+tyra() {
+  wmctrl -s 0 && code &&
+  wmctrl -s 1 && xfce4-terminal &&
+  wmctrl -s 2 && (chromium --new-window https://www.google.com &> /dev/null &) &&
+  wmctrl -s 3 && (chromium --new-window https://track.toggl.com/timer &> /dev/null &) &&
+  wmctrl -s 3 && slack &&
+  sleep 5 &&
+  wmctrl -r Code -t 0 &&
+  wmctrl -r terminal -t 1 &&
+  wmctrl -r Toggl -t 3 &&
+  wmctrl -r Google -t 2 &&
+  wmctrl -r Slack -t 3 &&
+  disown
+}
+# tap speciffic aliases
+alias tap_qa="bundle exec cap qa rails:console"
+
+
 
 
 
