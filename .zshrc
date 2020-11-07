@@ -73,11 +73,10 @@ dbregen() {
 }
 tyra() {
   wmctrl -s 0 && code &&
-  wmctrl -s 1 && xfce4-terminal &&
-  wmctrl -s 2 && (chromium --new-window https://www.google.com &> /dev/null &) &&
+  wmctrl -s 1 && xfce4-terminal -e 'tmuxp load tap' &&
   wmctrl -s 3 && (chromium --new-window https://track.toggl.com/timer &> /dev/null &) &&
-  wmctrl -s 3 && slack &&
-  sleep 5 &&
+  wmctrl -s 3 && (slack &> /dev/null &) &&
+  sleep 3 &&
   wmctrl -r Code -t 0 &&
   wmctrl -r terminal -t 1 &&
   wmctrl -r Toggl -t 3 &&
