@@ -52,6 +52,7 @@ PROMPT='
 
 # General aliases
 alias ls='ls --color=auto'
+alias grep='grep --color'
 alias notes_status="(cd ~/Work/notes && git status && git diff)"
 alias notes_save="(cd ~/Work/notes && git pull && git add . && git commit -m 'save point' && git push)"
 alias dotfiles_save="(cd ~/Misc/dotfiles && git pull && git add . && git commit -m 'save point' && git push)"
