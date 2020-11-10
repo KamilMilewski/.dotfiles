@@ -71,21 +71,29 @@ dbregen() {
   bin/rails db:environment:set RAILS_ENV=test
   bundle exec rake db:drop db:create db:migrate RAILS_ENV=test
 }
-tyra() {
-  wmctrl -s 0 && code &&
-  wmctrl -s 1 && xfce4-terminal -e 'tmuxp load tap' &&
-  wmctrl -s 3 && (chromium --new-window https://track.toggl.com/timer &> /dev/null &) &&
-  wmctrl -s 3 && (slack &> /dev/null &) &&
-  sleep 3 &&
-  wmctrl -r Code -t 0 &&
-  wmctrl -r terminal -t 1 &&
-  wmctrl -r Toggl -t 3 &&
-  wmctrl -r Google -t 2 &&
-  wmctrl -r Slack -t 3 &&
-  disown
-}
 # tap speciffic aliases
+alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap_qa="bundle exec cap qa rails:console"
+tap_current_specs() {
+  rm -f spec/examples.txt
+  ber spec/concepts/form/**/* \
+    spec/concepts/form_group/**/* \
+    spec/concepts/form_module_value/**/* \
+    spec/concepts/form_formula_template/**/* \
+    spec/concepts/form_element/**/* \
+    spec/concepts/form_run/**/* \
+    spec/concepts/element_group_item/**/* \
+    spec/concepts/element/**/* \
+    spec/requests/api/v2/forms/**/* \
+    spec/requests/api/v2/form_runs/**/* \
+    spec/requests/api/v2/element_group_items/**/* \
+    spec/requests/api/v2/elements/**/* \
+    spec/models/form_*_spec.rb \
+    spec/models/form_spec.rb \
+    spec/models/element_spec.rb \
+    spec/models/element_group_item_spec.rb \
+    spec/db/deployment/v5.14_spec.rb
+}
 
 
 
