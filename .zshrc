@@ -74,6 +74,7 @@ dbregen() {
 # tap speciffic aliases
 alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap_qa="bundle exec cap qa rails:console"
+alias tap_locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
 tap_current_specs() {
   rm -f spec/examples.txt
   ber spec/concepts/form/**/* \
@@ -92,7 +93,7 @@ tap_current_specs() {
     spec/models/form_spec.rb \
     spec/models/element_spec.rb \
     spec/models/element_group_item_spec.rb \
-    spec/db/deployment/v5.14_spec.rb
+    spec/db/deployment/v5.14/forms_spec.rb
 }
 
 
