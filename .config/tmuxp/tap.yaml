@@ -1,0 +1,13 @@
+session_name: tap
+windows:
+ - window_name: tap 
+   layout: tiled
+   start_directory: ~/Work/tap/tap 
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - shell_command:
+      - sudo systemctl start mysqld
+    - pane
+    - pane
