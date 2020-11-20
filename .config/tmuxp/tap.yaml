@@ -2,7 +2,9 @@ session_name: tap
 windows:
  - window_name: tap 
    layout: tiled
-   start_directory: ~/Work/tap/tap 
+   start_directory: ~/Work/tap/tap
+   shell_command_before:
+    - export RSPEC_RETRY_RETRY_COUNT=0 && export DEVELOPMENT=1
    panes:
     - shell_command:
       - git status

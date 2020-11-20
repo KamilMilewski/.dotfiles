@@ -77,27 +77,27 @@ alias tap_qa="bundle exec cap qa rails:console"
 alias tap_locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
 tap_current_specs() {
   rm -f spec/examples.txt
-  ber spec/concepts/form/**/* \
+   ber \
+    spec/concepts/form/**/* \
     spec/concepts/form_group/**/* \
     spec/concepts/form_module_value/**/* \
     spec/concepts/form_formula_template/**/* \
     spec/concepts/form_element/**/* \
     spec/concepts/form_run/**/* \
     spec/concepts/element_group_item/**/* \
+    spec/concepts/element_group/**/* \
     spec/concepts/element/**/* \
     spec/requests/api/v2/forms/**/* \
     spec/requests/api/v2/form_runs/**/* \
+    spec/requests/api/v2/element_groups/**/* \
     spec/requests/api/v2/element_group_items/**/* \
     spec/requests/api/v2/elements/**/* \
     spec/models/form_*_spec.rb \
     spec/models/form_spec.rb \
     spec/models/element_spec.rb \
     spec/models/element_group_item_spec.rb \
-    spec/db/deployment/v5.14/forms_spec.rb
+    spec/models/element_group_spec.rb \
+    spec/db/deployment/v5.16/forms_spec.rb
 }
-
-
-
-
 
 
