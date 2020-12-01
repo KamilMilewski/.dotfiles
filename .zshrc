@@ -97,7 +97,7 @@ tap_current_specs() {
     spec/models/element_spec.rb \
     spec/models/element_group_item_spec.rb \
     spec/models/element_group_spec.rb \
-    spec/db/deployment/v5.16/forms_spec.rb
+    spec/db/deployment/v5.16/**/*
 }
 
 
