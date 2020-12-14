@@ -74,6 +74,8 @@ dbregen() {
 # tap speciffic aliases
 alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap_qa="bundle exec cap qa rails:console"
+alias tap_qa2="bundle exec cap qa-f2 rails:console"
+alias tap_replica="bundle exec cap replica rails:console"
 alias tap_locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
 tap_current_specs() {
   rm -f spec/examples.txt
