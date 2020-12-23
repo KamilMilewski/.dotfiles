@@ -57,11 +57,13 @@ alias notes_status="(cd ~/Work/notes && git status && git diff)"
 alias notes_save="(cd ~/Work/notes && git pull && git add . && git commit -m 'save point' && git push)"
 alias dotfiles_save="(cd ~/Misc/dotfiles && git pull && git add . && git commit -m 'save point' && git push)"
 alias g="git"
+alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 # ruby/rails
 alias be="bundle exec"
 alias ber="bundle exec rspec"
 alias besr="bundle exec spring rspec"
 alias berf="bundle exec rspec --only-failures"
+alias besrf="bundle exec spring rspec --only-failures"
 alias bec="bundle exec rails console"
 alias bes="bundle exec rails server"
 alias beg="bundle exec rails generate"
@@ -76,6 +78,7 @@ alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap_qa="bundle exec cap qa rails:console"
 alias tap_qa2="bundle exec cap qa-f2 rails:console"
 alias tap_replica="bundle exec cap replica rails:console"
+alias tap_prototype="bundle exec cap prototype rails:console"
 alias tap_locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
 tap_current_specs() {
   rm -f spec/examples.txt
@@ -89,6 +92,8 @@ tap_current_specs() {
     spec/concepts/element_group_item/**/* \
     spec/concepts/element_group/**/* \
     spec/concepts/element/**/* \
+    spec/concepts/element_data/**/* \
+    spec/requests/api/v1/element_datas/**/* \
     spec/requests/api/v2/forms/**/* \
     spec/requests/api/v2/form_runs/**/* \
     spec/requests/api/v2/element_groups/**/* \
@@ -99,7 +104,16 @@ tap_current_specs() {
     spec/models/element_spec.rb \
     spec/models/element_group_item_spec.rb \
     spec/models/element_group_spec.rb \
+    spec/models/element_data_spec.rb \
     spec/db/deployment/v5.16/**/*
 }
-
-
+mysql_start() {
+  sudo systemctl start docker && \
+  docker run \
+    --name=mysql \
+    --publish 3306:3306 \
+    --volume=/home/kamil/Misc/docker_volumes/mysql_data:/var/lib/mysql \
+    --env MYSQL_ROOT_HOST='%' \
+    --env MYSQL_ROOT_PASSWORD='supersecret' \
+    -d mysql/mysql-server:latest
+}

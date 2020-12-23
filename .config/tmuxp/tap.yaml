@@ -10,6 +10,6 @@ windows:
       - git status
       focus: true
     - shell_command:
-      - sudo systemctl start mysqld
+      - mysql_start
     - pane
     - pane
