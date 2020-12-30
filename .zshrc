@@ -70,6 +70,7 @@ alias beg="bundle exec rails generate"
 alias bek="bundle exec rake"
 alias rubo="bundle exec rubocop --auto-correct"
 dbregen() {
+  chmod 777 bin/rails
   bin/rails db:environment:set RAILS_ENV=test
   bundle exec rake db:drop db:create db:migrate RAILS_ENV=test
 }
