@@ -81,6 +81,10 @@ alias tap_replica="bundle exec cap replica rails:console"
 alias tap_prototype="bundle exec cap prototype rails:console"
 alias tap_locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
 tap_current_specs() {
+  rm -f log/test.log
+  rm -f log/development.log
+  rm -f log/bullet.log
+  rm -f log/aws.log
   rm -f spec/examples.txt
    ber \
     spec/concepts/form/**/* \
@@ -109,6 +113,7 @@ tap_current_specs() {
 }
 mysql_start() {
   sudo systemctl start docker && \
+  docker rm -f mysql && \
   docker run \
     --name=mysql \
     --publish 3306:3306 \
