@@ -13,6 +13,9 @@ unsetopt beep
 # for ctrl+a and ctrl+e to work (jump to beginning/end of the line)
 bindkey -e
 
+# rebindd caps lock to ctrl
+setxkbmap -layout pl -option ctrl:nocaps
+
 # due to some wierd bug, tmuxp won't run without this:
 # https://github.com/tmux-python/tmuxp/issues/405
 source ~/.bash_locale
@@ -110,7 +113,31 @@ tap_current_specs() {
     spec/models/element_group_item_spec.rb \
     spec/models/element_group_spec.rb \
     spec/models/element_data_spec.rb \
-    spec/db/deployment/v5.16/**/*
+    spec/db/deployment/v5.16/**/* \
+    spec/services/export/form_pdf_service_spec.rb
+}
+tap_current_rubocop() {
+  be rubocop -A app/concepts/form/**/* \
+    app/concepts/form_group/**/* \
+    app/concepts/form_module_value/**/* \
+    app/concepts/form_formula_template/**/* \
+    app/concepts/form_element/**/* \
+    app/concepts/element_group_item/**/* \
+    app/concepts/element_group/**/* \
+    app/concepts/element/**/* \
+    app/api/v2/forms.rb \
+    app/api/v2/form_runs.rb \
+    app/api/v2/elements.rb \
+    app/api/v2/element_groups.rb \
+    app/api/v2/element_group_items.rb \
+    app/api/v2/workflow_runs.rb \
+    app/services/export/form_pdf_service.rb \
+    spec/models/form_*_spec.rb \
+    spec/models/form_spec.rb \
+    spec/models/element_group_item_spec.rb \
+    spec/models/element_group_spec.rb \
+    spec/db/deployment/v5.16/**/* \
+    spec/services/export/form_pdf_service_spec.rb
 }
 mysql_start() {
   sudo systemctl start docker && \
