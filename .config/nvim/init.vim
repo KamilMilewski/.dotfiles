@@ -1,5 +1,9 @@
 " Highlight all search results
 set hlsearch
+" Set smartcase(will go case sensitive when upper case chars are in search,
+" ignore case needs to be set first for this to work)
+set ignorecase
+set smartcase
 " Enable autoindent
 set autoindent
 " Indenting is 2 spaces 
@@ -27,6 +31,13 @@ set timeoutlen=1000
 set ttimeoutlen=5
 
 
+" NERDTree related:
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+" Show hidden files by default.
+let NERDTreeShowHidden=1
+
 
 " Remappings:
 " Set ladder key
@@ -40,7 +51,10 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 " Search for file name using fzf
-nmap <C-P> :GFiles<CR>
+nnoremap <leader>o :GFiles!<CR>
+nnoremap <leader>p :Files!<CR>
+" Search file content using fzf & Rg
+nnoremap <leader>f :Rg!<CR>
 " Search for buffer name using fzf
 nnoremap <leader>b :Buffers<CR>
 " Toggle NERDTree pane

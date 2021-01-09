@@ -48,7 +48,11 @@ PROMPT='
 # https://asdf-vm.com/#/core-manage-asdf
 . $HOME/.asdf/asdf.sh
 
-# fzf goodness
+
+
+# FZF related 
+# To follow symbolic link and don't exclude hidden files (except .git dir). Use find alternative - fd.
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 # enable terminal shortcuts, for example <ctrl>+R to search through terminal history
 source /usr/share/fzf/key-bindings.zsh
 # enable <tab> commands completions, for example kill <tab>
