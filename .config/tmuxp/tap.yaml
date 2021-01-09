@@ -1,6 +1,6 @@
 session_name: tap
 windows:
- - window_name: tap 
+ - window_name: terminal 
    layout: tiled
    start_directory: ~/Work/tap/tap
    shell_command_before:
@@ -13,3 +13,9 @@ windows:
       - mysql_start
     - pane
     - pane
+ - window_name: editor 
+   layout: tiled
+   start_directory: ~/Work/tap/tap
+   shell_command_before:
+    - export RSPEC_RETRY_RETRY_COUNT=0 && export DEVELOPMENT=1
+    - vim
