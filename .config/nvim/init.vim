@@ -70,6 +70,7 @@ let g:NERDTreeMinimalUI=1
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
+
 " Basic fzf integration. (FZF command)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Extra fzf commands
@@ -84,6 +85,10 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Color Theme
 Plug 'lifepillar/vim-solarized8'
+" Provides linting and acts as LSP (Language Server Protocol)
+Plug 'dense-analysis/ale'
+
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
