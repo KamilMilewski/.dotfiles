@@ -84,5 +84,5 @@ call plug#end()
 
 " Color Theme releated:
 set background=dark
-colorscheme solarized8
+colorscheme solarized8_flat
 
