@@ -31,13 +31,6 @@ set timeoutlen=1000
 set ttimeoutlen=5
 
 
-" NERDTree related:
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
-" Show hidden files by default.
-let NERDTreeShowHidden=1
-
 
 " Remappings:
 " Set ladder key
@@ -59,7 +52,18 @@ nnoremap <leader>f :Rg!<CR>
 nnoremap <leader>b :Buffers<CR>
 " Toggle NERDTree pane
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>m :NERDTreeFind<CR>
 
+" NERDTree related:
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+" Show hidden files by default.
+let NERDTreeShowHidden=1
+" The default of 31 is just a little too narrow.
+let g:NERDTreeWinSize=40
+" Disable display of '?' text and 'Bookmarks' label.
+let g:NERDTreeMinimalUI=1
 
 
 " Plugins will be downloaded under the specified directory.
@@ -73,6 +77,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 " Ruby support
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-
+" Color Theme
+Plug 'lifepillar/vim-solarized8'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" Color Theme releated:
+set background=dark
+colorscheme solarized8
+
