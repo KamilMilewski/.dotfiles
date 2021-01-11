@@ -71,6 +71,9 @@ nnoremap <leader>f :Rg!<CR>
 nnoremap <leader>b :Buffers<CR>
 
 
+" ALE related
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
