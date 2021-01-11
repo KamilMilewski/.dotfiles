@@ -43,8 +43,9 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-" Search for file name using fzf
+" Search for file name using fzf: only files in a repo
 nnoremap <leader>o :GFiles!<CR>
+" Search for file name using fzf: all files 
 nnoremap <leader>p :Files!<CR>
 " Search file content using fzf & Rg
 nnoremap <leader>f :Rg!<CR>

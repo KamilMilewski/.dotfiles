@@ -10,6 +10,7 @@ alias notes-save="(cd ~/Work/notes && git pull --no-rebase && git add . && git c
 alias dotfiles='vim -c "cd %:p:h" -- /home/kamil/Misc/dotfiles/.zshrc'
 alias dotfiles-status="(cd ~/Misc/dotfiles && git status && git diff)"
 alias dotfiles-save="(cd ~/Misc/dotfiles && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
+alias people-dotfiles='vim -c "cd %:p:h" -- ~/Misc/people_dotfiles/stealit'
 alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim='nvim'
