@@ -43,17 +43,6 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-" Search for file name using fzf: only files in a repo
-nnoremap <leader>o :GFiles!<CR>
-" Search for file name using fzf: all files 
-nnoremap <leader>p :Files!<CR>
-" Search file content using fzf & Rg
-nnoremap <leader>f :Rg!<CR>
-" Search for buffer name using fzf
-nnoremap <leader>b :Buffers<CR>
-" Toggle NERDTree pane
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>m :NERDTreeFind<CR>
 
 " NERDTree related:
 " Exit Vim if NERDTree is the only window left.
@@ -65,6 +54,21 @@ let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=40
 " Disable display of '?' text and 'Bookmarks' label.
 let g:NERDTreeMinimalUI=1
+" Toggle NERDTree pane
+nnoremap <leader>n :NERDTreeToggle<CR>
+" Locate File in a NERDTree pane
+nnoremap <leader>m :NERDTreeFind<CR>
+
+
+" FZF related
+" Search for file name using fzf: only files in a repo
+nnoremap <leader>o :GFiles!<CR>
+" Search for file name using fzf: all files 
+nnoremap <leader>p :Files!<CR>
+" Search file content using fzf & Rg
+nnoremap <leader>f :Rg!<CR>
+" Search for buffer name using fzf
+nnoremap <leader>b :Buffers<CR>
 
 
 " Plugins will be downloaded under the specified directory.
