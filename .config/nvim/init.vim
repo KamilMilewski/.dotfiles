@@ -29,7 +29,7 @@ filetype plugin on
 " Other settings:
 set timeoutlen=1000
 set ttimeoutlen=5
-
+set encoding=UTF-8
 
 
 " Remappings:
@@ -75,6 +75,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " File browsking/managing
 Plug 'preservim/nerdtree'
+" File icons form NERDTree. NOTE: nerd-fonts-complete AUR package has been
+" installed for this to work, which is ~ 2Gb. Consider removing this package
+" if this plugin gets removed!
+Plug 'ryanoasis/vim-devicons'
 " Ruby support
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Color Theme
