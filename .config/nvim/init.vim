@@ -33,6 +33,10 @@ set timeoutlen=1000
 set ttimeoutlen=5
 set encoding=UTF-8
 
+" Enable Folding
+set foldmethod=indent
+set foldlevelstart=99 " start unfolded
+
 
 " Remappings:
 " Set ladder key

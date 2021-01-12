@@ -7,7 +7,7 @@ windows:
     - export RSPEC_RETRY_RETRY_COUNT=0 && export DEVELOPMENT=1
    panes:
     - shell_command:
-      - tmux resize-pane -Z && git status
+      - git status
       focus: true
     - shell_command:
       - mysql_start
