@@ -7,12 +7,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Extra fzf commands
 Plug 'junegunn/fzf.vim'
-" File browsking/managing
-Plug 'preservim/nerdtree'
-" File icons form NERDTree. NOTE: nerd-fonts-complete AUR package has been
+" nerdtree: file browsing/managing
+" nerdtree-git-plugin: provide git indicators for files
+" vim-devicons: provide file icons form NERDTree. NOTE: nerd-fonts-complete AUR package has been
 " installed for this to work, which is ~ 2Gb. Consider removing this package
 " if this plugin gets removed!
-Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
+
 " Ruby support
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Color Theme
