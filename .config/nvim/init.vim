@@ -85,6 +85,18 @@ nnoremap <leader>l :Lines<CR>
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
 
 
+" Lightline related
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
 " Color Theme releated:
 set background=dark
 colorscheme solarized8_flat

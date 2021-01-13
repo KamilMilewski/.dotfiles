@@ -3,7 +3,7 @@
 (xfce4-terminal -e 'tmuxp load tap' &> /dev/null &) &&
 sleep 1 &&
 wmctrl -r Terminal -b add,maximized_vert,maximized_horz &&
-sleep 10 &&
+sleep 11 &&
 wmctrl -r Toggl -b add,maximized_vert,maximized_horz &&
 wmctrl -r Slack -b add,maximized_vert,maximized_horz &&
 wmctrl -r Slack -t 1 &&
