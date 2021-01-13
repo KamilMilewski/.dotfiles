@@ -78,7 +78,7 @@ nnoremap <leader>f :Rg!<CR>
 " Search for buffer name using fzf
 nnoremap <leader>b :Buffers<CR>
 " Search corrent buffer lines using fzf
-nnoremap <leader>l :Lines<CR>
+nnoremap <leader>l :BLines<CR>
 
 
 " ALE related
@@ -87,7 +87,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
 
 " Lightline related
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -100,4 +100,11 @@ let g:lightline = {
 " Color Theme releated:
 set background=dark
 colorscheme solarized8_flat
+
+
+
+
+" Custom commands
+" Copy full current file path to system clipboard
+command Fpath :let @+=expand("%:p")
 
