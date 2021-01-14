@@ -32,6 +32,9 @@ filetype plugin on
 set timeoutlen=1000
 set ttimeoutlen=5
 set encoding=UTF-8
+" Enable spellcheck
+set spell
+set spelllang=en,pl
 
 " Enable Folding
 set foldmethod=indent
@@ -90,7 +93,10 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \		     [ 'filetype' ]]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
