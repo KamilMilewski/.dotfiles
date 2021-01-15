@@ -23,8 +23,9 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'dense-analysis/ale'
 " Git plugin
 Plug 'tpope/vim-fugitive'
-" Minimalist and configurable statusline
+" Minimalist and configurable status line
 Plug 'itchyny/lightline.vim'
+
 
 
 " List ends here. Plugins become visible to Vim after this call.

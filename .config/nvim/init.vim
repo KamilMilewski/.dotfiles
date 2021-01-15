@@ -108,9 +108,8 @@ set background=dark
 colorscheme solarized8_flat
 
 
-
-
 " Custom commands
 " Copy full current file path to system clipboard
 command Fpath :let @+=expand("%:p")
+
 
