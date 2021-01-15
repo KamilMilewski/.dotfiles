@@ -25,7 +25,8 @@ Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
 " Minimalist and configurable status line
 Plug 'itchyny/lightline.vim'
-
+" For commenting/uncommenting with different file types handling.
+Plug 'tpope/vim-commentary'
 
 
 " List ends here. Plugins become visible to Vim after this call.
