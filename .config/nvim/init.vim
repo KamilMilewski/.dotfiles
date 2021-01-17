@@ -42,6 +42,11 @@ set foldlevelstart=99 " start unfolded
 setlocal colorcolumn=120
 " to start scrolling starting n lines away from top/bottom
 set scrolloff=4
+" Disable swap file
+set noswapfile
+" Disable creation of backup files
+set nobackup
+
 
 " Remappings:
 " Set ladder key
