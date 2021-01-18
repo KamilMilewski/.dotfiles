@@ -57,12 +57,12 @@ rspec_profiled() {
 }
 # tap speciffic aliases
 alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
-alias tap_qa="bundle exec cap qa rails:console"
-alias tap_qa2="bundle exec cap qa-f2 rails:console"
-alias tap_replica="bundle exec cap replica rails:console"
-alias tap_prototype="bundle exec cap prototype rails:console"
-alias tap_locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
-tap_current_specs() {
+alias tap-qa="bundle exec cap qa rails:console"
+alias tap-qa2="bundle exec cap qa-f2 rails:console"
+alias tap-replica="bundle exec cap replica rails:console"
+alias tap-prototype="bundle exec cap prototype rails:console"
+alias tap-locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
+tap-current-specs() {
   rm -f log/test.log
   rm -f log/development.log
   rm -f log/bullet.log
@@ -94,7 +94,7 @@ tap_current_specs() {
     spec/db/deployment/v5.16/**/* \
     spec/services/export/form_pdf_service_spec.rb
 }
-tap_current_rubocop() {
+tap-current-rubocop() {
   be rubocop -A app/concepts/form/**/* \
     app/concepts/form_group/**/* \
     app/concepts/form_module_value/**/* \

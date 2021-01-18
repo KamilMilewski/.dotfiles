@@ -11,10 +11,10 @@ unsetopt beep
 # rebindd caps lock to ctrl
 setxkbmap -layout pl -option ctrl:nocaps
 
-# Speed up your keyboard - mostly to make tmux/vim scroll faster
+# Speed up your keyboard - mostly to make stuff scroll faster
 xset r rate 200 40
 
-# due to some wierd bug, tmuxp won't run without this:
+# due to some weird bug, tmuxp won't run without this:
 # https://github.com/tmux-python/tmuxp/issues/405
 source ~/.bash_locale
 
