@@ -63,6 +63,7 @@ map <C-l> <C-w>l
 
 
 " NERDTree related:
+
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
@@ -72,10 +73,21 @@ let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=40
 " Disable display of '?' text and 'Bookmarks' label.
 let g:NERDTreeMinimalUI=1
-" Toggle NERDTree pane
-nnoremap <leader>n :NERDTreeToggle<CR>
-" Locate File in a NERDTree pane
-nnoremap <leader>m :NERDTreeFind<CR>
+
+" Toggle NERDTree pane and auto jump to current buffer file location
+function! NERDTreeToggleInCurDir()                                                                                                                                                             
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    if (expand("%:t") != '')
+      exe ":NERDTreeFind"
+    else
+      exe ":NERDTreeToggle"
+    endif
+  endif
+endfunction
+nnoremap <leader>n :call NERDTreeToggleInCurDir()<CR>
 
 
 " FZF related
@@ -109,6 +121,7 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+
 
 " Color Theme releated:
 set background=dark
