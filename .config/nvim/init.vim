@@ -46,7 +46,8 @@ set scrolloff=4
 set noswapfile
 " Disable creation of backup files
 set nobackup
-
+" Enable markdown blocks syntax highlighting
+let g:markdown_fenced_languages = ['ruby', 'json', 'sh'] 
 
 " Remappings:
 " Set ladder key
@@ -129,7 +130,9 @@ colorscheme solarized8_flat
 
 
 " Custom commands
-" Copy full current file path to system clipboard
-command Fpath :let @+=expand("%:p")
-
-
+" Copy File Path(full) to system clipboard.
+command Cfp :let @+=expand("%:p")
+" Copy File Path(Relative) to system clipboard.
+command Cfpr :let @+=expand("%:.p")
+" Format JSON 
+command! -range Formatjson <line1>,<line2>!python -m json.tool

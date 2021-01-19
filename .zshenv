@@ -70,7 +70,7 @@ tap-current-specs() {
   rm -f spec/examples.txt
    ber \
     spec/concepts/form/**/* \
-    spec/concepts/form_group/**/* \
+    spec/concepts/form_section/**/* \
     spec/concepts/form_module_value/**/* \
     spec/concepts/form_formula_template/**/* \
     spec/concepts/form_element/**/* \
@@ -96,7 +96,7 @@ tap-current-specs() {
 }
 tap-current-rubocop() {
   be rubocop -A app/concepts/form/**/* \
-    app/concepts/form_group/**/* \
+    app/concepts/form_section/**/* \
     app/concepts/form_module_value/**/* \
     app/concepts/form_formula_template/**/* \
     app/concepts/form_element/**/* \

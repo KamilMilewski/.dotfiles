@@ -19,7 +19,7 @@ Plug 'preservim/nerdtree' |
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Color Theme
 Plug 'lifepillar/vim-solarized8'
-" Provides linting and acts as LSP (Language Server Protocol)
+" Provides linting and acts as a LSP
 Plug 'dense-analysis/ale'
 " Git plugin
 Plug 'tpope/vim-fugitive'
@@ -27,6 +27,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 " For commenting/uncommenting with different file types handling.
 Plug 'tpope/vim-commentary'
+" TypeScript support
+Plug 'leafgarland/typescript-vim'
+" For auto pairing(ending) brackets 
+Plug 'jiangmiao/auto-pairs'
+
 
 
 " List ends here. Plugins become visible to Vim after this call.
