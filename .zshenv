@@ -68,7 +68,7 @@ tap-current-specs() {
   rm -f log/bullet.log
   rm -f log/aws.log
   rm -f spec/examples.txt
-   ber \
+   DEVELOPMENT= ber \
     spec/concepts/form/**/* \
     spec/concepts/form_section/**/* \
     spec/concepts/form_module_value/**/* \

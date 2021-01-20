@@ -14,7 +14,7 @@
 	p = push
 	l = log
 	po = push --set-upstream origin HEAD # as 'git push outside'
-	d = diff
+	d = !git status -s && git diff
 	pf = push -f
 	cob = checkout -b
 	syncf = !git fetch upstream && git checkout master && git rebase upstream/master && git push # as `git sync with forked repo`
