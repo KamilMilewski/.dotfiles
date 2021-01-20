@@ -29,7 +29,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
 " TypeScript support
 Plug 'leafgarland/typescript-vim'
-" For auto pairing(ending) brackets 
+" For auto pairing(ending) brackets.
+" NOTE: causes weird behaviour in vim config files when deleting comments
 Plug 'jiangmiao/auto-pairs'
 
 

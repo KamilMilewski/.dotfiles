@@ -60,7 +60,8 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
+" Map copy to system clipboard
+vmap <leader>y "+y
 
 
 " NERDTree related:
@@ -102,11 +103,12 @@ nnoremap <leader>f :Rg!<CR>
 nnoremap <leader>b :Buffers<CR>
 " Search corrent buffer lines using fzf
 nnoremap <leader>l :BLines<CR>
+" Fuzzy search notes file name
+nmap <Leader>wo :Files! ~/Work/notes<CR>
 
 
 " ALE related
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
-
 
 " Lightline related
 let g:lightline = {
