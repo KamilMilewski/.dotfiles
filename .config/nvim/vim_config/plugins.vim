@@ -32,7 +32,10 @@ Plug 'leafgarland/typescript-vim'
 " For auto pairing(ending) brackets.
 " NOTE: causes weird behaviour in vim config files when deleting comments
 Plug 'jiangmiao/auto-pairs'
-
+" Like auto pairs, but for method definitions and 'if' statements
+Plug 'tpope/vim-endwise'
+" To add/modify/remove surround stuff like ({"''"})
+Plug 'tpope/vim-surround'
 
 
 " List ends here. Plugins become visible to Vim after this call.

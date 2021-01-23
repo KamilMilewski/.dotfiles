@@ -39,7 +39,7 @@ set spelllang=en,pl
 set foldmethod=indent
 set foldlevelstart=99 " start unfolded
 " Enable vertical bar at 120chars
-setlocal colorcolumn=120
+set colorcolumn=120
 " to start scrolling starting n lines away from top/bottom
 set scrolloff=4
 " Disable swap file
