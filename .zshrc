@@ -9,7 +9,8 @@ unsetopt beep
 . /home/kamil/.zsh_completions
 
 # rebindd caps lock to ctrl
-setxkbmap -layout pl -option ctrl:nocaps
+# for now this is achieved by running: `localectl set-x11-keymap "pl" "" "" "ctrl:swapcaps"`
+# setxkbmap -layout pl -option ctrl:nocaps
 
 # Speed up your keyboard - mostly to make stuff scroll faster
 xset r rate 200 40

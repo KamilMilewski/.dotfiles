@@ -10,12 +10,13 @@ windows:
       - git status
       focus: true
     - shell_command:
-      - mysql_start
+      - mysql-start
     - pane
-    - pane
+    - shell_command:
+      - audio-mic-set-gain
  - window_name: editor 
    layout: tiled
    start_directory: ~/Work/tap/tap
    shell_command_before:
-    - export RSPEC_RETRY_RETRY_COUNT=0 && export DEVELOPMENT=1
+    - export RSPEC_RETRY_RETRY_COUNT=0 && export DEVELOPMENT=1 && export NODE_OPTIONS="--max-old-space-size=8192"
     - vim
