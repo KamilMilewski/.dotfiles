@@ -90,12 +90,14 @@ tap-current-specs() {
     spec/concepts/element_group/**/* \
     spec/concepts/element/**/* \
     spec/concepts/element_data/**/* \
+    spec/concepts/repeatable_structure_module_value/**/* \
     spec/requests/api/v1/element_datas/**/* \
     spec/requests/api/v2/forms/**/* \
     spec/requests/api/v2/form_runs/**/* \
     spec/requests/api/v2/element_groups/**/* \
     spec/requests/api/v2/element_group_items/**/* \
     spec/requests/api/v2/elements/**/* \
+    spec/requests/api/v2/repeatable_structure_module_values/**/* \
     spec/models/form_*_spec.rb \
     spec/models/form_spec.rb \
     spec/models/element_spec.rb \

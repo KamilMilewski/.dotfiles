@@ -36,7 +36,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
 " To add/modify/remove surround stuff like ({"''"})
 Plug 'tpope/vim-surround'
-
+" For plugins like `vim-textobj-ruby` to work 
+Plug 'kana/vim-textobj-user'
+" For being able to select ruby blocks(functions,classes,etc...)
+Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
