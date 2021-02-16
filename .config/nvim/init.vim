@@ -48,6 +48,8 @@ set noswapfile
 set nobackup
 " Enable markdown blocks syntax highlighting
 let g:markdown_fenced_languages = ['ruby', 'json', 'sh'] 
+" line below allows to do ':set list' to display whitespace characters
+:set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 " Remappings:
 " Set ladder key
@@ -133,7 +135,7 @@ colorscheme solarized8_flat
 
 " Custom commands
 " Copy File Path(full) to system clipboard.
-command Cfp :let @+=expand("%:p")
+command Cfpf :let @+=expand("%:p")
 " Copy File Path(Relative) to system clipboard.
 command Cfpr :let @+=expand("%:.p")
 " Format JSON 
