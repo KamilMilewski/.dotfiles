@@ -51,6 +51,9 @@ let g:markdown_fenced_languages = ['ruby', 'json', 'sh']
 " line below allows to do ':set list' to display whitespace characters
 :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
+" Markdown specific config
+autocmd Filetype markdown setlocal wrap
+
 " Remappings:
 " Set ladder key
 nnoremap <SPACE> <Nop>
