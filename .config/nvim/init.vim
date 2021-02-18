@@ -60,11 +60,6 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 " Remap `leave insert mode` to jj
 inoremap jj <ESC>
-" Remap panes navigations to just ctrl+hjkl instead of ctrl+w+hjkl
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
 " Map copy to system clipboard
 vmap <leader>y "+y
 

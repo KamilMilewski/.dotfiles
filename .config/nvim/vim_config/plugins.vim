@@ -42,6 +42,10 @@ Plug 'kana/vim-textobj-user'
 Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
 " For white spaces highlighting
 Plug 'ntpeters/vim-better-whitespace', { 'for': 'ruby' }
+" For unified pane switching for tmux and vim. Thanks to this one can just do
+" ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
+" plugin installed)
+Plug 'christoomey/vim-tmux-navigator'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
