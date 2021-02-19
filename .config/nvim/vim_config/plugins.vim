@@ -46,6 +46,8 @@ Plug 'ntpeters/vim-better-whitespace', { 'for': 'ruby' }
 " ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
 " plugin installed)
 Plug 'christoomey/vim-tmux-navigator'
+" For rails specific goddies
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
