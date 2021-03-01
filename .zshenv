@@ -9,6 +9,7 @@ alias notes-status="(cd ~/Work/notes && git status && git diff)"
 alias notes-save="(cd ~/Work/notes && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
 alias dotfiles='vim -c "cd %:p:h" -- /home/kamil/Misc/dotfiles/.zshrc'
 alias dotfiles-status="(cd ~/Misc/dotfiles && git status && git diff)"
+alias dotfiles-reset="(cd ~/Misc/dotfiles && git reset --hard)"
 alias dotfiles-save="(cd ~/Misc/dotfiles && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
 alias people-dotfiles='vim -c "cd %:p:h" -- ~/Misc/people_dotfiles/stealit'
 alias g="git"
@@ -72,7 +73,7 @@ alias tap-qa="bundle exec cap qa rails:console"
 alias tap-qa2="bundle exec cap qa-f2 rails:console"
 alias tap-replica="bundle exec cap replica rails:console"
 alias tap-prototype="bundle exec cap prototype rails:console"
-alias tap-locales_regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
+alias tap-locales-regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
 tap-current-specs() {
   rm -f log/test.log
   rm -f log/development.log
@@ -80,33 +81,10 @@ tap-current-specs() {
   rm -f log/aws.log
   rm -f spec/examples.txt
    DEVELOPMENT= ber \
-    spec/concepts/form/**/* \
-    spec/concepts/form_group/**/* \
-    spec/concepts/form_module_value/**/* \
-    spec/concepts/form_formula_template/**/* \
-    spec/concepts/form_element/**/* \
-    spec/concepts/form_run/**/* \
-    spec/concepts/element_group_item/**/* \
-    spec/concepts/element_group/**/* \
-    spec/concepts/element/**/* \
-    spec/concepts/element_data/**/* \
-    spec/requests/api/v1/element_datas/**/* \
-    spec/requests/api/v1/form_runs/**/* \
-    spec/requests/api/v1/element_groups/**/* \
-    spec/requests/api/v1/element_group_items/**/* \
-    spec/requests/api/v1/elements/**/* \
-    spec/models/form_*_spec.rb \
-    spec/models/form_spec.rb \
-    spec/models/element_spec.rb \
-    spec/models/element_group_item_spec.rb \
-    spec/models/element_group_spec.rb \
-    spec/models/element_data_spec.rb \
-    spec/db/deployment/v5.15/**/*
+    specs here
 }
 tap-current-rubocop() {
-  be rubocop -A app/concepts/form/**/* \
-    app/concepts/form_group/**/* \
-    app/concepts/form_module_value/**/*
+  be rubocop -A files here
 }
 mysql-start() {
   sudo systemctl start docker && \

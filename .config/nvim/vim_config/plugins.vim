@@ -48,6 +48,8 @@ Plug 'ntpeters/vim-better-whitespace', { 'for': 'ruby' }
 Plug 'christoomey/vim-tmux-navigator'
 " For rails specific goddies
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
+" For nice dates auto-increment
+Plug 'tpope/vim-speeddating'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
