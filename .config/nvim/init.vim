@@ -109,6 +109,9 @@ nmap <Leader>wo :Files! ~/Work/notes<CR>
 
 " ALE related
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
+nnoremap gd :ALEGoToDefinition<CR>
+nnoremap gr :ALEFindReferences<CR>
+
 
 " Lightline related
 let g:lightline = {
