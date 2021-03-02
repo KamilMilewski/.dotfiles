@@ -4,7 +4,7 @@ windows:
    layout: tiled
    start_directory: ~/Work/tap/tap
    shell_command_before:
-    - export RSPEC_RETRY_RETRY_COUNT=0 && export DEVELOPMENT=1 && export NODE_OPTIONS="--max-old-space-size=8192"
+    - export RSPEC_RETRY_RETRY_COUNT=0 && export NODE_OPTIONS="--max-old-space-size=8192"
    panes:
     - shell_command:
       - git status
@@ -18,5 +18,5 @@ windows:
    layout: tiled
    start_directory: ~/Work/tap/tap
    shell_command_before:
-    - export RSPEC_RETRY_RETRY_COUNT=0 && export DEVELOPMENT=1 && export NODE_OPTIONS="--max-old-space-size=8192"
+    - export RSPEC_RETRY_RETRY_COUNT=0 && export NODE_OPTIONS="--max-old-space-size=8192"
     - vim
