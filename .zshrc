@@ -19,6 +19,9 @@ xset r rate 200 40
 # https://github.com/tmux-python/tmuxp/issues/405
 source ~/.bash_locale
 
+# To unbind ctrl-s (ctrl-s more or less just freezes the terminal, its a redundant functionality from ancient times)
+setopt noflowcontrol
+
 # here goes prompt customization:
 #
 # Load version control information

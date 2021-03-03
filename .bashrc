@@ -8,6 +8,9 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+# To unbind ctrl-s (ctrl-s more or less just freezes the terminal, its a redundant functionality from ancient times)
+stty -ixon
+
 # asdf version manager config
 # https://github.com/asdf-vm/asdf
 # https://asdf-vm.com/#/core-manage-asdf

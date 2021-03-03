@@ -62,6 +62,10 @@ let mapleader=" "
 inoremap jj <ESC>
 " Map copy to system clipboard
 vmap <leader>y "+y
+" Map leave insert mode in vim terminal to ctrl+s
+tnoremap <C-s> <C-\><C-n>
+" Remap `leave insert mode` to ctrl+s
+inoremap <C-s> <ESC>
 
 
 " NERDTree related:
