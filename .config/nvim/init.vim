@@ -32,7 +32,7 @@ filetype plugin on
 set timeoutlen=1000
 set ttimeoutlen=5
 set encoding=UTF-8
-" Enable spellcheck
+" Enable spell check
 set spell
 set spelllang=en,pl
 " Enable Folding

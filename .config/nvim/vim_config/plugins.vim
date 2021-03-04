@@ -9,7 +9,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " nerdtree: file browsing/managing
 " nerdtree-git-plugin: provide git indicators for files
-" vim-devicons: provide file icons form NERDTree. NOTE: nerd-fonts-complete AUR package has been
+" vim-devicons: provide file icons for NERDTree. NOTE: nerd-fonts-complete AUR package has been
 " installed for this to work, which is ~ 2Gb. Consider removing this package
 " if this plugin gets removed!
 Plug 'preservim/nerdtree' |
@@ -36,7 +36,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
 " To add/modify/remove surround stuff like ({"''"})
 Plug 'tpope/vim-surround'
-" For plugins like `vim-textobj-ruby` to work 
+" For plugins like `vim-textobj-ruby` to work
 Plug 'kana/vim-textobj-user'
 " For being able to select ruby blocks(functions,classes,etc...)
 Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
