@@ -8,25 +8,25 @@ set ignorecase
 set smartcase
 " Enable autoindent
 set autoindent
-" Indenting is 2 spaces 
+" Indenting is 2 spaces
 set shiftwidth=2
 " Allows to switch buffers with unsaved changes
 set hidden
 " We're running Vim, not Vi!
 set nocompatible
 " Enable line numbers bar
-set number 
+set number
 " Enable line/column number status at the bottom-right corner
 set ruler
 " Do not wrap files at the right edge of the screen
 set nowrap
 " Enable syntax highlighting
-syntax on             
-" Enable filetype detection
+syntax on
+" Enable file type detection
 filetype on
-" Enable filetype-specific indenting
+" Enable file type-specific indenting
 filetype indent on
-" Enable filetype-specific plugins
+" Enable file type-specific plugins
 filetype plugin on
 " Other settings:
 set timeoutlen=1000
@@ -47,17 +47,19 @@ set noswapfile
 " Disable creation of backup files
 set nobackup
 " Enable markdown blocks syntax highlighting
-let g:markdown_fenced_languages = ['ruby', 'json', 'sh'] 
+let g:markdown_fenced_languages = ['ruby', 'json', 'sh']
 " line below allows to do ':set list' to display whitespace characters
 :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 " Markdown specific config
 autocmd Filetype markdown setlocal wrap
 
+
 " Remappings:
 " Set ladder key
 nnoremap <SPACE> <Nop>
 let mapleader=" "
+
 " Remap `leave insert mode` to jj
 inoremap jj <ESC>
 " Map copy to system clipboard
@@ -66,6 +68,8 @@ vmap <leader>y "+y
 tnoremap <C-s> <C-\><C-n>
 " Remap `leave insert mode` to ctrl+s
 inoremap <C-s> <ESC>
+" Source vim config
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
 " NERDTree related:
@@ -81,7 +85,7 @@ let g:NERDTreeWinSize=40
 let g:NERDTreeMinimalUI=1
 
 " Toggle NERDTree pane and auto jump to current buffer file location
-function! NERDTreeToggleInCurDir()                                                                                                                                                             
+function! NERDTreeToggleInCurDir()
   " If NERDTree is open in the current buffer
   if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
     exe ":NERDTreeClose"
@@ -99,7 +103,7 @@ nnoremap <leader>n :call NERDTreeToggleInCurDir()<CR>
 " FZF related
 " Search for file name using fzf: only files in a repo
 nnoremap <leader>o :GFiles!<CR>
-" Search for file name using fzf: all files 
+" Search for file name using fzf: all files
 nnoremap <leader>p :Files!<CR>
 " Search file content using fzf & Rg
 nnoremap <leader>f :Rg!<CR>
@@ -133,7 +137,7 @@ let g:lightline = {
       \ }
 
 
-" Color Theme releated:
+" Color Theme related:
 set background=dark
 colorscheme solarized8_flat
 
@@ -143,5 +147,25 @@ colorscheme solarized8_flat
 command Cfpf :let @+=expand("%:p")
 " Copy File Path(Relative) to system clipboard.
 command Cfpr :let @+=expand("%:.p")
-" Format JSON 
+" Format JSON
 command! -range Formatjson <line1>,<line2>!python -m json.tool
+
+
+
+" Run spec for current file
+function! RunSpecFile()
+  let spec_path = expand('%')
+  exe ':w'
+  exe ':terminal bundle exec spring rspec ' . spec_path
+endfunction
+command RunSpecFile call RunSpecFile()
+nnoremap <leader>sf :RunSpecFile<CR>
+
+" Run spec for current line
+function! RunSpecLine()
+  let spec_path = join([expand('%'),  line(".")], ':')
+  exe ':w'
+  exe ':terminal bundle exec spring rspec ' . spec_path
+endfunction
+command RunSpecLine call RunSpecLine()
+nnoremap <leader>sl :RunSpecLine<CR>
