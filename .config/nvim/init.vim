@@ -70,13 +70,15 @@ tnoremap <C-s> <C-\><C-n>
 inoremap <C-s> <ESC>
 " Source vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
+" Make movement between wrapped lines easier
+nnoremap j gj
+nnoremap k gk
 
 " NERDTree related:
 
 " Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"     \ quit | endif
 " Show hidden files by default.
 let NERDTreeShowHidden=1
 " The default of 31 is just a little too narrow.
