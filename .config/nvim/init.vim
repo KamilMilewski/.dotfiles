@@ -1,5 +1,7 @@
 runtime vim_config/plugins.vim
 
+lua require 'init'
+
 " Highlight all search results
 set hlsearch
 " Set smartcase(will go case sensitive when upper case chars are in search,
@@ -61,7 +63,7 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " Remap `leave insert mode` to jj
-inoremap jj <ESC>
+" inoremap jj <ESC>
 " Map copy to system clipboard
 vmap <leader>y "+y
 " Map leave insert mode in vim terminal to ctrl+s
@@ -71,8 +73,8 @@ inoremap <C-s> <ESC>
 " Source vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
 " Make movement between wrapped lines easier
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 " NERDTree related:
 
@@ -171,3 +173,4 @@ function! RunSpecLine()
 endfunction
 command RunSpecLine call RunSpecLine()
 nnoremap <leader>sl :RunSpecLine<CR>
+

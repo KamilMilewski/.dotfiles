@@ -55,7 +55,7 @@ PROMPT='
 # https://asdf-vm.com/#/core-manage-asdf
 . $HOME/.asdf/asdf.sh
 
-# FZF (fuzy search) related 
+# FZF (fuzy search) related
 # To follow symbolic link and don't exclude hidden files (except .git dir). Use find alternative - fd.
 export FZF_DEFAULT_COMMAND='fd --no-ignore --type f --hidden --follow --exclude .git'
 # enable terminal shortcuts, for example <ctrl>+R to search through terminal history
