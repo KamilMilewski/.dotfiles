@@ -68,6 +68,9 @@ audio-mic-set-int() {
   pacmd set-source-port 1 analog-input-internal-mic
   pacmd list-sources | grep 'active port'
 }
+libre() {
+  libreoffice "$@" &> /dev/null &
+}
 # tap specific aliases
 alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap-qa="bundle exec cap qa rails:console"
