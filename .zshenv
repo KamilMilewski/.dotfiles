@@ -4,6 +4,7 @@ export VISUAL=nvim
 # General aliases
 alias ls='ls --color=auto'
 alias grep='grep --color'
+alias zat='zathura --fork --mode fullscreen'
 alias notes='vim -c "cd %:p:h" -- ~/Work/notes/other_notes.md'
 alias notes-status="(cd ~/Work/notes && git status && git diff)"
 alias notes-save="(cd ~/Work/notes && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
