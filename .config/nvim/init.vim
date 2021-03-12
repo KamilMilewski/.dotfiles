@@ -2,42 +2,15 @@ runtime vim_config/plugins.vim
 
 lua require 'init'
 
-" Set smartcase(will go case sensitive when upper case chars are in search,
-" ignore case needs to be set first for this to work)
-set ignorecase
-set smartcase
-" Indenting is 2 spaces
-set shiftwidth=2
-" Allows to switch buffers with unsaved changes
-set hidden
-" Enable file type detection
 filetype on
+
 " Enable file type-specific plugins
 filetype plugin on
-" Other settings:
-set timeoutlen=1000
-set ttimeoutlen=5
-set encoding=UTF-8
-" Enable spell check
-set spell
-set spelllang=en,pl
-" Enable Folding
-set foldmethod=indent
-set foldlevelstart=99 " start unfolded
-" Enable vertical bar at 120chars
-set colorcolumn=120
-" to start scrolling starting n lines away from top/bottom
-set scrolloff=4
-" Disable swap file
-set noswapfile
-" Disable creation of backup files
-set nobackup
-" Enable markdown blocks syntax highlighting
 let g:markdown_fenced_languages = ['ruby', 'json', 'sh']
-" line below allows to do ':set list' to display whitespace characters
-:set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
 " Highlight yanked text
 au TextYankPost * silent! lua vim.highlight.on_yank { timeout=150 }
+
 " Markdown specific config
 autocmd Filetype markdown setlocal wrap
 
@@ -134,5 +107,4 @@ function! RunSpecLine()
 endfunction
 command RunSpecLine call RunSpecLine()
 nnoremap <leader>sl :RunSpecLine<CR>
-
 
