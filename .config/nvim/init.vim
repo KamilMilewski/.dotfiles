@@ -10,10 +10,6 @@ set smartcase
 set shiftwidth=2
 " Allows to switch buffers with unsaved changes
 set hidden
-" Enable line numbers bar
-set number
-" Do not wrap files at the right edge of the screen
-set nowrap
 " Enable file type detection
 filetype on
 " Enable file type-specific plugins
