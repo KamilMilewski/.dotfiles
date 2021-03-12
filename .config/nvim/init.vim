@@ -55,8 +55,8 @@ let mapleader=" "
 vmap <leader>y "+y
 " Map leave insert mode in vim terminal to ctrl+s
 tnoremap <C-s> <C-\><C-n>
-" Source vim config
-nnoremap <leader>sv :source $MYVIMRC<CR>
+" Source vim config (this source command doesn't seem to work)
+" nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
 " NERDTree related:
