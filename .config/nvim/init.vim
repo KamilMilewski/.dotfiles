@@ -48,8 +48,8 @@ autocmd Filetype markdown setlocal wrap
 
 " Remappings:
 " Set ladder key
-nnoremap <SPACE> <Nop>
-let mapleader=" "
+" nnoremap <SPACE> <Nop>
+" let mapleader=" "
 
 " Map copy to system clipboard
 vmap <leader>y "+y
