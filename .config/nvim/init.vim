@@ -46,19 +46,6 @@ au TextYankPost * silent! lua vim.highlight.on_yank { timeout=150 }
 autocmd Filetype markdown setlocal wrap
 
 
-" Remappings:
-" Set ladder key
-" nnoremap <SPACE> <Nop>
-" let mapleader=" "
-
-" Map copy to system clipboard
-vmap <leader>y "+y
-" Map leave insert mode in vim terminal to ctrl+s
-tnoremap <C-s> <C-\><C-n>
-" Source vim config (this source command doesn't seem to work)
-" nnoremap <leader>sv :source $MYVIMRC<CR>
-
-
 " NERDTree related:
 
 " Show hidden files by default.
@@ -95,8 +82,6 @@ nnoremap <leader>f :Rg!<CR>
 nnoremap <leader>b :Buffers<CR>
 " Search corrent buffer lines using fzf
 nnoremap <leader>l :BLines<CR>
-" Fuzzy search notes file name
-nmap <Leader>wo :Files! ~/Work/notes<CR>
 
 
 " ALE related

@@ -13,3 +13,10 @@ map('n', 'k', 'gk', { noremap = true })
 
 -- Remap `leave insert mode` to ctrl+s in terminal
 map('i', '<C-s>', '<ESC>', { noremap = true })
+
+-- Map copy to system clipboard
+map('v', '<leader>y', '"+y', { noremap = true })
+
+-- Map leave insert mode in vim terminal to ctrl+s
+map('t', '<C-s>', '<C-\\><C-n>', { noremap = true })
+
