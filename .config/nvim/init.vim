@@ -14,12 +14,8 @@ set hidden
 set number
 " Do not wrap files at the right edge of the screen
 set nowrap
-" Enable syntax highlighting
-syntax on
 " Enable file type detection
 filetype on
-" Enable file type-specific indenting
-filetype indent on
 " Enable file type-specific plugins
 filetype plugin on
 " Other settings:
@@ -44,7 +40,8 @@ set nobackup
 let g:markdown_fenced_languages = ['ruby', 'json', 'sh']
 " line below allows to do ':set list' to display whitespace characters
 :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-
+" Highlight yanked text
+au TextYankPost * silent! lua vim.highlight.on_yank { timeout=150 }
 " Markdown specific config
 autocmd Filetype markdown setlocal wrap
 
@@ -58,8 +55,6 @@ let mapleader=" "
 vmap <leader>y "+y
 " Map leave insert mode in vim terminal to ctrl+s
 tnoremap <C-s> <C-\><C-n>
-" Remap `leave insert mode` to ctrl+s
-inoremap <C-s> <ESC>
 " Source vim config
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
@@ -158,4 +153,5 @@ function! RunSpecLine()
 endfunction
 command RunSpecLine call RunSpecLine()
 nnoremap <leader>sl :RunSpecLine<CR>
+
 
