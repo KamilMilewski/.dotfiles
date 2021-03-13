@@ -14,6 +14,10 @@ au TextYankPost * silent! lua vim.highlight.on_yank { timeout=150 }
 " Markdown specific config
 autocmd Filetype markdown setlocal wrap
 
+" Color Theme related:
+set background=dark
+colorscheme solarized8_flat
+
 
 " NERDTree related:
 
@@ -75,11 +79,6 @@ let g:lightline = {
       \ }
 
 
-" Color Theme related:
-set background=dark
-colorscheme solarized8_flat
-
-
 " Custom commands
 " Copy File Path(full) to system clipboard.
 command Cfpf :let @+=expand("%:p")
@@ -87,24 +86,4 @@ command Cfpf :let @+=expand("%:p")
 command Cfpr :let @+=expand("%:.p")
 " Format JSON
 command! -range Formatjson <line1>,<line2>!python -m json.tool
-
-
-
-" Run spec for current file
-function! RunSpecFile()
-  let spec_path = expand('%')
-  exe ':w'
-  exe ':terminal bundle exec spring rspec ' . spec_path
-endfunction
-command RunSpecFile call RunSpecFile()
-nnoremap <leader>sf :RunSpecFile<CR>
-
-" Run spec for current line
-function! RunSpecLine()
-  let spec_path = join([expand('%'),  line(".")], ':')
-  exe ':w'
-  exe ':terminal bundle exec spring rspec ' . spec_path
-endfunction
-command RunSpecLine call RunSpecLine()
-nnoremap <leader>sl :RunSpecLine<CR>
 
