@@ -50,6 +50,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 " For nice dates auto-increment
 Plug 'tpope/vim-speeddating'
+" For an ability to convert snake_case to CamelCase and similar
+Plug 'tpope/vim-abolish'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

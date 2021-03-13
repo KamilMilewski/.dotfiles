@@ -20,7 +20,11 @@ map('v', '<leader>y', '"+y', { noremap = true })
 -- Map leave insert mode in vim terminal to ctrl+s
 map('t', '<C-s>', '<C-\\><C-n>', { noremap = true })
 
+-- Quickly exit
+map('n', '<leader>qq', '<cmd>:qa!<CR>', { noremap = true })
+
 -- Map Rspec runner functions
-map('n', '<leader>sf', '<cmd>lua RunCurrentSpecFile()<CR>', { noremap = true })
-map('n', '<leader>sl', '<cmd>lua RunCurrentSpecLine()<CR>', { noremap = true })
+map('n', '<leader>sf', '<cmd>lua run_current_spec_file()<CR>', { noremap = true })
+map('n', '<leader>sl', '<cmd>lua run_current_spec_line()<CR>', { noremap = true })
+map('n', '<leader>sm', '<cmd>lua run_last_spec_command()<CR>', { noremap = true })
 
