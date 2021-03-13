@@ -20,7 +20,7 @@ map('v', '<leader>y', '"+y', { noremap = true })
 -- Map leave insert mode in vim terminal to ctrl+s
 map('t', '<C-s>', '<C-\\><C-n>', { noremap = true })
 
--- Quickly exit
+-- Quick exit
 map('n', '<leader>qq', '<cmd>:qa!<CR>', { noremap = true })
 
 -- Map Rspec runner functions
