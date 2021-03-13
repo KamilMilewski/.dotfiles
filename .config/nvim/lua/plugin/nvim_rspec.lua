@@ -18,7 +18,7 @@ end
 function nrspec_run_last_command()
   local file_path = vim.fn.expand('%f')
   local line_number = vim.fn.line('.')
-  local command = vim.api.nvim_get_var("nrspec_runner_last_command")
+  local command = vim.api.nvim_get_var("nrspec_last_command")
   vim.api.nvim_command('w')
   vim.api.nvim_command(command)
 end

@@ -14,7 +14,7 @@ wo.number = true
 wo.wrap = false
 
 -- Indenting is 2 spaces
-bo.shiftwidth = 2
+o.shiftwidth = 2
 
 -- Allows to switch buffers with unsaved changes
 o.hidden = true
@@ -39,11 +39,11 @@ wo.colorcolumn = '120'
 o.scrolloff = 4
 
 -- Disable swap file
-bo.swapfile = false
+o.swapfile = false
 
 -- Disable creation of backup files
 o.backup = false
 
 -- line below allows to do ':set list' to display whitespace characters
-wo.listchars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
+o.listchars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
 
