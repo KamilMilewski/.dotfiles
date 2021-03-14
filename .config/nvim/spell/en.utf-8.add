@@ -11,3 +11,12 @@ TMUX
 plugin
 config
 dir
+smartcase
+eol
+UTF
+ctrl
+linting
+LSP
+Gb
+AUR
+tmux

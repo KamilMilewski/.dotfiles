@@ -53,7 +53,7 @@ nnoremap <leader>p :Files!<CR>
 nnoremap <leader>f :Rg!<CR>
 " Search for buffer name using fzf
 nnoremap <leader>b :Buffers<CR>
-" Search corrent buffer lines using fzf
+" Search current buffer lines using fzf
 nnoremap <leader>l :BLines<CR>
 
 

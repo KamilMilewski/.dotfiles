@@ -23,8 +23,3 @@ map('t', '<C-s>', '<C-\\><C-n>', { noremap = true })
 -- Quick exit
 map('n', '<leader>qq', '<cmd>:qa!<CR>', { noremap = true })
 
--- Map Rspec runner functions
-map('n', '<leader>sf', '<cmd>lua nrspec_run_current_file()<CR>', { noremap = true })
-map('n', '<leader>sl', '<cmd>lua nrspec_run_current_line()<CR>', { noremap = true })
-map('n', '<leader>sm', '<cmd>lua nrspec_run_last_command()<CR>', { noremap = true })
-
