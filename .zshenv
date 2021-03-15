@@ -72,6 +72,17 @@ audio-mic-set-int() {
 libre() {
   libreoffice "$@" &> /dev/null &
 }
+system-update() {
+  echo '======Updating system packages======'
+  sudo pacman -Syu --noconfirm
+  echo '======Updating asdf plugins======'
+  asdf plugin update --all
+  echo '======Updating asdf neovim======'
+  vim-update
+}
+
+
+
 # tap specific aliases
 alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap-qa="bundle exec cap qa rails:console"
@@ -101,4 +112,7 @@ mysql-start() {
     --env MYSQL_ROOT_HOST='%' \
     --env MYSQL_ROOT_PASSWORD='supersecret' \
     -d mysql/mysql-server:latest
+}
+tap-my-prs() {
+  chromium "https://stash.imgdev.bioclinica.com/projects/TAP/repos/tap/pull-requests?state=OPEN&author=kamil.milewski%40hotmail.com&reviewer=" &> /dev/null &
 }

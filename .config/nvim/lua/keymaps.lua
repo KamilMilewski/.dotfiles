@@ -23,3 +23,5 @@ map('t', '<C-s>', '<C-\\><C-n>', { noremap = true })
 -- Quick exit
 map('n', '<leader>qq', '<cmd>:qa!<CR>', { noremap = true })
 
+-- Clear search highlight
+map('n', '<leader>ch', '<cmd>:set nohls<CR>', { noremap = true })

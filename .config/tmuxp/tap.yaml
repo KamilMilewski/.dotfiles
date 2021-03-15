@@ -1,6 +1,6 @@
 session_name: tap
 windows:
- - window_name: terminal 
+ - window_name: terminal
    layout: tiled
    start_directory: ~/Work/tap/tap
    shell_command_before:
@@ -14,7 +14,7 @@ windows:
     - pane
     - shell_command:
       - audio-mic-set-gain
- - window_name: editor 
+ - window_name: editor
    layout: tiled
    start_directory: ~/Work/tap/tap
    shell_command_before:

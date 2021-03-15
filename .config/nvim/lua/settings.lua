@@ -40,6 +40,7 @@ o.scrolloff = 4
 
 -- Disable swap file
 o.swapfile = false
+bo.swapfile = false
 
 -- Disable creation of backup files
 o.backup = false

@@ -11,6 +11,9 @@ let g:markdown_fenced_languages = ['ruby', 'json', 'sh']
 " Highlight yanked text
 au TextYankPost * silent! lua vim.highlight.on_yank { timeout=150 }
 
+" Disable spell check for terminal buffers
+au TermOpen * setlocal nospell
+
 " Markdown specific config
 autocmd Filetype markdown setlocal wrap
 
