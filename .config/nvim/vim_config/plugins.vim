@@ -52,6 +52,9 @@ Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-speeddating'
 " For an ability to convert snake_case to CamelCase and similar
 Plug 'tpope/vim-abolish'
+" Extends repeat (.) vim functionality so it becomes aware of some Tpope
+" plugin actions, like vim-surround
+Plug 'tpope/vim-repeat'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

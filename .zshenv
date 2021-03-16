@@ -116,3 +116,6 @@ mysql-start() {
 tap-my-prs() {
   chromium "https://stash.imgdev.bioclinica.com/projects/TAP/repos/tap/pull-requests?state=OPEN&author=kamil.milewski%40hotmail.com&reviewer=" &> /dev/null &
 }
+tap-new-pr() {
+  chromium "https://stash.imgdev.bioclinica.com/projects/TAP/repos/tap/pull-requests?create" &> /dev/null &
+}

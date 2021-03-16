@@ -22,3 +22,10 @@ function nrspec_run_last_command()
   vim.api.nvim_command('w')
   vim.api.nvim_command(command)
 end
+
+function nrspec_run_last_failed()
+  local command = string.format("terminal bundle exec spring rspec --only-failures")
+  vim.api.nvim_set_var('nrspec_last_command', command)
+  vim.api.nvim_command('w')
+  vim.api.nvim_command(command)
+end
