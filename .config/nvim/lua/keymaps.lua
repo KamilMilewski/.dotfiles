@@ -25,3 +25,6 @@ map('n', '<leader>qq', '<cmd>:qa!<CR>', { noremap = true })
 
 -- Clear search highlight
 map('n', '<leader>ch', '<cmd>:noh<CR>', { noremap = true })
+
+-- Run clean code
+map('n', '<leader>cc', '<cmd>lua clean_code()<CR>', { noremap = true })
