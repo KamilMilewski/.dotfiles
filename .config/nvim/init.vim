@@ -17,34 +17,20 @@ au TermOpen * setlocal nospell
 " Markdown specific config
 autocmd Filetype markdown setlocal wrap
 
-" Color Theme related:
+
+" Solarized8 (Color Theme) related:
+set termguicolors
 set background=dark
-colorscheme solarized8_flat
+autocmd vimenter * ++nested colorscheme solarized8
+let g:solarized_extra_hi_groups = 1
 
 
-" NERDTree related:
-
-" Show hidden files by default.
-let NERDTreeShowHidden=1
-" The default of 31 is just a little too narrow.
-let g:NERDTreeWinSize=40
-" Disable display of '?' text and 'Bookmarks' label.
-let g:NERDTreeMinimalUI=1
-
-" Toggle NERDTree pane and auto jump to current buffer file location
-function! NERDTreeToggleInCurDir()
-  " If NERDTree is open in the current buffer
-  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-    exe ":NERDTreeClose"
-  else
-    if (expand("%:t") != '')
-      exe ":NERDTreeFind"
-    else
-      exe ":NERDTreeToggle"
-    endif
-  endif
-endfunction
-nnoremap <leader>n :call NERDTreeToggleInCurDir()<CR>
+" Nvim Tree related:
+nnoremap <leader>n :NvimTreeToggle<CR>
+" jump right into current file when opening file explorer
+let g:nvim_tree_follow = 1
+let g:nvim_tree_width = 40
+let g:nvim_tree_indent_markers = 1
 
 
 " FZF related
@@ -80,6 +66,7 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+
 
 " Speeddating related
 au VimEnter * :SpeedDatingFormat %d.%m.%Y

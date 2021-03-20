@@ -7,14 +7,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Extra fzf commands
 Plug 'junegunn/fzf.vim'
-" nerdtree: file browsing/managing
-" nerdtree-git-plugin: provide git indicators for files
-" vim-devicons: provide file icons for NERDTree. NOTE: nerd-fonts-complete AUR package has been
+" Provide file icons for Nvim Tree. NOTE: nerd-fonts-complete AUR package has been
 " installed for this to work, which is ~ 2Gb. Consider removing this package
-" if this plugin gets removed!
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-            \ Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+" file explorer
+Plug 'kyazdani42/nvim-tree.lua'
 " Ruby support
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Color Theme
@@ -46,7 +43,7 @@ Plug 'ntpeters/vim-better-whitespace', { 'for': ['ruby', 'vim'] }
 " ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
 " plugin installed)
 Plug 'christoomey/vim-tmux-navigator'
-" For rails specific goddies
+" For rails specific goodies
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 " For nice dates auto-increment
 Plug 'tpope/vim-speeddating'
@@ -55,6 +52,7 @@ Plug 'tpope/vim-abolish'
 " Extends repeat (.) vim functionality so it becomes aware of some Tpope
 " plugin actions, like vim-surround
 Plug 'tpope/vim-repeat'
+
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
