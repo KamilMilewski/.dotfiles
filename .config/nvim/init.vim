@@ -81,6 +81,9 @@ let g:lightline = {
       \ },
       \ }
 
+" Speeddating related
+au VimEnter * :SpeedDatingFormat %d.%m.%Y
+
 
 " Custom commands
 " Copy File Path(full) to system clipboard.

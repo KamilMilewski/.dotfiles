@@ -40,7 +40,6 @@ function nrspec_run_last_failed()
   local command_with_msg = string.format(
     "terminal echo ' >>> Running last failed specs: %s\\n' && %s", rspec_command, rspec_command
   )
-  vim.api.nvim_set_var('nrspec_last_rspec_command', rspec_command)
   vim.api.nvim_command('w')
   vim.api.nvim_command(command_with_msg)
 end
