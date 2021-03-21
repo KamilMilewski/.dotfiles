@@ -71,6 +71,10 @@ let g:lightline = {
 au VimEnter * :SpeedDatingFormat %d.%m.%Y
 
 
+" Quick-scope related
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
 " Custom commands
 " Copy File Path(full) to system clipboard.
 command Cfpf :let @+=expand("%:p")
