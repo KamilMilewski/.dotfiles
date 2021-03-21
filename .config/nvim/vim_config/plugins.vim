@@ -38,7 +38,7 @@ Plug 'kana/vim-textobj-user'
 " For being able to select ruby blocks(functions,classes,etc...)
 Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
 " For white spaces highlighting
-Plug 'ntpeters/vim-better-whitespace', { 'for': ['ruby', 'vim'] }
+Plug 'ntpeters/vim-better-whitespace', { 'for': ['ruby', 'vim', 'lua'] }
 " For unified pane switching for tmux and vim. Thanks to this one can just do
 " ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
 " plugin installed)
