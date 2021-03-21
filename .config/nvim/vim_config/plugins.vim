@@ -52,6 +52,8 @@ Plug 'tpope/vim-abolish'
 " Extends repeat (.) vim functionality so it becomes aware of some Tpope
 " plugin actions, like vim-surround
 Plug 'tpope/vim-repeat'
+" Highlight letters to jump when using f/F movements
+Plug 'unblevable/quick-scope'
 
 
 " List ends here. Plugins become visible to Vim after this call.

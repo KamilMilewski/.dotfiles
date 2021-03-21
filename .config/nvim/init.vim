@@ -30,7 +30,6 @@ nnoremap <leader>n :NvimTreeToggle<CR>
 " jump right into current file when opening file explorer
 let g:nvim_tree_follow = 1
 let g:nvim_tree_width = 40
-let g:nvim_tree_indent_markers = 1
 
 
 " FZF related
