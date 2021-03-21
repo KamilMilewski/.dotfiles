@@ -1,4 +1,6 @@
-function nrspec_run_current_file()
+local M = {}
+
+function M.nrspec_run_current_file()
   local full_path = vim.fn.expand('%f')
   local rspec_command = string.format("bundle exec spring rspec %s", full_path)
   local command_with_msg = string.format(
@@ -10,7 +12,7 @@ function nrspec_run_current_file()
   vim.api.nvim_command(command_with_msg)
 end
 
-function nrspec_run_current_line()
+function M.nrspec_run_current_line()
   local file_path = vim.fn.expand('%f')
   local line_number = vim.fn.line('.')
   local full_path = string.format("%s:%s", file_path, line_number)
@@ -24,7 +26,7 @@ function nrspec_run_current_line()
   vim.api.nvim_command(command_with_msg)
 end
 
-function nrspec_run_last_command()
+function M.nrspec_run_last_command()
   local file_path = vim.fn.expand('%f')
   local line_number = vim.fn.line('.')
   local rspec_command = vim.api.nvim_get_var("nrspec_last_rspec_command")
@@ -35,7 +37,7 @@ function nrspec_run_last_command()
   vim.api.nvim_command(command_with_msg)
 end
 
-function nrspec_run_last_failed()
+function M.nrspec_run_last_failed()
   local rspec_command = string.format("bundle exec spring rspec --only-failures")
   local command_with_msg = string.format(
     "terminal echo ' >>> Running last failed specs: %s\\n' && %s", rspec_command, rspec_command
@@ -44,3 +46,4 @@ function nrspec_run_last_failed()
   vim.api.nvim_command(command_with_msg)
 end
 
+return M
