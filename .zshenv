@@ -75,12 +75,14 @@ libre() {
   libreoffice "$@" &> /dev/null &
 }
 system-update() {
-  echo '======Updating system packages======'
+  echo "\n======Updating system packages======\n"
   sudo pacman -Syu --noconfirm
-  echo '======Updating asdf plugins======'
+  echo "\n======Updating asdf plugins=======\n"
   asdf plugin update --all
-  echo '======Updating asdf neovim======'
+  echo "\n======Updating asdf neovim======\n"
   vim-update
+  echo "\n======Update neovim plugins======\n"
+  vim +PlugUpdate +PlugClean! +qall
 }
 
 
@@ -116,8 +118,8 @@ mysql-start() {
     -d mysql/mysql-server:latest
 }
 tap-my-prs() {
-  chromium "https://stash.imgdev.bioclinica.com/projects/TAP/repos/tap/pull-requests?state=OPEN&author=kamil.milewski%40hotmail.com&reviewer=" &> /dev/null &
+  chromium "https://gitlab.mddxtap.com/tap/tap/-/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&author_username=kamil.milewski" &> /dev/null &
 }
 tap-new-pr() {
-  chromium "https://stash.imgdev.bioclinica.com/projects/TAP/repos/tap/pull-requests?create" &> /dev/null &
+  chromium "https://gitlab.mddxtap.com/tap/tap/-/merge_requests/new" &> /dev/null &
 }
