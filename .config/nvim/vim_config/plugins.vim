@@ -54,7 +54,8 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 " Highlight letters to jump when using f/F movements
 Plug 'unblevable/quick-scope'
-
+" Display sign columns by modified (in git terms columns)
+Plug 'mhinz/vim-signify'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

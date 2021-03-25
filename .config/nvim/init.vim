@@ -17,6 +17,18 @@ au TermOpen * setlocal nospell
 " Markdown specific config
 autocmd Filetype markdown setlocal wrap
 
+" Set hybrid line numbering (relative numbers + actual number at the current
+" line). Also return back normal numbering when entering insert mode or if
+" buffer focus lost.
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd InsertLeave * set relativenumber
+  autocmd InsertEnter * set norelativenumber
+augroup END
+
 
 " Solarized8 (Color Theme) related:
 set termguicolors
@@ -74,6 +86,10 @@ au VimEnter * :SpeedDatingFormat %d.%m.%Y
 " Quick-scope related
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+
+" Vim-signify related
+" So that signs will appear in a reasonably time
+set updatetime=100
 
 " Custom commands
 " Copy File Path(full) to system clipboard.

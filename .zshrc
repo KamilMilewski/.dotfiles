@@ -19,8 +19,17 @@ xset r rate 200 40
 # https://github.com/tmux-python/tmuxp/issues/405
 source ~/.bash_locale
 
-# To unbind ctrl-s (ctrl-s more or less just freezes the terminal, its a redundant functionality from ancient times)
+# To unbind ctrl-s (ctrl-s more or less just freezes the terminal, its a redundant functionality from ancient times).
+# Thanks to this we can bind ctrl-s to something useful, like 'exit nvim terminal insert mode' for example.
 setopt noflowcontrol
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 # here goes prompt customization:
 #
@@ -63,3 +72,5 @@ source /usr/share/fzf/key-bindings.zsh
 # enable <tab> commands completions, for example kill <tab>
 source /usr/share/fzf/completion.zsh
 
+# Load zsh-syntax-highlighting; should be last. Require 'zsh-syntax-highlighting' package installed to work
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
