@@ -8,6 +8,9 @@ function clean_code()
 end
 
 function clean_buffers()
-  vim.api.nvim_command("%bd!")
+  -- %bd! - delete all buffers
+  -- e# - open the last buffer for editing
+  -- #bd - delete the [No Name] buffer
+  vim.api.nvim_command("%bd! | e# | bd#")
 end
 
