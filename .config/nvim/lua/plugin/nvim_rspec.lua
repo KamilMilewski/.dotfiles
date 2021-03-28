@@ -8,10 +8,10 @@ end
 function M.nrspec_run_current_file()
   local full_path = vim.fn.expand('%f')
 
-  -- abort if not a spec file
   if( not is_spec_file(full_path) )
+    -- please, continue
   then
-    vim.api.nvim_command([[echo 'NVRSpec: not a spec file']])
+    M.nrspec_run_last_command()
     return
   end
 
@@ -28,10 +28,10 @@ end
 function M.nrspec_run_current_line()
   local file_path = vim.fn.expand('%f')
 
-  -- abort if not a spec file
   if( not is_spec_file(file_path) )
+    -- please, continue
   then
-    vim.api.nvim_command([[echo 'NVRSpec: not a spec file']])
+    M.nrspec_run_last_command()
     return
   end
 
