@@ -4,4 +4,5 @@ map('n', '<leader>sf', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_curren
 map('n', '<leader>sl', [[ <cmd>lua require('plugin/nvim_rspec').nrspec_run_current_line()<CR> ]], { noremap = true })
 map('n', '<leader>sm', [[ <cmd>lua require('plugin/nvim_rspec').nrspec_run_last_command()<CR> ]], { noremap = true })
 map('n', '<leader>sn', [[ <cmd>lua require('plugin/nvim_rspec').nrspec_run_last_failed()<CR> ]], { noremap = true })
+map('n', '<leader>so', [[<cmd>lua require('plugin/nvim_rspec').nrspec_override_command()<CR>]], { noremap = true })
 
