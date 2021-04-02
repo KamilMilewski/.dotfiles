@@ -32,3 +32,6 @@ Enums
 retardness
 workflow
 json
+refactor
+namespaced
+serializer
