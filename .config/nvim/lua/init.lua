@@ -4,7 +4,7 @@ require('plugin_config/nvim_rspec')
 
 function clean_code()
   vim.api.nvim_command('w')
-  vim.api.nvim_command("terminal bundle exec rubocop -a %")
+  vim.api.nvim_command("terminal bundle exec rubocop -A -c .rubocop_dev.yml %")
 end
 
 function clean_buffers()

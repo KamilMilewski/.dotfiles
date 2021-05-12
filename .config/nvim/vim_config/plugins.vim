@@ -56,6 +56,10 @@ Plug 'tpope/vim-repeat'
 Plug 'unblevable/quick-scope'
 " Display sign columns by modified (in git terms columns)
 Plug 'mhinz/vim-signify'
+" AI powered auto completion
+Plug 'codota/tabnine-vim'
+" Smooth scrolling
+Plug 'psliwka/vim-smoothie'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
