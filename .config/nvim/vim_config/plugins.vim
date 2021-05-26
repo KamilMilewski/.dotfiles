@@ -59,7 +59,11 @@ Plug 'mhinz/vim-signify'
 " AI powered auto completion
 Plug 'codota/tabnine-vim'
 " Smooth scrolling
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
+" HAML syntax highlighting
+Plug 'tpope/vim-haml'
+" CoffeScript syntax highlighting
+Plug 'kchmck/vim-coffee-script'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
