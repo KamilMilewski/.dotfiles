@@ -85,7 +85,12 @@ system-update() {
   echo "\n======Update neovim plugins======\n"
   vim +PlugUpdate +PlugClean! +qall
 }
-
+system-clean() {
+  echo "\n======Cleaning up pacman cache: keep only last 2 recent versions of cached packages======\n"
+  sudo paccache -rk 2
+  echo "\n======Cleaning up pacman cache: remove all cache of uninstalled packages======\n"
+  sudo paccache -ruk0
+}
 
 
 # tap specific aliases
@@ -103,9 +108,6 @@ tap-current-specs() {
   rm -f spec/examples.txt
    DEVELOPMENT= ber \
     specs here
-}
-tap-current-rubocop() {
-  be rubocop -A files here
 }
 mysql-start() {
   sudo systemctl start docker && \

@@ -59,7 +59,7 @@ Plug 'mhinz/vim-signify'
 " AI powered auto completion
 Plug 'codota/tabnine-vim'
 " Smooth scrolling
-" Plug 'psliwka/vim-smoothie'
+Plug 'psliwka/vim-smoothie'
 " HAML syntax highlighting
 Plug 'tpope/vim-haml'
 " CoffeScript syntax highlighting
