@@ -1,6 +1,6 @@
+(nohup alacritty --hold -e tmuxp load tap &) &&
 (slack &> /dev/null &) &&
 (chromium --new-window https://track.toggl.com/timer &> /dev/null &) &&
-(alacritty --hold -e tmuxp load tap &> /dev/null &) &&
 sleep 1 &&
 wmctrl -r Alacritty -b add,maximized_vert,maximized_horz &&
 sleep 11 &&
