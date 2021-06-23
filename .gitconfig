@@ -22,5 +22,5 @@
 	qs = !git add . && git commit --amend --no-edit # as 'git quick save'
 	ns = !git add . && git commit # as 'git new save'
 	br = branch --sort=-committerdate
-
+	bcp = !git branch --show-current | tr -d '\n' | xclip -selection clipboard # as 'git branch copy'
 
