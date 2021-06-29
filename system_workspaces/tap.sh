@@ -1,4 +1,5 @@
 (nohup alacritty --hold -e tmuxp load tap &) &&
+sleep 1 &&
 (slack &> /dev/null &) &&
 (chromium --new-window https://track.toggl.com/timer &> /dev/null &) &&
 sleep 1 &&

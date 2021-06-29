@@ -16,7 +16,7 @@ alias dotfiles-save="(cd ~/Misc/dotfiles && git pull --no-rebase && git add . &&
 alias people-dotfiles='vim -c "cd %:p:h" -- ~/Misc/people_dotfiles/stealit'
 alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
-alias vim-update='asdf uninstall neovim master && asdf install neovim master'
+alias vim-update='asdf uninstall neovim && asdf install neovim ref:master'
 alias vim='nvim'
 # ruby/rails
 alias be="bundle exec"
@@ -80,8 +80,9 @@ system-update() {
   sudo pacman -Syu --noconfirm
   echo "\n======Updating asdf plugins=======\n"
   asdf plugin update --all
-  echo "\n======Updating asdf neovim======\n"
-  vim-update
+  # Removed form system update for now since it now compiles from source and its taking way to long
+  # echo "\n======Updating asdf neovim======\n"
+  # vim-update
   echo "\n======Update neovim plugins======\n"
   vim +PlugUpdate +PlugClean! +qall
 }
