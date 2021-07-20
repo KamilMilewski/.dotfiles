@@ -3,6 +3,9 @@ export VISUAL=nvim
 
 # General aliases
 alias ls='ls --color=auto'
+# It scrolls down the terminal window to the point there in nothing shown. So it works like clear but without actually
+# deleting terminal history.
+alias cls='printf "\033c"'
 alias grep='grep --color'
 alias pdf='zathura --fork --mode fullscreen'
 alias wifi='nmtui'
@@ -18,6 +21,7 @@ alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim-update='asdf uninstall neovim && asdf install neovim ref:master'
 alias vim='nvim'
+
 # ruby/rails
 alias be="bundle exec"
 alias ber="bundle exec rspec"
