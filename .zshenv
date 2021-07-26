@@ -21,6 +21,7 @@ alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim-update='asdf uninstall neovim && asdf install neovim ref:master'
 alias vim='nvim'
+alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
 
 # ruby/rails
 alias be="bundle exec"
@@ -44,6 +45,7 @@ rspec_profiled() {
   touch log/test.log
   echo "truncating test log file"
   truncate -s 0 log/test.log
+
   if [ $# -eq 0 ] # if argument passed
   then
     echo "running against whole test suite"
@@ -120,7 +122,7 @@ tap-current-specs() {
     specs here
 }
 mysql-start() {
-  sudo systemctl start docker && \
+  systemctl start docker && \
   docker rm -f mysql && \
   docker run \
     --name=mysql \
@@ -134,5 +136,5 @@ tap-my-prs() {
   chromium "https://gitlab.mddxtap.com/tap/tap/-/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&author_username=kamil.milewski" &> /dev/null &
 }
 tap-new-pr() {
-  chromium "https://gitlab.mddxtap.com/tap/tap/-/merge_requests/new" &> /dev/null &
+  chrome "https://gitlab.mddxtap.com/tap/tap/-/merge_requests/new" &> /dev/null &
 }

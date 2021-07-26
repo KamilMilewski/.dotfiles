@@ -13,7 +13,7 @@ windows:
       - mysql-start
     - pane
     - shell_command:
-      - audio-mic-set-gain
+      - be spring server
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/tap/tap
