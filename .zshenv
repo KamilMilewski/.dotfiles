@@ -122,7 +122,7 @@ tap-current-specs() {
     specs here
 }
 mysql-start() {
-  systemctl start docker && \
+  sudo systemctl start docker && \
   docker rm -f mysql && \
   docker run \
     --name=mysql \
