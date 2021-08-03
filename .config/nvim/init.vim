@@ -94,6 +94,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " So that signs will appear in a reasonably time
 set updatetime=100
 
+
 " Custom commands
 " Copy File Path(full) to system clipboard.
 command Cfpf :let @+=expand("%:p")
