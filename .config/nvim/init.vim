@@ -60,7 +60,7 @@ nnoremap <leader>l :BLines<CR>
 " ALE related
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
 let g:ale_linters = {
-\   'ruby': ['rubocop'],
+\   'ruby': ['rubocop']
 \}
 nnoremap gd :ALEGoToDefinition<CR>
 nnoremap gr :ALEFindReferences<CR>

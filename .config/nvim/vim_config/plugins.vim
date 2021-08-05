@@ -64,6 +64,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-haml'
 " CoffeScript syntax highlighting
 Plug 'kchmck/vim-coffee-script'
+" Faster html tags writing
 Plug 'mattn/emmet-vim'
 
 " List ends here. Plugins become visible to Vim after this call.
