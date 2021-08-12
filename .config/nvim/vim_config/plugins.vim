@@ -38,7 +38,7 @@ Plug 'kana/vim-textobj-user'
 " For being able to select ruby blocks(functions,classes,etc...)
 Plug 'tek/vim-textobj-ruby', { 'for': 'ruby' }
 " For white spaces highlighting
-Plug 'ntpeters/vim-better-whitespace', { 'for': ['ruby', 'vim', 'lua'] }
+Plug 'ntpeters/vim-better-whitespace', { 'for': ['ruby', 'vim', 'lua', 'html', 'js', 'ts', 'tsx'] }
 " For unified pane switching for tmux and vim. Thanks to this one can just do
 " ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
 " plugin installed)
@@ -47,10 +47,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 " For nice dates auto-increment
 Plug 'tpope/vim-speeddating'
-" For an ability to convert snake_case to CamelCase and similar
+" For an ability to convert snake_case to camelCase and similar
 Plug 'tpope/vim-abolish'
-" Extends repeat (.) vim functionality so it becomes aware of some Tpope
-" plugin actions, like vim-surround
+" Extends repeat (.) vim functionality so it becomes aware of some Tpope plugin actions, like vim-surround
 Plug 'tpope/vim-repeat'
 " Highlight letters to jump when using f/F movements
 Plug 'unblevable/quick-scope'

@@ -14,7 +14,7 @@ map('n', 'k', 'gk', { noremap = true })
 -- Map copy to system clipboard
 map('v', '<leader>y', '"+y', { noremap = true })
 
--- Map `leave insert mode` in vim terminal to ctrl+s
+-- Map `leave insert mode` in vim terminal to ctrl+s (mostly it allows to leave insert mode in vim terminal)
 map('t', '<C-s>', '<C-\\><C-n>', { noremap = true })
 
 -- Map `leave insert mode` to ctrl+s
