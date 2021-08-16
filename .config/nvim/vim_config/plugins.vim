@@ -24,8 +24,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 " For commenting/uncommenting with different file types handling.
 Plug 'tpope/vim-commentary'
-" TypeScript support
-Plug 'leafgarland/typescript-vim'
 " For auto pairing(ending) brackets.
 " NOTE: causes weird behaviour in vim config files when deleting comments
 Plug 'jiangmiao/auto-pairs'
@@ -47,8 +45,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 " For nice dates auto-increment
 Plug 'tpope/vim-speeddating'
-" For an ability to convert snake_case to camelCase and similar
-Plug 'tpope/vim-abolish'
 " Extends repeat (.) vim functionality so it becomes aware of some Tpope plugin actions, like vim-surround
 Plug 'tpope/vim-repeat'
 " Highlight letters to jump when using f/F movements
@@ -61,10 +57,18 @@ Plug 'codota/tabnine-vim'
 Plug 'psliwka/vim-smoothie'
 " HAML syntax highlighting
 Plug 'tpope/vim-haml'
-" CoffeScript syntax highlighting
-Plug 'kchmck/vim-coffee-script'
 " Faster html tags writing
 Plug 'mattn/emmet-vim'
+
+" JavaScript related:
+" CoffeScript syntax highlighting
+Plug 'kchmck/vim-coffee-script'
+" TypeScript support
+Plug 'HerringtonDarkholme/yats.vim'
+" A syntax highlighting for JavaScript
+Plug 'yuezk/vim-js'
+" The React syntax highlighting and indenting. Also supports the typescript tsx file.
+Plug 'maxmellon/vim-jsx-pretty'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
