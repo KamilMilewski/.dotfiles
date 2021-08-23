@@ -20,6 +20,10 @@ autocmd Filetype markdown setlocal wrap
 " allow mouse scroll & mouse visual select
 set mouse=a
 
+" changes default Vim register to `+` register, which is linked to the system
+" clipboard
+set clipboard=unnamedplus
+
 " Set hybrid line numbering (relative numbers + actual number at the current
 " line). Also return back normal numbering when entering insert mode or if
 " buffer focus lost.
