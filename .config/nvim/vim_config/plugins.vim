@@ -16,8 +16,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Color Theme
 Plug 'lifepillar/vim-solarized8'
-" Provides linting and acts as a LSP
-Plug 'dense-analysis/ale'
+" Collection of common configurations for Nvim built-in LSP
+Plug 'neovim/nvim-lspconfig'
 " Git plugin
 Plug 'tpope/vim-fugitive'
 " Minimalist and configurable status line
