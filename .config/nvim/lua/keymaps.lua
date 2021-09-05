@@ -5,16 +5,13 @@ map('n', '<Space>', '', { noremap = true })
 vim.g.mapleader = ' '
 
 -- Remap "leave insert mode"
-map('i', 'jj', '<esc>', { noremap = true })
+-- map('i', 'jj', '<esc>', { noremap = true })
 
 -- Make movement between wrapped lines easier
 map('n', 'j', 'gj', { noremap = true })
 map('n', 'k', 'gk', { noremap = true })
 
--- Map copy to system clipboard
-map('v', '<leader>y', '"+y', { noremap = true })
-
--- Map `leave insert mode` in vim terminal to ctrl+s (mostly it allows to leave insert mode in vim terminal)
+-- Remap "leave insert mode". Works in nvim terminal too.
 map('t', '<C-s>', '<C-\\><C-n>', { noremap = true })
 
 -- Map `leave insert mode` to ctrl+s
