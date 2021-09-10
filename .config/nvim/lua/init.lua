@@ -1,6 +1,8 @@
 require('settings')
 require('keymaps')
 require('plugin_config/nvim_rspec')
+require('lsp_config')
+require('autocomplete_config')
 
 function clean_code()
   vim.api.nvim_command('w')
@@ -13,4 +15,5 @@ function clean_buffers()
   -- #bd - delete the [No Name] buffer
   vim.api.nvim_command("%bd! | e# | bd#")
 end
+
 

@@ -51,14 +51,13 @@ Plug 'tpope/vim-repeat'
 Plug 'unblevable/quick-scope'
 " Display sign columns by modified (in git terms columns)
 Plug 'mhinz/vim-signify'
-" AI powered auto completion
-Plug 'codota/tabnine-vim'
 " Smooth scrolling
 Plug 'psliwka/vim-smoothie'
 " HAML syntax highlighting
 Plug 'tpope/vim-haml'
 " Faster html tags writing
 Plug 'mattn/emmet-vim'
+
 
 " JavaScript related:
 " CoffeScript syntax highlighting
@@ -69,6 +68,19 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'yuezk/vim-js'
 " The React syntax highlighting and indenting. Also supports the typescript tsx file.
 Plug 'maxmellon/vim-jsx-pretty'
+
+
+" Autocompletion related:
+" Install nvim-cmp
+Plug 'hrsh7th/nvim-cmp'
+" LSP source for nvim-cmp
+Plug 'hrsh7th/cmp-nvim-lsp'
+" Snippets source for nvim-cmp
+Plug 'saadparwaiz1/cmp_luasnip'
+" Snippets plugin
+Plug 'L3MON4D3/LuaSnip'
+" Install the buffer completion source
+Plug 'hrsh7th/cmp-buffer'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
