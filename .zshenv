@@ -22,6 +22,7 @@ alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim-update='asdf uninstall neovim && asdf install neovim ref:master'
 alias vim='nvim'
 alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
+alias chrome="google-chrome-stable &> /dev/null &"
 
 # ruby/rails
 alias be="bundle exec"
@@ -111,16 +112,6 @@ alias tap-qa="bundle exec cap qa rails:console"
 alias tap-qa2="bundle exec cap qa-f2 rails:console"
 alias tap-replica="bundle exec cap replica rails:console"
 alias tap-prototype="bundle exec cap prototype rails:console"
-alias tap-locales-regen="bundle exec rake translation:setup && bundle exec rake i18n:js:export"
-tap-current-specs() {
-  rm -f log/test.log
-  rm -f log/development.log
-  rm -f log/bullet.log
-  rm -f log/aws.log
-  rm -f spec/examples.txt
-   DEVELOPMENT= ber \
-    specs here
-}
 mysql-start() {
   sudo systemctl start docker && \
   docker rm -f mysql && \
@@ -133,8 +124,8 @@ mysql-start() {
     -d mysql/mysql-server:latest
 }
 tap-my-prs() {
-  chromium "https://gitlab.mddxtap.com/tap/tap/-/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&author_username=kamil.milewski" &> /dev/null &
+  google-chrome-stable "https://gitlab.mddxtap.com/tap/tap/-/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&author_username=kamil.milewski" &> /dev/null &
 }
 tap-new-pr() {
-  chrome "https://gitlab.mddxtap.com/tap/tap/-/merge_requests/new" &> /dev/null &
+  google-chrome-stable "https://gitlab.mddxtap.com/tap/tap/-/merge_requests/new" &> /dev/null &
 }

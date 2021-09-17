@@ -57,6 +57,12 @@ Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-haml'
 " Faster html tags writing
 Plug 'mattn/emmet-vim'
+" Provides:
+" - line swap through [e and ]e
+" - navigate quickfix list with [q and ]q
+Plug 'tpope/vim-unimpaired'
+" Snippets plugin(required by saadparwaiz1/cmp_luasnip)
+Plug 'L3MON4D3/LuaSnip'
 
 
 " JavaScript related:
@@ -71,16 +77,13 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 
 " Autocompletion related:
-" Install nvim-cmp
+" Completion engine for nvim
 Plug 'hrsh7th/nvim-cmp'
-" LSP source for nvim-cmp
-Plug 'hrsh7th/cmp-nvim-lsp'
-" Snippets source for nvim-cmp
-Plug 'saadparwaiz1/cmp_luasnip'
-" Snippets plugin
-Plug 'L3MON4D3/LuaSnip'
-" Install the buffer completion source
-Plug 'hrsh7th/cmp-buffer'
+" Completion engine sources(List of compatible sources: https://github.com/topics/nvim-cmp):
+Plug 'hrsh7th/cmp-nvim-lsp' " LSP source
+Plug 'saadparwaiz1/cmp_luasnip' " Snippet source
+Plug 'hrsh7th/cmp-buffer' " Buffer source
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' } "Tabnine source (basic AI completions)
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
