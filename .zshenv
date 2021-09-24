@@ -19,7 +19,6 @@ alias dotfiles-save="(cd ~/Misc/dotfiles && git pull --no-rebase && git add . &&
 alias people-dotfiles='vim -c "cd %:p:h" -- ~/Misc/people_dotfiles/stealit'
 alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
-alias vim-update='asdf uninstall neovim && asdf install neovim ref:master'
 alias vim='nvim'
 alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
 alias chrome="google-chrome-stable &> /dev/null &"
@@ -82,14 +81,26 @@ audio-mic-set-int() {
 libre() {
   libreoffice "$@" &> /dev/null &
 }
+test-cmd() {
+  echo -n "Should I(y/n)? "
+  read answer
+  if [ "$answer" != "${answer#[Yy]}" ] ;then
+    echo Yes
+  else
+    echo No
+  fi
+}
 system-update() {
+  echo -n "Clean up system (y/n)? "
+  read answer
+  if [ "$answer" != "${answer#[Yy]}" ] ;then
+    system-clean
+  fi
+
   echo "\n======Updating system packages======\n"
   sudo pacman -Syu --noconfirm
   echo "\n======Updating asdf plugins=======\n"
   asdf plugin update --all
-  # Removed form system update for now since it now compiles from source and its taking way to long
-  # echo "\n======Updating asdf neovim======\n"
-  # vim-update
   echo "\n======Update neovim plugins======\n"
   vim +PlugUpdate +PlugClean! +qall
 }

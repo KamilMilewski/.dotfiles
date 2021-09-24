@@ -39,6 +39,8 @@ augroup numbertoggle
   autocmd InsertEnter * set norelativenumber
 augroup END
 
+" So vimgrep command will ignore irrelevant dirs
+set wildignore+=*/node_modules/*
 
 " Solarized8 (Color Theme) related:
 set termguicolors
