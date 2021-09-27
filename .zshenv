@@ -3,7 +3,7 @@ export VISUAL=nvim
 
 # General aliases
 alias ls='ls --color=auto'
-# It scrolls down the terminal window to the point there in nothing shown. So it works like clear but without actually
+# It scrolls down the terminal window to the point there is nothing shown. So it works like clear but without actually
 # deleting terminal history.
 alias cls='printf "\033c"'
 alias grep='grep --color'
@@ -91,7 +91,7 @@ test-cmd() {
   fi
 }
 system-update() {
-  echo -n "Clean up system (y/n)? "
+  echo -n "Should I clean up the system (y/n)? "
   read answer
   if [ "$answer" != "${answer#[Yy]}" ] ;then
     system-clean

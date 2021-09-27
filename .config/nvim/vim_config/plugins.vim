@@ -51,8 +51,6 @@ Plug 'tpope/vim-repeat'
 Plug 'unblevable/quick-scope'
 " Display sign columns by modified (in git terms columns)
 Plug 'mhinz/vim-signify'
-" Smooth scrolling
-Plug 'psliwka/vim-smoothie'
 " HAML syntax highlighting
 Plug 'tpope/vim-haml'
 " Faster html tags writing

@@ -15,6 +15,10 @@ unsetopt beep
 # to maintain proper time when dual booting with Windows:
 # run command: `timedatectl set-local-rtc 1 --adjust-system-clock`
 
+# To share history between all zsh sessions immediately (and in effect share it between tmux panes)
+# note: you have to hit enter at least once so the current pane will pick up entries inputted in the other
+setopt INC_APPEND_HISTORY
+
 # Speed up your keyboard - mostly to make stuff scroll faster
 xset r rate 200 40
 
