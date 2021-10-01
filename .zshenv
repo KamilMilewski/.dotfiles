@@ -137,6 +137,3 @@ mysql-start() {
 tap-my-prs() {
   google-chrome-stable "https://gitlab.mddxtap.com/tap/tap/-/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&author_username=kamil.milewski" &> /dev/null &
 }
-tap-new-pr() {
-  google-chrome-stable "https://gitlab.mddxtap.com/tap/tap/-/merge_requests/new" &> /dev/null &
-}
