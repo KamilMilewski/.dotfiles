@@ -1,3 +1,4 @@
+require('plugins')
 require('settings')
 require('keymaps')
 require('plugin_config/nvim_rspec')
