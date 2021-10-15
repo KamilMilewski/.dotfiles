@@ -81,15 +81,6 @@ audio-mic-set-int() {
 libre() {
   libreoffice "$@" &> /dev/null &
 }
-test-cmd() {
-  echo -n "Should I(y/n)? "
-  read answer
-  if [ "$answer" != "${answer#[Yy]}" ] ;then
-    echo Yes
-  else
-    echo No
-  fi
-}
 system-update() {
   echo -n "Should I clean up the system (y/n)? "
   read answer
@@ -133,7 +124,4 @@ mysql-start() {
     --env MYSQL_ROOT_HOST='%' \
     --env MYSQL_ROOT_PASSWORD='supersecret' \
     -d mysql/mysql-server:latest
-}
-tap-my-prs() {
-  google-chrome-stable "https://gitlab.mddxtap.com/tap/tap/-/merge_requests?scope=all&utf8=%E2%9C%93&state=opened&author_username=kamil.milewski" &> /dev/null &
 }
