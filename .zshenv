@@ -67,17 +67,6 @@ rspec_profiled() {
   echo "UPDATES BY TABLE:"
   <./log/test.log | egrep -o "UPDATE \`(\w+)\` SET" | sort | uniq -c | sort -nr
 }
-audio-mic-set-gain() {
-  while sleep 0.1; do pacmd set-source-volume alsa_input.pci-0000_00_1b.0.analog-stereo 16000; done
-}
-audio-mic-set-ext() {
-  pacmd set-source-port 1 analog-input-headset-mic
-  pacmd list-sources | grep 'active port'
-}
-audio-mic-set-int() {
-  pacmd set-source-port 1 analog-input-internal-mic
-  pacmd list-sources | grep 'active port'
-}
 libre() {
   libreoffice "$@" &> /dev/null &
 }
@@ -106,14 +95,6 @@ system-clean() {
        " This is expected as no arguments were passed to pacman -Rns."
   echo "\n=======Finished cleaning up system======\n"
 }
-
-
-# tap specific aliases
-alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
-alias tap-qa="bundle exec cap qa rails:console"
-alias tap-qa2="bundle exec cap qa-f2 rails:console"
-alias tap-replica="bundle exec cap replica rails:console"
-alias tap-prototype="bundle exec cap prototype rails:console"
 mysql-start() {
   sudo systemctl start docker && \
   docker rm -f mysql && \
@@ -125,3 +106,10 @@ mysql-start() {
     --env MYSQL_ROOT_PASSWORD='supersecret' \
     -d mysql/mysql-server:latest
 }
+
+# tap specific aliases
+alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
+alias tap-qa="bundle exec cap qa rails:console"
+alias tap-replica="bundle exec cap replica rails:console"
+alias tap-prototype="bundle exec cap prototype rails:console"
+

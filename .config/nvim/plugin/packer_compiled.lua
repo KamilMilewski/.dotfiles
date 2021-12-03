@@ -71,120 +71,152 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["auto-pairs"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/auto-pairs"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
   },
   ["emmet-vim"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/emmet-vim"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/emmet-vim",
+    url = "https://github.com/mattn/emmet-vim"
   },
   ["lightline.vim"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/lightline.vim"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/lightline.vim",
+    url = "https://github.com/itchyny/lightline.vim"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     config = { "\27LJ\1\2\0\0\3\0\b\0\v4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\0013\2\6\0:\2\a\1>\0\2\1G\0\1\0\tview\1\0\1\nwidth\b25%\24update_focused_file\1\0\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0" },
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["quick-scope"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/quick-scope"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/quick-scope",
+    url = "https://github.com/unblevable/quick-scope"
   },
   ["vim-better-whitespace"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-better-whitespace"
+    only_cond = false,
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-better-whitespace",
+    url = "https://github.com/ntpeters/vim-better-whitespace"
   },
   ["vim-coffee-script"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-coffee-script"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-coffee-script",
+    url = "https://github.com/kchmck/vim-coffee-script"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
   },
   ["vim-endwise"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-endwise"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-endwise",
+    url = "https://github.com/tpope/vim-endwise"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-haml"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-haml"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-haml",
+    url = "https://github.com/tpope/vim-haml"
   },
   ["vim-js"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-js"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-js",
+    url = "https://github.com/yuezk/vim-js"
   },
   ["vim-jsx-pretty"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
+    url = "https://github.com/maxmellon/vim-jsx-pretty"
   },
   ["vim-rails"] = {
     loaded = false,
     needs_bufread = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-rails"
+    only_cond = false,
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-rails",
+    url = "https://github.com/tpope/vim-rails"
   },
   ["vim-repeat"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-repeat"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
   },
   ["vim-ruby"] = {
     loaded = false,
     needs_bufread = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-ruby"
+    only_cond = false,
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-ruby",
+    url = "https://github.com/vim-ruby/vim-ruby"
   },
   ["vim-signify"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-signify"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-signify",
+    url = "https://github.com/mhinz/vim-signify"
   },
   ["vim-solarized8"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-solarized8"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-solarized8",
+    url = "https://github.com/lifepillar/vim-solarized8"
   },
   ["vim-speeddating"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-speeddating"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-speeddating",
+    url = "https://github.com/tpope/vim-speeddating"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   ["vim-textobj-ruby"] = {
     loaded = false,
     needs_bufread = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-textobj-ruby"
+    only_cond = false,
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/opt/vim-textobj-ruby",
+    url = "https://github.com/tek/vim-textobj-ruby"
   },
   ["vim-textobj-user"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-textobj-user"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-textobj-user",
+    url = "https://github.com/kana/vim-textobj-user"
   },
   ["vim-tmux-navigator"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   },
   ["vim-unimpaired"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-unimpaired"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
+    url = "https://github.com/tpope/vim-unimpaired"
   },
   ["yats.vim"] = {
     loaded = true,
-    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/yats.vim"
+    path = "/home/kamil/.local/share/nvim/site/pack/packer/start/yats.vim",
+    url = "https://github.com/HerringtonDarkholme/yats.vim"
   }
 }
 
