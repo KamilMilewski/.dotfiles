@@ -71,6 +71,7 @@ libre() {
   libreoffice "$@" &> /dev/null &
 }
 system-update() {
+  echo "\n======Starting system update======\n"
   echo -n "Should I clean up the system (y/n)? "
   read answer
   if [ "$answer" != "${answer#[Yy]}" ] ;then
@@ -81,8 +82,10 @@ system-update() {
   sudo pacman -Syu --noconfirm
   echo "\n======Updating asdf plugins=======\n"
   asdf plugin update --all
-  echo "\n======Update neovim plugins======\n"
-  vim +PlugUpdate +PlugClean! +qall
+  echo "\n======Update neovim packer plugins======\n"
+  # Clean unused, Update existing and install new plugins
+  vim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  echo "\n\n======Finished system update======\n"
 }
 system-clean() {
   echo "\n======Cleaning up pacman cache: keep only last 2 recent versions of cached packages======\n"
@@ -94,6 +97,14 @@ system-clean() {
   echo "NOTE: If no orphans were found, the output is error: argument '-' specified with empty stdin.\n" \
        " This is expected as no arguments were passed to pacman -Rns."
   echo "\n=======Finished cleaning up system======\n"
+}
+mysql-console() {
+  echo "==================================================="
+  echo "type 'USE <database name>;' to select database"
+  echo "type 'SHOW databases;' to list available databases"
+  echo "type 'DROP DATABASE \`<database name>\`;' to remove database"
+  echo "==================================================="
+  mysql -h localhost -P 3306 --protocol=tcp -u root -psupersecret
 }
 mysql-start() {
   sudo systemctl start docker && \
@@ -112,4 +123,8 @@ alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap-qa="bundle exec cap qa rails:console"
 alias tap-replica="bundle exec cap replica rails:console"
 alias tap-prototype="bundle exec cap prototype rails:console"
-
+dbregen-tap() {
+  chmod 777 bin/rails
+  bin/rails db:environment:set RAILS_ENV=test
+  RAILS_ENV=test RUN_IN_FOREGROUND=true bundle exec rake db:drop db:create db:migrate_dev
+}

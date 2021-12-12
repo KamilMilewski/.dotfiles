@@ -1,4 +1,15 @@
-return require('packer').startup(function()
+return require('packer').startup(function(use)
+
+  -- Basic fzf integration. (FZF command)
+  -- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  use 'junegunn/fzf'
+
+  -- Extra fzf commands
+  use {
+   'junegunn/fzf.vim',
+    requires = {{ 'junegunn/fzf' }}
+  }
+
   -- Color Theme
   use 'lifepillar/vim-solarized8'
 
@@ -110,4 +121,29 @@ return require('packer').startup(function()
 
   -- The React syntax highlighting and indenting. Also supports the typescript tsx file.
   use 'maxmellon/vim-jsx-pretty'
+
+  -- Autocompletion related:
+
+  -- Completion engine for nvim
+  use 'hrsh7th/nvim-cmp'
+
+  -- Completion engine sources(List of compatible sources: https://github.com/topics/nvim-cmp):
+  -- LSP source
+  use {
+    'hrsh7th/cmp-nvim-lsp',
+    requires = {{ 'hrsh7th/nvim-cmp'}}
+  }
+
+  -- Buffer source
+  use {
+    'hrsh7th/cmp-buffer',
+    requires = {{ 'hrsh7th/nvim-cmp'}}
+  }
+
+  -- Tabnine source (basic AI completions)
+  use {
+    'tzachar/cmp-tabnine',
+    run = './install.sh',
+    requires = 'hrsh7th/nvim-cmp'
+  }
 end)
