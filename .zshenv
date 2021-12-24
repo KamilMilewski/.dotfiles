@@ -22,6 +22,7 @@ alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim='nvim'
 alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
 alias chrome="google-chrome-stable &> /dev/null &"
+alias cal='cal -m'
 
 # ruby/rails
 alias be="bundle exec"
