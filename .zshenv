@@ -32,8 +32,8 @@ alias berf="bundle exec rspec --only-failures"
 alias besrf="bundle exec spring rspec --only-failures"
 alias bec="bundle exec rails console"
 alias besc="bundle exec spring rails console"
-alias bes="RAISE_API_EXCEPTIONS=true bundle exec rails server"
-alias bess="RAISE_API_EXCEPTIONS=true bundle exec spring rails server"
+alias bes="bundle exec rails server"
+alias bess="bundle exec spring rails server"
 alias beg="bundle exec rails generate"
 alias bek="bundle exec rake"
 alias rubo="bundle exec rubocop --auto-correct"
@@ -124,6 +124,7 @@ alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
 alias tap-qa="bundle exec cap qa rails:console"
 alias tap-replica="bundle exec cap replica rails:console"
 alias tap-prototype="bundle exec cap prototype rails:console"
+alias tap-bes="QUEUE_ADAPTER=inline RAISE_API_EXCEPTIONS=true ENABLE_TRAILBLAZER_OPERATIONS_WTF=true bes"
 dbregen-tap() {
   chmod 777 bin/rails
   bin/rails db:environment:set RAILS_ENV=test
