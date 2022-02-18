@@ -66,7 +66,8 @@ nnoremap <leader>f :Rg!<CR>
 nnoremap <leader>b :Buffers<CR>
 " Search current buffer lines using fzf
 nnoremap <leader>l :BLines<CR>
-
+" Search for files in git working directory
+nnoremap <leader>i :GFiles?<CR>
 
 " Lightline related
 let g:lightline = {

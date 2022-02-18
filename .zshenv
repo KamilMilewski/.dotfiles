@@ -21,8 +21,9 @@ alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim='nvim'
 alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
-alias chrome="google-chrome-stable &> /dev/null &"
+alias chrome="google-chrome-unstable &> /dev/null &"
 alias cal='cal -m'
+alias elo='poweroff'
 
 # ruby/rails
 alias be="bundle exec"
@@ -72,20 +73,20 @@ libre() {
   libreoffice "$@" &> /dev/null &
 }
 system-update() {
-  echo "\n======Starting system update======\n"
-  echo -n "Should I clean up the system (y/n)? "
-  read answer
-  if [ "$answer" != "${answer#[Yy]}" ] ;then
-    system-clean
-  fi
-
+  echo "################################################################################
+############################ Starting system update ############################
+################################################################################"
+  echo "\n======Updating mirrors list======\n"
+  sudo reflector --latest 5 --country 'Poland,Germany,' --sort rate --protocol https --save /etc/pacman.d/mirrorlist
   echo "\n======Updating system packages======\n"
-  sudo pacman -Syu --noconfirm
+  sudo pacman -Syyu --noconfirm
   echo "\n======Updating asdf plugins=======\n"
   asdf plugin update --all
   echo "\n======Update neovim packer plugins======\n"
   # Clean unused, Update existing and install new plugins
   vim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  echo "\n======Clean up system packages======\n"
+  system-clean
   echo "\n\n======Finished system update======\n"
 }
 system-clean() {
