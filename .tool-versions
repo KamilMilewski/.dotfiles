@@ -1,4 +1,4 @@
 # global versions config for asdf
 ruby 2.7.4
-nodejs 14.4.0
+nodejs 16.14.0
 
