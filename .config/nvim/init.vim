@@ -52,7 +52,6 @@ let g:solarized_extra_hi_groups = 1
 " Nvim Tree related:
 " NOTE: rest of the config is in .config/nvim/lua/plugins.lua
 nnoremap <leader>n :NvimTreeToggle<CR>
-let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
 
 
 " FZF related

@@ -25,7 +25,10 @@ return require('packer').startup(function(use)
       config = function() require'nvim-tree'.setup {
 	update_focused_file = {
 	  -- enables the feature (jump right into current file when opening file explorer)
-	  enable = true,
+	  enable = true
+	},
+	nvim_tree_quit_on_open = {
+	  enable = true --false by default, closes the tree when you open a file
 	},
 	view = {
 	  -- width of the window, can be either a number (columns) or a string in `%`
