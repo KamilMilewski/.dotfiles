@@ -17,6 +17,9 @@ map('i', '<C-s>', '<ESC>', { noremap = true })
 -- Quick exit
 map('n', '<leader>qq', '<cmd>:qa!<CR>', { noremap = true })
 
+-- Close current buffer
+map('n', '<leader>xx', '<cmd>:bd<CR>', { noremap = true })
+
 -- Clear search highlight
 map('n', '<leader>ch', '<cmd>:noh<CR>', { noremap = true })
 
