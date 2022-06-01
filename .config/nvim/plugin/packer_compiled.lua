@@ -120,7 +120,7 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\n©\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\tview\1\0\1\nwidth\b25%\27nvim_tree_quit_on_open\1\0\1\venable\2\24update_focused_file\1\0\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0" },
+    config = { "\27LJ\2\nµ\1\0\0\5\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tview\1\0\1\nwidth\b25%\factions\14open_file\1\0\0\1\0\1\17quit_on_open\2\24update_focused_file\1\0\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0" },
     loaded = true,
     path = "/home/kamil/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
@@ -253,19 +253,19 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n©\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\tview\1\0\1\nwidth\b25%\27nvim_tree_quit_on_open\1\0\1\venable\2\24update_focused_file\1\0\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+try_loadstring("\27LJ\2\nµ\1\0\0\5\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tview\1\0\1\nwidth\b25%\factions\14open_file\1\0\0\1\0\1\17quit_on_open\2\24update_focused_file\1\0\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType ruby ++once lua require("packer.load")({'vim-rails', 'vim-ruby', 'vim-textobj-ruby', 'vim-better-whitespace'}, { ft = "ruby" }, _G.packer_plugins)]]
 vim.cmd [[au FileType ts ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "ts" }, _G.packer_plugins)]]
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "lua" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "tsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType lua ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "js" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vim ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "vim" }, _G.packer_plugins)]]
-vim.cmd [[au FileType ruby ++once lua require("packer.load")({'vim-better-whitespace', 'vim-textobj-ruby', 'vim-rails', 'vim-ruby'}, { ft = "ruby" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

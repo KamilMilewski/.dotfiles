@@ -23,7 +23,8 @@ alias vim='nvim'
 alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
 alias chrome="google-chrome-unstable &> /dev/null &"
 alias cal='cal -m'
-alias elo='poweroff'
+alias pacman-installed-explictly='pacman -Qqe | fzf'
+alias pacman-installed-all='pacman -Qq | fzf'
 
 # ruby/rails
 alias be="bundle exec"
@@ -78,8 +79,10 @@ system-update() {
 ################################################################################"
   echo "\n======Updating mirrors list======\n"
   sudo reflector --latest 5 --country 'Poland,Germany,' --sort rate --protocol https --save /etc/pacman.d/mirrorlist
-  echo "\n======Updating system packages======\n"
+  echo "\n======Updating system packages (Pacman)======\n"
   sudo pacman -Syyu --noconfirm
+  echo "\n======Updating AUR packages (yay)======\n"
+  yay -Syu --aur --noconfirm
   echo "\n======Updating asdf plugins=======\n"
   asdf plugin update --all
   echo "\n======Update neovim packer plugins======\n"
