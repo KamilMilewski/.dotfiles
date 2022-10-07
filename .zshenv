@@ -103,6 +103,9 @@ system-clean() {
        " This is expected as no arguments were passed to pacman -Rns."
   echo "\n=======Finished cleaning up system======\n"
 }
+system-last-update() {
+  awk 'END{sub(/\[/,""); print $1}' /var/log/pacman.log
+}
 mysql-console() {
   echo "==================================================="
   echo "type 'USE <database name>;' to select database"

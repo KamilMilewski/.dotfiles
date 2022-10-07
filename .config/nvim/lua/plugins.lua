@@ -52,7 +52,9 @@ return require('packer').startup(function(use)
   }
 
   -- Collection of common configurations for Nvim built-in LSP
-  use 'neovim/nvim-lspconfig'
+  use {
+      "neovim/nvim-lspconfig"
+  }
 
   -- Git plugin
   use 'tpope/vim-fugitive'
@@ -132,6 +134,18 @@ return require('packer').startup(function(use)
   -- Completion engine for nvim
   use 'hrsh7th/nvim-cmp'
 
+  --Many things, but here mostly to convert from snake to camel case, etc
+  --Want to turn fooBar into foo_bar?
+  --Press crs (coerce to snake_case).
+  --MixedCase (crm), camelCase (crc),
+  --snake_case (crs),
+  --UPPER_CASE (cru),
+  --dash-case (cr-),
+  --dot.case (cr.),
+  --space case (cr<space>),
+  --and Title Case (crt)
+  use 'tpope/vim-abolish'
+
   -- Completion engine sources(List of compatible sources: https://github.com/topics/nvim-cmp):
   -- LSP source
   use {
@@ -151,4 +165,5 @@ return require('packer').startup(function(use)
     run = './install.sh',
     requires = 'hrsh7th/nvim-cmp'
   }
+
 end)
