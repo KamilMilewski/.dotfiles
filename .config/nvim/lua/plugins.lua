@@ -35,6 +35,9 @@ return require('packer').startup(function(use)
 	view = {
 	  -- width of the window, can be either a number (columns) or a string in `%`
 	  width = '25%'
+	},
+	git = {
+	  ignore = false
 	}
       } end
   }
