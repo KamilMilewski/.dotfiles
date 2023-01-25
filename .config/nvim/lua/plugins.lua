@@ -139,7 +139,7 @@ return require('packer').startup(function(use)
 
   --Many things, but here mostly to convert from snake to camel case, etc
   --Want to turn fooBar into foo_bar?
-  --Press crs (coerce to snake_case).
+  --Move over a word and press crs (coerce to snake_case). No need to highlight it.
   --MixedCase (crm), camelCase (crc),
   --snake_case (crs),
   --UPPER_CASE (cru),
