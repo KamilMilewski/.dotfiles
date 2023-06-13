@@ -13,7 +13,7 @@ windows:
       - mysql-start
     - pane
     - shell_command:
-      - be spring server
+      - git status
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/tap/tap

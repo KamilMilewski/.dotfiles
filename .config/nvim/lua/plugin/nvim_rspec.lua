@@ -7,7 +7,7 @@ local function is_spec_file(file_path)
 end
 
 local function get_rspec_command()
-  local default_command = 'bundle exec spring rspec'
+  local default_command = 'bundle exec rspec'
   local user_override_command = vim.api.nvim_get_var('nrspec_user_command_override')
   if(user_override_command)
   then

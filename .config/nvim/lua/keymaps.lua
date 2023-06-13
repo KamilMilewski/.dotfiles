@@ -36,3 +36,5 @@ map('n', '<leader>vd', '<cmd>:terminal g d<CR>', { noremap = true })
 -- Git quick save
 map('n', '<leader>vz', '<cmd>:terminal g qs<CR>', { noremap = true })
 
+-- Open linter error in a 'popup'
+map('n', '<space>e', '<cmd>:lua vim.diagnostic.open_float(0, {scope="line"})<CR>', { noremap = true })

@@ -17,4 +17,6 @@ function clean_buffers()
   vim.api.nvim_command("%bd! | e# | bd#")
 end
 
-
+-- nvim-lspconfig related
+-- Uncomment line below when debugging LSP. Causes degraded performance and disk usage.
+vim.lsp.set_log_level("debug")

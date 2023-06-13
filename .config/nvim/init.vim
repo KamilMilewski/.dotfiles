@@ -48,11 +48,9 @@ set background=dark
 autocmd vimenter * ++nested colorscheme solarized8
 let g:solarized_extra_hi_groups = 1
 
-
 " Nvim Tree related:
 " NOTE: rest of the config is in .config/nvim/lua/plugins.lua
 nnoremap <leader>n :NvimTreeToggle<CR>
-
 
 " FZF related
 " Search for file name using fzf: only files in a repo
@@ -67,6 +65,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :BLines<CR>
 " Search for files in git working directory
 nnoremap <leader>i :GFiles?<CR>
+
 
 " Lightline related
 let g:lightline = {
