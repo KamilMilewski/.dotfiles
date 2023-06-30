@@ -20,15 +20,16 @@ alias people-dotfiles='vim -c "cd %:p:h" -- ~/Misc/people_dotfiles/stealit'
 alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim='nvim'
+alias vi='nvim'
 alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
 alias chrome="google-chrome-unstable &> /dev/null &"
-alias cal='cal -m'
 alias pacman-installed-explictly='pacman -Qqe | fzf'
 alias pacman-installed-all='pacman -Qq | fzf'
 
 # ruby/rails
 alias be="bundle exec"
 alias ber="bundle exec rspec"
+alias besr="bundle exec spring rspec"
 alias berf="bundle exec rspec --only-failures"
 alias bec="bundle exec rails console"
 alias besc="bundle exec spring rails console"
