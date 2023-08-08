@@ -19,4 +19,4 @@ end
 
 -- nvim-lspconfig related
 -- Uncomment line below when debugging LSP. Causes degraded performance and disk usage.
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")

@@ -20,6 +20,7 @@
 	cob = checkout -b
 	syncf = !git fetch upstream && git checkout master && git rebase upstream/master && git push # as `git sync with forked repo`
 	qs = !git add . && git commit --amend --no-edit # as 'git quick save'
+	qsf = !git add . && git commit --amend --no-edit --no-verify # as 'git quick save with force (skips git hooks)'
 	ns = !git add . && git commit # as 'git new save'
 	br = branch --sort=-committerdate
 	bcp = !git branch --show-current | tr -d '\n' | xclip -selection clipboard # as 'git branch copy'
