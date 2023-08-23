@@ -20,7 +20,7 @@ unsetopt beep
 setopt INC_APPEND_HISTORY
 
 # Speed up your keyboard - mostly to make stuff scroll faster
-xset r rate 200 40
+xset r rate 150 80
 
 # due to some weird bug, tmuxp won't run without this:
 # https://github.com/tmux-python/tmuxp/issues/405
