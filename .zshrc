@@ -20,7 +20,7 @@ unsetopt beep
 setopt INC_APPEND_HISTORY
 
 # Speed up your keyboard - mostly to make stuff scroll faster
-xset r rate 150 80
+xset r rate 150 45
 
 # due to some weird bug, tmuxp won't run without this:
 # https://github.com/tmux-python/tmuxp/issues/405
@@ -81,3 +81,6 @@ source /usr/share/fzf/completion.zsh
 
 # Load zsh-syntax-highlighting; should be last. Require 'zsh-syntax-highlighting' package installed to work
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+# bun completions
+[ -s "/home/kamil/.bun/_bun" ] && source "/home/kamil/.bun/_bun"
