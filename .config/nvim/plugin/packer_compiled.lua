@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/kamil/.cache/nvim/packer_hererocks/2.1.1692616192/share/lua/5.1/?.lua;/home/kamil/.cache/nvim/packer_hererocks/2.1.1692616192/share/lua/5.1/?/init.lua;/home/kamil/.cache/nvim/packer_hererocks/2.1.1692616192/lib/luarocks/rocks-5.1/?.lua;/home/kamil/.cache/nvim/packer_hererocks/2.1.1692616192/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/kamil/.cache/nvim/packer_hererocks/2.1.1692616192/lib/lua/5.1/?.so"
+local package_path_str = "/home/kamil/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?.lua;/home/kamil/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?/init.lua;/home/kamil/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?.lua;/home/kamil/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/kamil/.cache/nvim/packer_hererocks/2.1.1694285958/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -269,13 +269,13 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType ts ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "ts" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vim ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "vim" }, _G.packer_plugins)]]
-vim.cmd [[au FileType ruby ++once lua require("packer.load")({'vim-ruby', 'vim-textobj-ruby', 'vim-better-whitespace', 'vim-rails'}, { ft = "ruby" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "tsx" }, _G.packer_plugins)]]
 vim.cmd [[au FileType lua ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "lua" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType ts ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "ts" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-better-whitespace'}, { ft = "tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType ruby ++once lua require("packer.load")({'vim-better-whitespace', 'vim-rails', 'vim-ruby', 'vim-textobj-ruby'}, { ft = "ruby" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

@@ -84,3 +84,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # bun completions
 [ -s "/home/kamil/.bun/_bun" ] && source "/home/kamil/.bun/_bun"
+
+# for vite to work correctly:
+# https://vitejs.dev/guide/troubleshooting.html#dev-server
+# it is paired with additional config in: /usr/lib/sysctl.d/50-default.conf
+# fs.inotify.max_queued_events=16384
+# fs.inotify.max_user_instances=8192
+# fs.inotify.max_user_watches=524288
+ulimit -Sn 10000
