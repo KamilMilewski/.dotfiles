@@ -65,6 +65,19 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :BLines<CR>
 " Search for files in git working directory
 nnoremap <leader>i :GFiles?<CR>
+" Search in files that changed between current and master branch
+command! -nargs=* GDiffFiles call s:GDiffFiles(<q-args>)
+function! s:GDiffFiles(...) abort
+  let l:git_command = 'git diff --name-only master..HEAD'
+  let l:files = systemlist(l:git_command)
+  let l:query = join(a:000, ' ')
+  let l:selected_file = fzf#run({
+        \ 'source': l:files,
+        \ 'sink': 'e',
+        \ 'options': '--preview "bat --color=always --style=numbers,changes --line-range :500 {}"',
+        \ })
+endfunction
+nnoremap <leader>u :GDiffFiles?<CR>
 
 
 " Lightline related
