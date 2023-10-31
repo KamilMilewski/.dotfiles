@@ -7,7 +7,6 @@ alias ls='ls --color=auto'
 # deleting terminal history.
 alias cls='printf "\033c"'
 alias grep='grep --color'
-alias pdf='zathura --fork --mode fullscreen'
 alias wifi='nmtui'
 alias notes='vim -c "cd %:p:h" -- ~/Work/notes/other_notes.md'
 alias notes-status="(cd ~/Work/notes && git status && git diff)"
@@ -16,7 +15,6 @@ alias dotfiles='vim -c "cd %:p:h" -- /home/kamil/Misc/dotfiles/.zshrc'
 alias dotfiles-status="(cd ~/Misc/dotfiles && git status && git diff)"
 alias dotfiles-reset="(cd ~/Misc/dotfiles && git reset --hard)"
 alias dotfiles-save="(cd ~/Misc/dotfiles && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
-alias people-dotfiles='vim -c "cd %:p:h" -- ~/Misc/people_dotfiles/stealit'
 alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim='nvim'
@@ -36,7 +34,6 @@ alias besc="bundle exec spring rails console"
 alias bes="bundle exec rails server"
 alias beg="bundle exec rails generate"
 alias bek="bundle exec rake"
-alias rubo="bundle exec rubocop --auto-correct"
 
 system-update() {
   echo "################################################################################
@@ -91,9 +88,3 @@ mysql-start() {
     -d mysql/mysql-server:latest
 }
 
-# tap specific aliases
-alias tap_workspace="sh ~/Misc/dotfiles/system_workspaces/tap.sh"
-alias tap-qa="bundle exec cap qa rails:console"
-alias tap-replica="bundle exec cap replica rails:console"
-alias tap-prototype="bundle exec cap prototype rails:console"
-alias tap-production="ROLES=web bundle exec cap production rails:console"
