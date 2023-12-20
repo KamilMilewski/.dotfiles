@@ -88,7 +88,7 @@ return require('packer').startup(function(use)
   -- For white spaces highlighting
   use {
     'ntpeters/vim-better-whitespace',
-    ft = { 'ruby', 'vim', 'lua', 'html', 'js', 'ts', 'tsx' }
+    ft = { 'vim', 'lua', 'html', 'js', 'ts', 'tsx' }
   }
 
   -- For unified pane switching for tmux and vim. Thanks to this one can just do
