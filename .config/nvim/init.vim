@@ -27,6 +27,9 @@ set mouse=a
 " clipboard
 set clipboard=unnamedplus
 
+" Do not jump on word highlighting
+nnoremap * :keepjumps normal! mi*`i<CR>
+
 " Set hybrid line numbering (relative numbers + actual number at the current
 " line). Also return back normal numbering when entering insert mode or if
 " buffer focus lost.
