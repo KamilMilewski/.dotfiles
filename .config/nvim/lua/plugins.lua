@@ -69,8 +69,10 @@ return require('packer').startup(function(use)
   use 'tpope/vim-commentary'
 
   -- For auto pairing(ending) brackets.
-  -- NOTE: causes weird behaviour in vim config files when deleting comments
-  use 'jiangmiao/auto-pairs'
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
 
   -- Like auto pairs, but for method definitions and 'if' statements
   use 'tpope/vim-endwise'
