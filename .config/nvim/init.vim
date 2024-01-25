@@ -61,7 +61,15 @@ nnoremap <leader>o :GFiles!<CR>
 " Search for file name using fzf: all files
 nnoremap <leader>p :Files!<CR>
 " Search file content using fzf & Rg
-nnoremap <leader>f :Rg!<CR>
+nnoremap <leader>y :Rg!<CR>
+
+" Modified standard fzf.vim Rg! command that:
+" - doesn't ignore hidden files.
+" - searches only in file contents ignoring matches in filenames.
+command! -bang -nargs=* Rgi  call fzf#vim#grep("rg -. --column --line-number --no-heading --color=always --smart-case --glob=!.git -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+nnoremap <leader>f :Rgi!<CR>
+
 " Search for buffer name using fzf
 nnoremap <leader>b :Buffers<CR>
 " Search current buffer lines using fzf
