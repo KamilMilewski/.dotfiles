@@ -25,7 +25,7 @@ setopt HIST_IGNORE_SPACE
 HISTORY_IGNORE="git checkout -b '*"
 
 # Speed up your keyboard - mostly to make stuff scroll faster
-xset r rate 150 45
+# xset r rate 150 45
 
 # due to some weird bug, tmuxp won't run without this:
 # https://github.com/tmux-python/tmuxp/issues/405
