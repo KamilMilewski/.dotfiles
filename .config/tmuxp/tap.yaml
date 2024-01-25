@@ -10,10 +10,10 @@ windows:
       - git status
       focus: true
     - shell_command:
-      - mysql-start
+      - RAISE_API_EXCEPTIONS=true ENABLE_TRAILBLAZER_OPERATIONS_WTF=true bes
     - pane
     - shell_command:
-      - git status
+      - mysql-start
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/tap/tap
