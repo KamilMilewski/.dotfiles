@@ -60,9 +60,8 @@ nnoremap <leader>n :NvimTreeToggle<CR>
 nnoremap <leader>o :GFiles!<CR>
 " Search for file name using fzf: all files
 nnoremap <leader>p :Files!<CR>
-" Search file content using fzf & Rg
-nnoremap <leader>y :Rg!<CR>
-
+" Search file name & content combined using fzf & Rg
+nnoremap <leader>d :Rg!<CR>
 " Modified standard fzf.vim Rg! command that:
 " - doesn't ignore hidden files.
 " - searches only in file contents ignoring matches in filenames.
