@@ -23,6 +23,7 @@ function M.nrspec_run_current_file()
   if( not is_spec_file(full_path) )
     -- please, continue
   then
+    -- its not a spec file, let's run last executed spec then
     M.nrspec_run_last_command()
     return
   end
@@ -32,7 +33,7 @@ function M.nrspec_run_current_file()
     "terminal echo ' >>> Running spec file: %s\\n' && %s", full_command, full_command
   )
   vim.api.nvim_set_var('nrspec_last_full_command', full_command)
-  vim.api.nvim_command('w')
+  vim.api.nvim_command('w') -- save current buffer first
   vim.api.nvim_command(command_with_msg)
 end
 
@@ -53,7 +54,7 @@ function M.nrspec_run_current_line()
     "terminal echo ' >>> Running spec line: %s\\n' && %s", full_command, full_command
   )
   vim.api.nvim_set_var('nrspec_last_full_command', full_command)
-  vim.api.nvim_command('w')
+  vim.api.nvim_command('w') -- save current buffer first
   vim.api.nvim_command(command_with_msg)
 end
 
@@ -64,7 +65,7 @@ function M.nrspec_run_last_command()
   local command_with_msg = string.format(
     "terminal echo ' >>> Running last rspec command: %s\\n' && %s", full_command, full_command
   )
-  vim.api.nvim_command('w')
+  vim.api.nvim_command('w') -- save current buffer first
   vim.api.nvim_command(command_with_msg)
 end
 
@@ -73,13 +74,24 @@ function M.nrspec_run_last_failed()
   local command_with_msg = string.format(
     "terminal echo ' >>> Running last failed specs: %s\\n' && %s", full_command, full_command
   )
-  vim.api.nvim_command('w')
+  vim.api.nvim_command('w') -- save current buffer first
   vim.api.nvim_command(command_with_msg)
 end
 
 function M.nrspec_override_command()
   -- this is very likely pure retardness
   local vars = vim.api.nvim_command("let nrspec_user_command_override = input('Override nrspec command: ')")
+end
+
+function M.create_spec()
+  local resource = vim.fn.expand('%:h:t')
+  local action = vim.fn.expand('%:t:r')
+
+  local command = string.format("bin/rails generate operation_spec --resource %s --action %s", resource, action)
+
+  os.execute(command)
+
+  vim.api.nvim_echo({{"Created spec file by command: ", 'None'}, {'  ', 'None'}, {command, 'None'}}, false, {})
 end
 
 return M
