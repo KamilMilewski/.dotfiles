@@ -89,33 +89,17 @@ function string.starts(String,Start)
    return string.sub(String,1,string.len(Start))==Start
 end
 
-local function handle_operation_spec()
+-- tries to open corresponding spec or creates if it doesn't exists
+local function handle_spec(spec_type, generator_name)
   local resource = vim.fn.expand('%:h:t') -- user
   local action = vim.fn.expand('%:t:r')   -- create
 
-  local spec_path = "spec/concepts/" .. resource .. "/" .. action .. "_spec.rb"
+  local spec_path = "spec/" .. spec_type .. "/" .. resource .. "/" .. action .. "_spec.rb"
   if(vim.fn.filereadable(spec_path) == 1)
   then
     vim.api.nvim_echo({{'Spec already exists', 'None'}}, false, {})
   else
-    local command = string.format("bin/rails generate operation_spec --resource %s --action %s", resource, action)
-    os.execute(command)
-    local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
-    vim.api.nvim_echo({{message, 'None'}}, false, {})
-  end
-  vim.cmd.edit(spec_path) -- to open just created/found spec file
-end
-
-local function handle_service_spec()
-  local resource = vim.fn.expand('%:h:t') -- user
-  local action = vim.fn.expand('%:t:r')   -- create
-
-  local spec_path = "spec/services/" .. resource .. "/" .. action .. "_spec.rb"
-  if(vim.fn.filereadable(spec_path) == 1)
-  then
-    vim.api.nvim_echo({{'Spec already exists', 'None'}}, false, {})
-  else
-    local command = string.format("bin/rails generate service_spec --resource %s --action %s", resource, action)
+    local command = string.format("bin/rails generate %s --resource %s --action %s", generator_name, resource, action)
     os.execute(command)
     local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
     vim.api.nvim_echo({{message, 'None'}}, false, {})
@@ -126,10 +110,13 @@ end
 function M.create_spec()
   -- CASES TO HANDLE:
   --
+  -- TODO:
   -- app/controllers/api/v1/users_controller.rb
   -- -- spec/requests/api/v1/users_controller_spec.rb
   -- db/migrate/20230530110641_do_stuff.rb
   -- -- spec/db/migrate/20230731125129_do_stuff.rb
+  --
+  -- DONE:
   -- app/services/user/do_it.rb
   -- -- spec/services/user/do_it_spec.rg
   -- app/concepts/user/create.rb:
@@ -137,9 +124,9 @@ function M.create_spec()
 
   local current_path = vim.fn.expand('%')
   if(string.starts(current_path, "app/concepts/"))
-    then handle_operation_spec()
+    then handle_spec("concepts", "operation_spec")
   elseif(string.starts(current_path, "app/services/"))
-    then handle_service_spec()
+    then handle_spec("services", "service_spec")
   else
     vim.api.nvim_echo({{"Unhandled spec type", 'None'}}, false, {})
   end
