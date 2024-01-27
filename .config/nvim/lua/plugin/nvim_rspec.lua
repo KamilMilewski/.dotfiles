@@ -84,12 +84,13 @@ end
 function M.create_spec()
   local resource = vim.fn.expand('%:h:t')
   local action = vim.fn.expand('%:t:r')
-
   local command = string.format("bin/rails generate operation_spec --resource %s --action %s", resource, action)
-
   os.execute(command)
 
-  vim.api.nvim_echo({{"Created spec file by command: ", 'None'}, {'  ', 'None'}, {command, 'None'}}, false, {})
+  local spec_path = "spec/concepts/" .. resource .. "/" .. action .. "_spec.rb"
+  local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+  vim.api.nvim_echo({{message, 'None'}}, false, {})
+  vim.cmd.edit(spec_path) -- to open just created spec file
 end
 
 return M
