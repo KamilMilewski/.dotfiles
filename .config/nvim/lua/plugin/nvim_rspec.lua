@@ -123,14 +123,26 @@ local function handle_migrate_spec(migration_path)
   vim.cmd.edit(spec_path) -- to open just created/found spec file
 end
 
+local function handle_controller_spec(controller_path)
+  local spec_controller_path =  string.gsub(controller_path, "app/controllers/", "")
+  local spec_path = "spec/requests/" .. string.gsub(spec_controller_path, ".rb", "_spec.rb")
+
+  if(vim.fn.filereadable(spec_path) == 1)
+  then
+    vim.api.nvim_echo({{'Spec already exists', 'None'}}, false, {})
+  else
+    local command = string.format("bin/rails generate controller_spec --controller_path %s", controller_path)
+    os.execute(command)
+    local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+    vim.api.nvim_echo({{message, 'None'}}, false, {})
+  end
+  vim.cmd.edit(spec_path) -- to open just created/found spec file
+end
+
 function M.create_spec()
-  -- CASES TO HANDLE:
-  --
-  -- TODO:
+  -- HANDLED CASES:
   -- app/controllers/api/v1/users_controller.rb
   -- -- spec/requests/api/v1/users_controller_spec.rb
-  --
-  -- DONE:
   -- db/migrate/20230530110641_do_stuff.rb
   -- -- spec/db/migrate/20230731125129_do_stuff_spec.rb
   -- app/services/user/do_it.rb
@@ -143,8 +155,10 @@ function M.create_spec()
     then handle_spec("concepts", "operation_spec")
   elseif(string.starts(current_path, "app/services/"))
     then handle_spec("services", "service_spec")
-  elseif(string.starts(current_path, "db/migrate"))
+  elseif(string.starts(current_path, "db/migrate/"))
     then handle_migrate_spec(current_path)
+  elseif(string.starts(current_path, "app/controllers/api/v1/"))
+    then handle_controller_spec(current_path)
   else
     vim.api.nvim_echo({{"Unhandled spec type", 'None'}}, false, {})
   end
