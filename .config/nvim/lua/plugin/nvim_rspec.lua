@@ -82,8 +82,20 @@ function M.nrspec_override_command()
 end
 
 function M.create_spec()
-  local resource = vim.fn.expand('%:h:t')
-  local action = vim.fn.expand('%:t:r')
+  -- CASES TO HANDLE:
+  --
+  -- app/controllers/api/v1/users_controller.rb
+  -- -- spec/requests/api/v1/users_controller_spec.rb
+  -- db/migrate/20230530110641_do_stuff.rb
+  -- -- spec/db/migrate/20230731125129_do_stuff.rb
+  -- app/services/user/do_it.rb
+  -- -- spec/services/user/do_it_spec.rg
+  -- app/concepts/user/create.rb:
+  -- -- spec/concepts/user/create_spec.rg
+
+
+  local resource = vim.fn.expand('%:h:t') -- user
+  local action = vim.fn.expand('%:t:r')   -- create
 
   local spec_path = "spec/concepts/" .. resource .. "/" .. action .. "_spec.rb"
   if(vim.fn.filereadable(spec_path) == 1)
