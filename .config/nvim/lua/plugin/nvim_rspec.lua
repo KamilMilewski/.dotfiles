@@ -118,12 +118,12 @@ function M.create_spec()
     command = string.format("bin/rails generate service_spec --file_path %s", current_path)
   elseif(string.starts(current_path, "db/migrate/")) then
     spec_path = "spec/" .. string.gsub(current_path, ".rb", "_spec.rb")
-    command = string.format("bin/rails generate migration_spec --migration_path %s", current_path)
+    command = string.format("bin/rails generate migration_spec --file_path %s", current_path)
   elseif(string.starts(current_path, "app/controllers/api/v1/")) then
     spec_path =  string.gsub(current_path, "app/controllers/", "")
     spec_path = "spec/requests/" .. string.gsub(spec_path, ".rb", "_spec.rb")
 
-    command = string.format("bin/rails generate controller_spec --controller_path %s", current_path)
+    command = string.format("bin/rails generate controller_spec --file_path %s", current_path)
   else
     vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
     return
