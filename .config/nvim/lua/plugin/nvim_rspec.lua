@@ -107,14 +107,10 @@ function M.create_spec()
   local command
 
   if(string.starts(current_path, "app/concepts/")) then
-    local spec_type = "concepts"
-    local generator_name = "operation_spec"
-    -- for app/concepts/user/create.rb variables will be:
-    local resource = vim.fn.expand('%:h:t') -- user
-    local action = vim.fn.expand('%:t:r')   -- create
+    spec_path = string.gsub(current_path, ".rb", "_spec.rb")
+    spec_path = string.gsub(spec_path, "app/concepts", "spec/concepts")
 
-    spec_path = "spec/" .. spec_type .. "/" .. resource .. "/" .. action .. "_spec.rb"
-    command = string.format("bin/rails generate %s --resource %s --action %s", generator_name, resource, action)
+    command = string.format("bin/rails generate operation_spec --file_path %s", current_path)
   elseif(string.starts(current_path, "app/services/")) then
     spec_path = string.gsub(current_path, ".rb", "_spec.rb")
     spec_path = string.gsub(spec_path, "app/services", "spec/services")
