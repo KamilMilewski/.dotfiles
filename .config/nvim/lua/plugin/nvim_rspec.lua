@@ -100,7 +100,9 @@ function M.create_spec()
   -- app/concepts/user/create.rb:
   -- -- spec/concepts/user/create_spec.rg
 
-  local current_path = vim.fn.expand('%')
+  -- as just `expand("%")` sometimes yields path relative to current working directory and sometimes an absolute path.
+  -- Read more at https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim#comment34943121_22856943
+  local current_path = vim.fn.expand("%:~:.")
   local spec_path
   local command
 
@@ -114,23 +116,20 @@ function M.create_spec()
     spec_path = "spec/" .. spec_type .. "/" .. resource .. "/" .. action .. "_spec.rb"
     command = string.format("bin/rails generate %s --resource %s --action %s", generator_name, resource, action)
   elseif(string.starts(current_path, "app/services/")) then
-    local spec_type = "services"
-    local generator_name = "service_spec"
-    -- for app/concepts/user/create.rb variables will be:
-    local resource = vim.fn.expand('%:h:t') -- user
-    local action = vim.fn.expand('%:t:r')   -- create
+    spec_path = string.gsub(current_path, ".rb", "_spec.rb")
+    spec_path = string.gsub(spec_path, "app/services", "spec/services")
 
-    spec_path = "spec/" .. spec_type .. "/" .. resource .. "/" .. action .. "_spec.rb"
-    command = string.format("bin/rails generate %s --resource %s --action %s", generator_name, resource, action)
+    command = string.format("bin/rails generate service_spec --file_path %s", current_path)
   elseif(string.starts(current_path, "db/migrate/")) then
     spec_path = "spec/" .. string.gsub(current_path, ".rb", "_spec.rb")
     command = string.format("bin/rails generate migration_spec --migration_path %s", current_path)
   elseif(string.starts(current_path, "app/controllers/api/v1/")) then
-    local spec_controller_path =  string.gsub(current_path, "app/controllers/", "")
-    spec_path = "spec/requests/" .. string.gsub(spec_controller_path, ".rb", "_spec.rb")
+    spec_path =  string.gsub(current_path, "app/controllers/", "")
+    spec_path = "spec/requests/" .. string.gsub(spec_path, ".rb", "_spec.rb")
+
     command = string.format("bin/rails generate controller_spec --controller_path %s", current_path)
   else
-    vim.api.nvim_echo({{"Unhandled spec type", 'None'}}, false, {})
+    vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
     return
   end
 

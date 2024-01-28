@@ -19,7 +19,8 @@ unsetopt beep
 # note: you have to hit enter at least once so the current pane will pick up entries inputted in the other
 setopt INC_APPEND_HISTORY
 
-# To ignore commands starting with space from history. The command lingers in the internal history until the next command is entered before it vanishes, allowing to briefly reuse or edit the line.
+# To ignore commands starting with space from history. The command lingers in the internal history until the next
+# command is entered before it vanishes, allowing to briefly reuse or edit the line.
 setopt HIST_IGNORE_SPACE
 # To ignore patterns from history (not a regex):
 HISTORY_IGNORE="git checkout -b '*"
@@ -92,7 +93,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # for vite to work correctly:
 # https://vitejs.dev/guide/troubleshooting.html#dev-server
-# it is paired with additional config in: /usr/lib/sysctl.d/50-default.conf
+# NOTE: it is paired with additional config in: /usr/lib/sysctl.d/50-default.conf
 # fs.inotify.max_queued_events=16384
 # fs.inotify.max_user_instances=8192
 # fs.inotify.max_user_watches=524288
