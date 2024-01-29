@@ -153,12 +153,20 @@ function M.create_spec()
 
     if(vim.fn.filereadable(spec_path) == 1) then
       vim.api.nvim_echo({{'Moved to existing spec', 'None'}}, false, {})
+      vim.cmd.edit(spec_path) -- open found spec
     else
-      os.execute(command)
-      local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+      local userConfirmation = vim.fn.input("No spec file found - should I create it?: ")
+      local message
+
+      if (userConfirmation == "y") then
+	os.execute(command)
+	message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+	vim.cmd.edit(spec_path) -- open created spec
+      else
+	message = " Aborted"
+      end
       vim.api.nvim_echo({{message, 'None'}}, false, {})
     end
-    vim.cmd.edit(spec_path) -- to open just created/found spec file
   end
 end
 
