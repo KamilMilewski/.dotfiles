@@ -145,6 +145,11 @@ function M.create_spec()
       spec_path = "spec/requests/" .. string.gsub(spec_path, ".rb", "_spec.rb")
 
       command = string.format("bin/rails generate controller_spec --file_path %s", current_path)
+    elseif(string.starts(current_path, "app/jobs/")) then
+      spec_path = string.gsub(current_path, ".rb", "_spec.rb")
+      spec_path = string.gsub(spec_path, "app/jobs", "spec/jobs")
+
+      command = string.format("bin/rails generate job_spec --file_path %s", current_path)
     else
       vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
       return
@@ -160,7 +165,7 @@ function M.create_spec()
 
       if (userConfirmation == "y") then
 	os.execute(command)
-	message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+	message = " Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
 	vim.cmd.edit(spec_path) -- open created spec
       else
 	message = " Aborted"
