@@ -152,7 +152,7 @@ function M.create_spec()
 
 
     if(vim.fn.filereadable(spec_path) == 1) then
-      vim.api.nvim_echo({{'Spec already exists', 'None'}}, false, {})
+      vim.api.nvim_echo({{'Moved to existing spec', 'None'}}, false, {})
     else
       os.execute(command)
       local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
