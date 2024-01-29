@@ -99,8 +99,6 @@ function M.create_spec()
   -- -- spec/services/user/do_it_spec.rg
   -- app/concepts/user/create.rb:
   -- -- spec/concepts/user/create_spec.rg
-  --
-  -- TODO:
   -- app/jobs/hard_job.rb
   -- -- spec/jobs/hard_job_spec.rb
 
