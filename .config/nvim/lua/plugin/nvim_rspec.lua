@@ -102,46 +102,64 @@ function M.create_spec()
   --
   -- TODO:
   -- app/jobs/hard_job.rb
-  -- spec/jobs/hard_job_spec.rb
+  -- -- spec/jobs/hard_job_spec.rb
 
   -- as just `expand("%")` sometimes yields path relative to current working directory and sometimes an absolute path.
   -- Read more at https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim#comment34943121_22856943
   local current_path = vim.fn.expand("%:~:.")
-  local spec_path
-  local command
 
-  if(string.starts(current_path, "app/concepts/")) then
-    spec_path = string.gsub(current_path, ".rb", "_spec.rb")
-    spec_path = string.gsub(spec_path, "app/concepts", "spec/concepts")
+  if(string.starts(current_path, "spec/")) then
+    local file_path
 
-    command = string.format("bin/rails generate operation_spec --file_path %s", current_path)
-  elseif(string.starts(current_path, "app/services/")) then
-    spec_path = string.gsub(current_path, ".rb", "_spec.rb")
-    spec_path = string.gsub(spec_path, "app/services", "spec/services")
+    if(string.starts(current_path, "spec/db/migrate/")) then
+      file_path = string.gsub(current_path, "_spec.rb", ".rb")
+      file_path = string.gsub(file_path, "spec/", "")
+    elseif(string.starts(current_path, "spec/requests/")) then
+      file_path = string.gsub(current_path, "_spec.rb", ".rb")
+      file_path = string.gsub(file_path, "spec/requests/", "app/controllers/")
+    else
+      file_path = string.gsub(current_path, "_spec.rb", ".rb")
+      file_path = string.gsub(file_path, "spec/", "app/")
+    end
 
-    command = string.format("bin/rails generate service_spec --file_path %s", current_path)
-  elseif(string.starts(current_path, "db/migrate/")) then
-    spec_path = "spec/" .. string.gsub(current_path, ".rb", "_spec.rb")
-    command = string.format("bin/rails generate migration_spec --file_path %s", current_path)
-  elseif(string.starts(current_path, "app/controllers/api/v1/")) then
-    spec_path =  string.gsub(current_path, "app/controllers/", "")
-    spec_path = "spec/requests/" .. string.gsub(spec_path, ".rb", "_spec.rb")
-
-    command = string.format("bin/rails generate controller_spec --file_path %s", current_path)
+    vim.cmd.edit(file_path) -- open corresponding tested file
   else
-    vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
-    return
-  end
+    local spec_path
+    local command
+
+    if(string.starts(current_path, "app/concepts/")) then
+      spec_path = string.gsub(current_path, ".rb", "_spec.rb")
+      spec_path = string.gsub(spec_path, "app/concepts", "spec/concepts")
+
+      command = string.format("bin/rails generate operation_spec --file_path %s", current_path)
+    elseif(string.starts(current_path, "app/services/")) then
+      spec_path = string.gsub(current_path, ".rb", "_spec.rb")
+      spec_path = string.gsub(spec_path, "app/services", "spec/services")
+
+      command = string.format("bin/rails generate service_spec --file_path %s", current_path)
+    elseif(string.starts(current_path, "db/migrate/")) then
+      spec_path = "spec/" .. string.gsub(current_path, ".rb", "_spec.rb")
+      command = string.format("bin/rails generate migration_spec --file_path %s", current_path)
+    elseif(string.starts(current_path, "app/controllers/api/v1/")) then
+      spec_path =  string.gsub(current_path, "app/controllers/", "")
+      spec_path = "spec/requests/" .. string.gsub(spec_path, ".rb", "_spec.rb")
+
+      command = string.format("bin/rails generate controller_spec --file_path %s", current_path)
+    else
+      vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
+      return
+    end
 
 
-  if(vim.fn.filereadable(spec_path) == 1) then
-    vim.api.nvim_echo({{'Spec already exists', 'None'}}, false, {})
-  else
-    os.execute(command)
-    local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
-    vim.api.nvim_echo({{message, 'None'}}, false, {})
+    if(vim.fn.filereadable(spec_path) == 1) then
+      vim.api.nvim_echo({{'Spec already exists', 'None'}}, false, {})
+    else
+      os.execute(command)
+      local message = "Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+      vim.api.nvim_echo({{message, 'None'}}, false, {})
+    end
+    vim.cmd.edit(spec_path) -- to open just created/found spec file
   end
-  vim.cmd.edit(spec_path) -- to open just created/found spec file
 end
 
 return M
