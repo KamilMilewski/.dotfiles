@@ -133,7 +133,12 @@ function M.create_spec()
   local file_to_spec_mapping = {
     {
       ["match_file_path"]       = function (path)
-	return (string.starts(path, "app/concepts/") and not string.find(path, "/contract/"))
+	return (
+	  string.starts(path, "app/concepts/")
+	  and not string.find(path, "/contract/")
+	  and not string.find(path, "/macro/")
+	  and not string.find(path, "/input/")
+	)
       end,
       ["get_file_path"]         = function (path)
 	path = string.gsub(path, ".rb", "_spec.rb")
@@ -182,6 +187,28 @@ function M.create_spec()
 	return string.format("bin/rails generate job_spec --file_path %s", path)
       end
     },
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "app/") end,
+      ["get_file_path"]         = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	return  string.gsub(path, "app/", "spec/")
+      end,
+      ["get_spec_file_command"] = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	path = string.gsub(path, "app/", "spec/")
+	vim.api.nvim_echo({{path, 'None'}}, false, {})
+
+	local spec_content = [[
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe YourConstantHere do
+end]]
+	return string.format('echo "%s" > %s', spec_content, path)
+      end,
+      ["message"]  	 = "\nSpec file created"
+    },
   }
 
   if(string.starts(current_path, "spec/")) then
@@ -198,15 +225,17 @@ function M.create_spec()
   else
     local spec_path
     local command
+    local custom_message
 
     for i, mapping_case in ipairs(file_to_spec_mapping) do
       if (mapping_case.match_file_path(current_path)) then
-	spec_path = mapping_case.get_file_path(current_path)
-	command   = mapping_case.get_spec_file_command(current_path)
+	spec_path      = mapping_case.get_file_path(current_path)
+	command        = mapping_case.get_spec_file_command(current_path)
+	custom_message = mapping_case.message
 	break
       end
 
-      if(file_to_spec_mapping[i + 1]) == nil then
+      if(file_to_spec_mapping[i + 1]) == nil then -- if its the last element and nothing has been found up until now
 	vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
 	return
       end
@@ -221,7 +250,7 @@ function M.create_spec()
 
       if (userConfirmation == "y") then
 	os.execute(command)
-	message = "\nCreated spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+	message = custom_message or ("\nCreated spec file: '" .. spec_path .. "' by running command: '" .. command .. "'")
 	vim.cmd.edit(spec_path) -- open created spec
       else
 	message = "\nAborted"
