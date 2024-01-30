@@ -106,18 +106,38 @@ function M.create_spec()
   -- Read more at https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim#comment34943121_22856943
   local current_path = vim.fn.expand("%:~:.")
 
+  local spec_to_file_mapping = {
+    {
+      ["match_test_file_path"]   = function (path) return string.starts(path, "spec/db/migrate/") end,
+      ["get_file_path"] 	   = function (path)
+	path = string.gsub(path, "_spec.rb", ".rb")
+	return string.gsub(path, "spec/", "")
+      end
+    },
+    {
+      ["match_test_file_path"]   = function (path) return string.starts(path, "spec/requests/") end,
+      ["get_file_path"] 	   = function (path)
+	path = string.gsub(path, "_spec.rb", ".rb")
+	return string.gsub(path, "spec/requests/", "app/controllers/")
+      end
+    },
+    { -- a default branch for generic, simple case where spec file path closely reflects path to the tested file
+      ["match_test_file_path"]   = function () return true end,
+      ["get_file_path"] 	   = function (path)
+	path = string.gsub(path, "_spec.rb", ".rb")
+	return string.gsub(path, "spec/", "app/")
+      end
+    },
+  }
+
   if(string.starts(current_path, "spec/")) then
     local file_path
 
-    if(string.starts(current_path, "spec/db/migrate/")) then
-      file_path = string.gsub(current_path, "_spec.rb", ".rb")
-      file_path = string.gsub(file_path, "spec/", "")
-    elseif(string.starts(current_path, "spec/requests/")) then
-      file_path = string.gsub(current_path, "_spec.rb", ".rb")
-      file_path = string.gsub(file_path, "spec/requests/", "app/controllers/")
-    else
-      file_path = string.gsub(current_path, "_spec.rb", ".rb")
-      file_path = string.gsub(file_path, "spec/", "app/")
+    for _, mapping_case in ipairs(spec_to_file_mapping) do
+      if (mapping_case.match_test_file_path(current_path)) then
+	file_path = mapping_case.get_file_path(current_path)
+	break
+      end
     end
 
     vim.cmd.edit(file_path) -- open corresponding tested file
