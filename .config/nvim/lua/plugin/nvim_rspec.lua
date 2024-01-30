@@ -219,10 +219,10 @@ function M.create_spec()
 
       if (userConfirmation == "y") then
 	os.execute(command)
-	message = " Created spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
+	message = "\nCreated spec file: '" .. spec_path .. "' by running command: '" .. command .. "'"
 	vim.cmd.edit(spec_path) -- open created spec
       else
-	message = " Aborted"
+	message = "\nAborted"
       end
       vim.api.nvim_echo({{message, 'None'}}, false, {})
     end

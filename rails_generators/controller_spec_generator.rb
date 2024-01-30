@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
 # example run:
-# bin/rails generate controller_spec --file_path app/controllers/api/v1/users_controller.rb
+# bin/rails generate controller_spec --file_path app/controllers/api/v1/some/users_controller.rb
 class ControllerSpecGenerator < Rails::Generators::Base
   class_option :file_path, type: :string
 
   def create_controller_spec_file
-    # Given following file_path app/controllers/api/v1/users_controller.rb
-    controller_name = File.basename(options["file_path"], ".*") # would yield `users_controller`
-    resource_name   = controller_name.gsub(/_controller\z/, "") # would yield `users`
+    # Given following file_path app/controllers/api/v1/some/users_controller.rb
+    controller_name = options["file_path"].gsub(/^app\/controllers\//, "").gsub(/.rb\z/, "") # would yield `api/v1/some/users_controller`
+    resource_name = File.basename(controller_name, ".*").gsub(/_controller\z/, "") # would yield `users`
 
-    create_file "spec/requests/api/v1/#{controller_name}_spec.rb", <<~RUBY
+    create_file "spec/requests/#{controller_name}_spec.rb", <<~RUBY
       # frozen_string_literal: true
 
       require "rails_helper"
 
-      RSpec.describe API::V1::#{controller_name.classify} do
+      RSpec.describe #{controller_name.classify} do
         let(:trial)  { create :trial, :active }
         let(:user)   { create :user, :with_role, :with_trial, trial: trial }
         let(:#{resource_name.singularize}) { create :#{resource_name.singularize}, trial: trial }
 
         describe "#index" do
-          let(:path) { "/api/v1/trials/#\{trial.id\}/#{controller_name}" }
+          let(:path) { "/api/v1/trials/#\{trial.id\}/#{controller_name.gsub(/_controller\z/, "")}" }
 
           it "returns unauthorized when user isn't signed in" do
             get_json path, params: {}
