@@ -132,7 +132,9 @@ function M.create_spec()
 
   local file_to_spec_mapping = {
     {
-      ["match_file_path"]       = function (path) return string.starts(path, "app/concepts/") end,
+      ["match_file_path"]       = function (path)
+	return (string.starts(path, "app/concepts/") and not string.find(path, "/contract/"))
+      end,
       ["get_file_path"]         = function (path)
 	path = string.gsub(path, ".rb", "_spec.rb")
 	return string.gsub(path, "app/concepts", "spec/concepts")
@@ -204,7 +206,7 @@ function M.create_spec()
 	break
       end
 
-      if(file_to_spec_mapping[i]) == nil then
+      if(file_to_spec_mapping[i + 1]) == nil then
 	vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
 	return
       end
