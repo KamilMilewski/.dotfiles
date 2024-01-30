@@ -108,24 +108,76 @@ function M.create_spec()
 
   local spec_to_file_mapping = {
     {
-      ["match_test_file_path"]   = function (path) return string.starts(path, "spec/db/migrate/") end,
-      ["get_file_path"] 	   = function (path)
+      ["match_file_path"] = function (path) return string.starts(path, "spec/db/migrate/") end,
+      ["get_file_path"]   = function (path)
 	path = string.gsub(path, "_spec.rb", ".rb")
 	return string.gsub(path, "spec/", "")
       end
     },
     {
-      ["match_test_file_path"]   = function (path) return string.starts(path, "spec/requests/") end,
-      ["get_file_path"] 	   = function (path)
+      ["match_file_path"] = function (path) return string.starts(path, "spec/requests/") end,
+      ["get_file_path"]   = function (path)
 	path = string.gsub(path, "_spec.rb", ".rb")
 	return string.gsub(path, "spec/requests/", "app/controllers/")
       end
     },
     { -- a default branch for generic, simple case where spec file path closely reflects path to the tested file
-      ["match_test_file_path"]   = function () return true end,
-      ["get_file_path"] 	   = function (path)
+      ["match_file_path"] = function () return true end,
+      ["get_file_path"]   = function (path)
 	path = string.gsub(path, "_spec.rb", ".rb")
 	return string.gsub(path, "spec/", "app/")
+      end
+    },
+  }
+
+  local file_to_spec_mapping = {
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "app/concepts/") end,
+      ["get_file_path"]         = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	return string.gsub(path, "app/concepts", "spec/concepts")
+      end,
+      ["get_spec_file_command"] = function (path)
+	return string.format("bin/rails generate operation_spec --file_path %s", path)
+      end
+    },
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "app/services/") end,
+      ["get_file_path"]         = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	return string.gsub(path, "app/services", "spec/services")
+      end,
+      ["get_spec_file_command"] = function (path)
+	return string.format("bin/rails generate service_spec --file_path %s", path)
+      end
+    },
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "db/migrate/") end,
+      ["get_file_path"]         = function (path)
+	return "spec/" .. string.gsub(path, ".rb", "_spec.rb")
+      end,
+      ["get_spec_file_command"] = function (path)
+	return string.format("bin/rails generate migration_spec --file_path %s", path)
+      end
+    },
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "app/controllers/") end,
+      ["get_file_path"]         = function (path)
+	path =  string.gsub(path, "app/controllers/", "spec/requests/")
+	return string.gsub(path, ".rb", "_spec.rb")
+      end,
+      ["get_spec_file_command"] = function (path)
+	return string.format("bin/rails generate controller_spec --file_path %s", path)
+      end
+    },
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "app/jobs/") end,
+      ["get_file_path"]         = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	return  string.gsub(path, "app/jobs", "spec/jobs")
+      end,
+      ["get_spec_file_command"] = function (path)
+	return string.format("bin/rails generate job_spec --file_path %s", path)
       end
     },
   }
@@ -134,7 +186,7 @@ function M.create_spec()
     local file_path
 
     for _, mapping_case in ipairs(spec_to_file_mapping) do
-      if (mapping_case.match_test_file_path(current_path)) then
+      if (mapping_case.match_file_path(current_path)) then
 	file_path = mapping_case.get_file_path(current_path)
 	break
       end
@@ -145,34 +197,18 @@ function M.create_spec()
     local spec_path
     local command
 
-    if(string.starts(current_path, "app/concepts/")) then
-      spec_path = string.gsub(current_path, ".rb", "_spec.rb")
-      spec_path = string.gsub(spec_path, "app/concepts", "spec/concepts")
+    for i, mapping_case in ipairs(file_to_spec_mapping) do
+      if (mapping_case.match_file_path(current_path)) then
+	spec_path = mapping_case.get_file_path(current_path)
+	command   = mapping_case.get_spec_file_command(current_path)
+	break
+      end
 
-      command = string.format("bin/rails generate operation_spec --file_path %s", current_path)
-    elseif(string.starts(current_path, "app/services/")) then
-      spec_path = string.gsub(current_path, ".rb", "_spec.rb")
-      spec_path = string.gsub(spec_path, "app/services", "spec/services")
-
-      command = string.format("bin/rails generate service_spec --file_path %s", current_path)
-    elseif(string.starts(current_path, "db/migrate/")) then
-      spec_path = "spec/" .. string.gsub(current_path, ".rb", "_spec.rb")
-      command = string.format("bin/rails generate migration_spec --file_path %s", current_path)
-    elseif(string.starts(current_path, "app/controllers/api/v1/")) then
-      spec_path =  string.gsub(current_path, "app/controllers/", "")
-      spec_path = "spec/requests/" .. string.gsub(spec_path, ".rb", "_spec.rb")
-
-      command = string.format("bin/rails generate controller_spec --file_path %s", current_path)
-    elseif(string.starts(current_path, "app/jobs/")) then
-      spec_path = string.gsub(current_path, ".rb", "_spec.rb")
-      spec_path = string.gsub(spec_path, "app/jobs", "spec/jobs")
-
-      command = string.format("bin/rails generate job_spec --file_path %s", current_path)
-    else
-      vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
-      return
+      if(file_to_spec_mapping[i]) == nil then
+	vim.api.nvim_echo({{"Unhandled spec type: " .. current_path, 'None'}}, false, {})
+	return
+      end
     end
-
 
     if(vim.fn.filereadable(spec_path) == 1) then
       vim.api.nvim_echo({{'Moved to existing spec', 'None'}}, false, {})
