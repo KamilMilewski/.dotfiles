@@ -161,7 +161,7 @@ function M.create_spec()
       end
     },
     {
-      ["match_file_path"]       = function (path) return string.starts(path, "app/controllers/") end,
+      ["match_file_path"]       = function (path) return string.starts(path, "app/controllers/api/v1/") end,
       ["get_file_path"]         = function (path)
 	path =  string.gsub(path, "app/controllers/", "spec/requests/")
 	return string.gsub(path, ".rb", "_spec.rb")
