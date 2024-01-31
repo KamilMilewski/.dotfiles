@@ -102,10 +102,6 @@ function M.create_spec()
   -- app/jobs/hard_job.rb
   -- -- spec/jobs/hard_job_spec.rb
 
-  -- as just `expand("%")` sometimes yields path relative to current working directory and sometimes an absolute path.
-  -- Read more at https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim#comment34943121_22856943
-  local current_path = vim.fn.expand("%:~:.")
-
   local spec_to_file_mapping = {
     {
       ["match_file_path"] = function (path) return string.starts(path, "spec/db/migrate/") end,
@@ -212,6 +208,10 @@ end]]
     },
   }
 
+  -- as just `expand("%")` sometimes yields path relative to current working directory and sometimes an absolute path.
+  -- Read more at https://stackoverflow.com/questions/4525261/getting-relative-paths-in-vim#comment34943121_22856943
+  local current_path = vim.fn.expand("%:~:.")
+
   if(string.starts(current_path, "spec/")) then
     local file_path
 
@@ -254,7 +254,7 @@ end]]
 	message = custom_message or ("\nCreated spec file: '" .. spec_path .. "' by running command: '" .. command .. "'")
 	vim.cmd.edit(spec_path) -- open created spec
       else
-	message = "\nAborted"
+	message = " Aborted"
       end
       vim.api.nvim_echo({{message, 'None'}}, false, {})
     end
