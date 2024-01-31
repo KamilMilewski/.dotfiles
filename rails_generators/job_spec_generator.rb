@@ -16,7 +16,7 @@ class JobSpecGenerator < Rails::Generators::Base
 
       require "rails_helper"
 
-      RSpec.describe #{constant_name.classify} do
+      RSpec.describe #{constant_name.camelize.constantize} do
         it "works hard" do
           described_class.new.perform()
         end

@@ -16,7 +16,7 @@ class OperationSpecGenerator < Rails::Generators::Base
 
       require "rails_helper"
 
-      RSpec.describe #{constant_name.classify} do
+      RSpec.describe #{constant_name.camelize.constantize} do
         let(:trial)             { create :trial, :active }
         let(:user)              { create :user, :admin }
         let(:current_user)      { CurrentUser.new(user, trial) }

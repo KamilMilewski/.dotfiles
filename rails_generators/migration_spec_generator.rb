@@ -7,8 +7,8 @@ class MigrationSpecGenerator < Rails::Generators::Base
 
   def create_migration_spec_file
     # Given following file_path spec/db/migrate/20230731125129_do_stuff.rb
-    migration_name_with_time = File.basename(options["file_path"], ".*")              # would yield 20230731125129_do_stuff
-    migration_class          = migration_name_with_time.gsub(/^\d{14}_/, "").classify # would yield DoIt
+    migration_name_with_time = File.basename(options["file_path"], ".*")                          # would yield 20230731125129_do_stuff
+    migration_class          = migration_name_with_time.gsub(/^\d{14}_/, "").camelize.constantize # would yield DoIt
 
     create_file "spec/db/migrate/#{migration_name_with_time}_spec.rb", <<~RUBY
       # frozen_string_literal: true

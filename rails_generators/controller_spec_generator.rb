@@ -15,7 +15,7 @@ class ControllerSpecGenerator < Rails::Generators::Base
 
       require "rails_helper"
 
-      RSpec.describe #{controller_name.classify} do
+      RSpec.describe #{controller_name.camelize.constantize} do
         let(:trial)  { create :trial, :active }
         let(:user)   { create :user, :with_role, :with_trial, trial: trial }
         let(:#{resource_name.singularize}) { create :#{resource_name.singularize}, trial: trial }

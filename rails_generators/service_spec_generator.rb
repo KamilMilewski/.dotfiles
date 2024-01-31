@@ -16,7 +16,7 @@ class ServiceSpecGenerator < Rails::Generators::Base
 
       require "rails_helper"
 
-      RSpec.describe #{constant_name.classify} do
+      RSpec.describe #{constant_name.camelize.constantize} do
         it "does stuff" do
         end
       end
