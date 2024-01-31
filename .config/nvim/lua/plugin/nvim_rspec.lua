@@ -196,7 +196,8 @@ function M.create_spec()
       ["get_spec_file_command"] = function (path)
 	path = string.gsub(path, ".rb", "_spec.rb")
 	path = string.gsub(path, "app/", "spec/")
-	vim.api.nvim_echo({{path, 'None'}}, false, {})
+
+	local directory_path = string.gsub(path, '%w+_spec.rb\z', "")
 
 	local spec_content = [[
 # frozen_string_literal: true
@@ -205,7 +206,7 @@ require "rails_helper"
 
 RSpec.describe YourConstantHere do
 end]]
-	return string.format('echo "%s" > %s', spec_content, path)
+	return string.format('mkdir -p %s && echo "%s" > %s', directory_path, spec_content, path)
       end,
       ["message"]  	 = "\nSpec file created"
     },
