@@ -246,7 +246,7 @@ end]]
       vim.api.nvim_echo({{'Moved to existing spec', 'None'}}, false, {})
       vim.cmd.edit(spec_path) -- open found spec
     else
-      local userConfirmation = vim.fn.input("No spec file found - should I create it?: ")
+      local userConfirmation = vim.fn.input("No spec file found - should I create it (y/n)?: ")
       local message
 
       if (userConfirmation == "y") then
