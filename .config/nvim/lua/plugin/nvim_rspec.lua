@@ -101,6 +101,8 @@ function M.create_spec()
   -- -- spec/concepts/user/create_spec.rg
   -- app/jobs/hard_job.rb
   -- -- spec/jobs/hard_job_spec.rb
+  --
+  -- and more
 
   local spec_to_file_mapping = {
     {
