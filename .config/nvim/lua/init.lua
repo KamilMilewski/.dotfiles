@@ -5,12 +5,12 @@ require('plugin_config/nvim_rspec')
 require('lsp_config')
 require('autocomplete_config')
 
-function clean_code()
+function CleanCode()
   vim.api.nvim_command('w')
   vim.api.nvim_command("terminal bundle exec rubocop -A -c .rubocop_dev.yml %")
 end
 
-function clean_buffers()
+function CleanBuffers()
   -- %bd! - delete all buffers
   -- e# - open the last buffer for editing
   -- #bd - delete the [No Name] buffer

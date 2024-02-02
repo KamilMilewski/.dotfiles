@@ -88,6 +88,11 @@ source /usr/share/fzf/completion.zsh
 # Load zsh-syntax-highlighting; should be last. Require 'zsh-syntax-highlighting' package installed to work
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
+# Load zsh-autosuggestions. Require `git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions` to work
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# bind ctrl + space to accept the current suggestion:
+bindkey '^ ' autosuggest-accept
+
 # bun completions
 [ -s "/home/kamil/.bun/_bun" ] && source "/home/kamil/.bun/_bun"
 

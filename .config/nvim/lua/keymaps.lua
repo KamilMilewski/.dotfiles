@@ -24,10 +24,10 @@ map('n', '<leader>xx', '<cmd>:bd<CR>', { noremap = true })
 map('n', '<leader>ch', '<cmd>:noh<CR>', { noremap = true })
 
 -- Run clean code
-map('n', '<leader>cc', '<cmd>lua clean_code()<CR>', { noremap = true })
+map('n', '<leader>cc', '<cmd>lua CleanCode()<CR>', { noremap = true })
 
 -- Run clean buffers
-map('n', '<leader>cb', '<cmd>lua clean_buffers()<CR>', { noremap = true })
+map('n', '<leader>cb', '<cmd>lua CleanBuffers()<CR>', { noremap = true })
 
 -- Git open blame
 map('n', '<leader>vb', '<cmd>:Git blame<CR>', { noremap = true })
