@@ -11,10 +11,12 @@ function CleanCode()
 end
 
 function CleanBuffers()
-  -- %bd! - delete all buffers
-  -- e# - open the last buffer for editing
-  -- #bd - delete the [No Name] buffer
-  vim.api.nvim_command("%bd! | e# | bd#")
+  -- %bdelete   - delete all buffers
+  -- edit #     - opens file for edition. `#` in this context means alternate file name (previously being opened)
+  -- #bd        - delete the [No Name] buffer
+  -- normal `"  - execute in normal mode: go to last line number
+
+  vim.api.nvim_command("%bdelete|edit #| bd# |normal `\"")
 end
 
 -- nvim-lspconfig related
