@@ -1,8 +1,8 @@
 return require('packer').startup(function(use)
-
   -- Basic fzf integration. (FZF command)
   -- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   use 'junegunn/fzf'
+
 
   -- Extra fzf commands
   use {
@@ -10,11 +10,14 @@ return require('packer').startup(function(use)
     requires = {{ 'junegunn/fzf' }}
   }
 
+
   -- Color Theme
   use 'lifepillar/vim-solarized8'
 
+
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
 
   -- File explorer
   -- NOTE: 'kyazdani42/nvim-web-devicons' provides file icons. 'nerd-fonts-complete' AUR package has been
@@ -42,11 +45,13 @@ return require('packer').startup(function(use)
       } end
   }
 
+
   -- Ruby support
   use {
     'vim-ruby/vim-ruby',
     ft = 'ruby'
   }
+
 
   -- For rails specific goodies
   use {
@@ -54,19 +59,62 @@ return require('packer').startup(function(use)
     ft = 'ruby'
   }
 
+
   -- Collection of common configurations for Nvim built-in LSP
   use {
       "neovim/nvim-lspconfig"
   }
 
+
   -- Git plugin
   use 'tpope/vim-fugitive'
 
-  -- Minimalist and configurable status line
-  use 'itchyny/lightline.vim'
+
+  -- Fast status line written in lua
+  ------------------------------------
+  -- Function to check for git untracked and staged files presence and display it on a status line
+  local GitUntrackedStatusCache = ''
+  local GitStagedStatusCache = ''
+
+  local function GitUntrackedCallback(_, data, _)
+    if data == 0 then GitUntrackedStatusCache = 'U' else GitUntrackedStatusCache = '' end
+  end
+  local function GitStagedCallback(_, data, _)
+    if data == 0 then GitStagedStatusCache = 'S' else GitStagedStatusCache = '' end
+  end
+
+  -- check for Untracked and Staged changes asynchronously and return currently cached values in a form of `US`, `U` or `S`
+  -- shell snippets used below exits with code 0 if there are untracked (or staged in second job) changes found
+  -- (test -n checks if git command returned any character and returns status 0 if it does). It is then being checked
+  -- in on_exit callback
+  function GitCheckForBranchChanges()
+    vim.fn.jobstart("test -n \"$(git diff --name-only)\"", 	  { on_exit = GitUntrackedCallback })
+    vim.fn.jobstart("test -n \"$(git diff --name-only --cached)\"", { on_exit = GitStagedCallback })
+
+    return (GitUntrackedStatusCache .. GitStagedStatusCache) -- This is then being returned to the lualine plugin to be displayed
+  end
+  use {
+    'nvim-lualine/lualine.nvim',
+    require('lualine').setup {
+      theme = 'solarized_dark',
+      globalstatus = true,
+      extensions = {'nvim-tree', 'fzf', 'fugitive'},
+      ignore_focus = {'NvimTree', 'fzf'},
+      sections = {
+	lualine_a = {'mode'},
+	lualine_b = {'branch', 'GitCheckForBranchChanges()', 'diff', 'diagnostics'},
+	lualine_c = {'filename'},
+	lualine_x = {'encoding', 'fileformat', 'filetype'},
+	lualine_y = {'progress'},
+	lualine_z = {'location'}
+      },
+    }
+  }
+
 
   -- For commenting/uncommenting with different file types handling.
   use 'tpope/vim-commentary'
+
 
   -- For auto pairing(ending) brackets.
   use {
@@ -74,11 +122,14 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+
   -- Like auto pairs, but for method definitions and 'if' statements
   use 'tpope/vim-endwise'
 
+
   -- To add/modify/remove surround stuff like ({"''"})
   use 'tpope/vim-surround'
+
 
   -- For being able to select ruby blocks(functions, classes, etc...)
   use {
@@ -87,57 +138,73 @@ return require('packer').startup(function(use)
    requires = {{ 'kana/vim-textobj-user' }}
   }
 
+
   -- For white spaces highlighting
   use {
     'ntpeters/vim-better-whitespace',
     ft = { 'vim', 'lua', 'html', 'js', 'ts', 'tsx' }
   }
 
+
   -- For unified pane switching for tmux and vim. Thanks to this one can just do
   -- ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
   -- plugin installed)
   use 'christoomey/vim-tmux-navigator'
 
+
   -- For nice dates auto-increment (Ctrl-a)
   use 'tpope/vim-speeddating'
+
 
   -- Extends repeat (.) vim functionality so it becomes aware of some Tpope plugin actions, like vim-surround
   use 'tpope/vim-repeat'
 
+
   -- Highlight letters to jump when using f/F movements
   use 'unblevable/quick-scope'
+
 
   -- Display sign columns by modified (in git terms columns)
   use 'mhinz/vim-signify'
 
+
   -- HAML syntax highlighting
   use 'tpope/vim-haml'
 
+
   -- Faster html tags writing
   use 'mattn/emmet-vim'
+
 
   -- Provides:
   -- - line swap through [e and ]e
   -- - navigate quickfix list with [q and ]q
   use 'tpope/vim-unimpaired'
 
+
   -- JavaScript related:
   -- CoffeScript syntax highlighting
   use 'kchmck/vim-coffee-script'
 
+
   -- TypeScript support
   use 'HerringtonDarkholme/yats.vim'
+
 
   -- A syntax highlighting for JavaScript
   use 'yuezk/vim-js'
 
+
   -- The React syntax highlighting and indenting. Also supports the typescript tsx file.
   use 'maxmellon/vim-jsx-pretty'
 
+  --
   -- Autocompletion related:
+  --
 
   -- Completion engine for nvim
   use 'hrsh7th/nvim-cmp'
+
 
   --Many things, but here mostly to convert from snake to camel case, etc
   --Want to turn fooBar into foo_bar?
@@ -151,6 +218,7 @@ return require('packer').startup(function(use)
   --and Title Case (crt)
   use 'tpope/vim-abolish'
 
+
   -- Completion engine sources(List of compatible sources: https://github.com/topics/nvim-cmp):
   -- LSP source
   use {
@@ -158,11 +226,13 @@ return require('packer').startup(function(use)
     requires = {{ 'hrsh7th/nvim-cmp'}}
   }
 
+
   -- Buffer source
   use {
     'hrsh7th/cmp-buffer',
     requires = {{ 'hrsh7th/nvim-cmp'}}
   }
+
 
   -- Tabnine source (basic AI completions)
   use {
@@ -170,5 +240,4 @@ return require('packer').startup(function(use)
     run = './install.sh',
     requires = 'hrsh7th/nvim-cmp'
   }
-
 end)

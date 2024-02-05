@@ -6,7 +6,7 @@ filetype on
 
 " Enable file type-specific plugins
 filetype plugin on
-let g:markdown_fenced_languages = ['ruby', 'json', 'sh']
+let g:markdown_fenced_languages = ['ruby', 'json', 'sh', 'lua']
 
 " file type specific configs:
 autocmd FileType coffee setlocal expandtab
@@ -66,7 +66,6 @@ nnoremap <leader>d :Rg!<CR>
 " - doesn't ignore hidden files.
 " - searches only in file contents ignoring matches in filenames.
 command! -bang -nargs=* Rgi  call fzf#vim#grep("rg -. --column --line-number --no-heading --color=always --smart-case --glob=!.git -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
-
 nnoremap <leader>f :Rgi!<CR>
 
 " Search for buffer name using fzf
@@ -88,22 +87,6 @@ function! s:GDiffFiles(...) abort
         \ })
 endfunction
 nnoremap <leader>u :GDiffFiles?<CR>
-
-
-" Lightline related
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \		     [ 'filetype' ]]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
 
 
 " Speeddating related
