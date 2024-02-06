@@ -1,32 +1,37 @@
-return require('packer').startup(function(use)
+-- Setup plugin manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
+local plugins = {
   -- Basic fzf integration. (FZF command)
-  -- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  use 'junegunn/fzf'
+  'junegunn/fzf',
 
 
   -- Extra fzf commands
-  use {
-   'junegunn/fzf.vim',
-    requires = {{ 'junegunn/fzf' }}
-  }
+  { 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf' } },
 
 
   -- Color Theme
-  use 'lifepillar/vim-solarized8'
-
-
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  'lifepillar/vim-solarized8',
 
 
   -- File explorer
   -- NOTE: 'kyazdani42/nvim-web-devicons' provides file icons. 'nerd-fonts-complete' AUR package has been
   -- installed for this to work, which is ~ 2Gb. Consider removing this package when uninstalling this plugin.
-  use {
-      'kyazdani42/nvim-tree.lua',
-      requires = 'kyazdani42/nvim-web-devicons',
-      config = function() require'nvim-tree'.setup {
+  {
+    'kyazdani42/nvim-tree.lua',
+    config = function()
+      require'nvim-tree'.setup {
 	update_focused_file = {
 	  -- enables the feature (jump right into current file when opening file explorer)
 	  enable = true
@@ -43,142 +48,142 @@ return require('packer').startup(function(use)
 	git = {
 	  ignore = false
 	}
-      } end
-  }
+      }
+    end
+  },
 
 
   -- Ruby support
-  use {
-    'vim-ruby/vim-ruby',
-    ft = 'ruby'
-  }
+  { 'vim-ruby/vim-ruby', ft = 'ruby' },
 
 
   -- For rails specific goodies
-  use {
-    'tpope/vim-rails',
-    ft = 'ruby'
-  }
+  { 'tpope/vim-rails', ft = 'ruby' },
 
 
   -- Collection of common configurations for Nvim built-in LSP
-  use {
-      "neovim/nvim-lspconfig"
-  }
+  'neovim/nvim-lspconfig',
 
 
   -- Git plugin
-  use 'tpope/vim-fugitive'
+  'tpope/vim-fugitive',
 
 
   -- Fast status line written in lua
-  use {
+  {
     'nvim-lualine/lualine.nvim',
-    require('lualine').setup {
-      theme = 'solarized_dark',
-      globalstatus = true,
-      extensions = {'nvim-tree', 'fzf', 'fugitive'},
-      ignore_focus = {'NvimTree', 'fzf'},
-      sections = {
-	lualine_a = {'mode'},
-	lualine_b = {'branch', 'GitCheckForBranchChanges()', 'diff', 'diagnostics'},
-	lualine_c = {'filename'},
-	lualine_x = {'encoding', 'fileformat', 'filetype'},
-	lualine_y = {'progress'},
-	lualine_z = {'location'}
-      },
-    }
-  }
+    config = function()
+      require('lualine').setup {
+	theme = 'solarized_dark',
+	globalstatus = true,
+	extensions = {'nvim-tree', 'fzf', 'fugitive'},
+	ignore_focus = {'NvimTree', 'fzf'},
+	sections = {
+	  lualine_a = {'mode'},
+	  lualine_b = {'branch', 'GitCheckForBranchChanges()', 'diff', 'diagnostics'},
+	  lualine_c = {'filename'},
+	  lualine_x = {'encoding', 'fileformat', 'filetype'},
+	  lualine_y = {'progress'},
+	  lualine_z = {'location'}
+	},
+      }
+    end
+  },
 
 
   -- For commenting/uncommenting with different file types handling.
-  use 'tpope/vim-commentary'
+  'tpope/vim-commentary',
 
 
   -- For auto pairing(ending) brackets.
-  use {
+  {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
-  }
+  },
 
 
   -- Like auto pairs, but for method definitions and 'if' statements
-  use 'tpope/vim-endwise'
+  'tpope/vim-endwise',
 
 
   -- To add/modify/remove surround stuff like ({"''"})
-  use 'tpope/vim-surround'
+  'tpope/vim-surround',
 
 
   -- For being able to select ruby blocks(functions, classes, etc...)
-  use {
+  {
    'tek/vim-textobj-ruby',
    ft = 'ruby',
-   requires = {{ 'kana/vim-textobj-user' }}
-  }
+   dependencies = { 'kana/vim-textobj-user' }
+  },
 
 
   -- For white spaces highlighting
-  use {
+  {
     'ntpeters/vim-better-whitespace',
     ft = { 'vim', 'lua', 'html', 'js', 'ts', 'tsx' }
-  }
+  },
 
 
   -- For unified pane switching for tmux and vim. Thanks to this one can just do
   -- ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
   -- plugin installed)
-  use 'christoomey/vim-tmux-navigator'
+  'christoomey/vim-tmux-navigator',
 
 
   -- Extends repeat (.) vim functionality so it becomes aware of some Tpope plugin actions, like vim-surround
-  use 'tpope/vim-repeat'
+  'tpope/vim-repeat',
 
 
   -- Highlight letters to jump when using f/F movements
-  use 'unblevable/quick-scope'
+  {
+    'unblevable/quick-scope',
+      vim.cmd [[
+	" Trigger a highlight in the appropriate direction when pressing these keys:
+	let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+      ]]
+  },
 
 
   -- Display sign columns by modified (in git terms columns)
-  use 'mhinz/vim-signify'
+  'mhinz/vim-signify',
 
 
   -- HAML syntax highlighting
-  use 'tpope/vim-haml'
+  'tpope/vim-haml',
 
 
   -- Faster html tags writing
-  use 'mattn/emmet-vim'
+  'mattn/emmet-vim',
 
 
   -- Provides:
   -- - line swap through [e and ]e
   -- - navigate quickfix list with [q and ]q
-  use 'tpope/vim-unimpaired'
+  'tpope/vim-unimpaired',
 
 
-  -- JavaScript related:
   -- CoffeScript syntax highlighting
-  use 'kchmck/vim-coffee-script'
+  'kchmck/vim-coffee-script',
 
 
   -- TypeScript support
-  use 'HerringtonDarkholme/yats.vim'
+  'HerringtonDarkholme/yats.vim',
 
 
   -- A syntax highlighting for JavaScript
-  use 'yuezk/vim-js'
+  'yuezk/vim-js',
 
 
   -- The React syntax highlighting and indenting. Also supports the typescript tsx file.
-  use 'maxmellon/vim-jsx-pretty'
+  'maxmellon/vim-jsx-pretty',
 
   --
   -- Autocompletion related:
   --
 
   -- Completion engine for nvim
-  use 'hrsh7th/nvim-cmp'
+  'hrsh7th/nvim-cmp',
 
 
   --Many things, but here mostly to convert from snake to camel case, etc
@@ -191,7 +196,7 @@ return require('packer').startup(function(use)
   --dot.case (cr.),
   --space case (cr<space>),
   --and Title Case (crt)
-  use 'tpope/vim-abolish'
+  'tpope/vim-abolish',
 
 
   --
@@ -199,23 +204,29 @@ return require('packer').startup(function(use)
   --
 
   -- LSP source
-  use {
+  {
     'hrsh7th/cmp-nvim-lsp',
-    requires = {{ 'hrsh7th/nvim-cmp'}}
-  }
+    dependencies = {'hrsh7th/nvim-cmp'}
+  },
 
 
   -- Buffer source
-  use {
+  {
     'hrsh7th/cmp-buffer',
-    requires = {{ 'hrsh7th/nvim-cmp'}}
-  }
+    dependencies = { 'hrsh7th/nvim-cmp'}
+  },
 
 
   -- Tabnine source (basic AI completions)
-  use {
+  {
     'tzachar/cmp-tabnine',
-    run = './install.sh',
-    requires = 'hrsh7th/nvim-cmp'
-  }
-end)
+    build = './install.sh',
+    dependencies = {'hrsh7th/nvim-cmp'}
+  },
+
+}
+local opts = {
+
+}
+
+require("lazy").setup(plugins, opts)

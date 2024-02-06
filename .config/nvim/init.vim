@@ -1,5 +1,3 @@
-runtime vim_config/plugins.vim
-
 lua require 'init'
 
 filetype on
@@ -27,7 +25,7 @@ set mouse=a
 " clipboard
 set clipboard=unnamedplus
 
-" Do not jump on word highlighting
+" Do not jump on word highlighting (on shift-* press)
 nnoremap * :keepjumps normal! mi*`i<CR>
 
 " Set hybrid line numbering (relative numbers + actual number at the current
@@ -87,10 +85,6 @@ function! s:GDiffFiles(...) abort
         \ })
 endfunction
 nnoremap <leader>u :GDiffFiles?<CR>
-
-
-" Quick-scope related
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 
 " Vim-signify related

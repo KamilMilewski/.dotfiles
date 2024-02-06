@@ -47,9 +47,9 @@ system-update() {
   yay -Syu --aur --noconfirm
   echo "\n======Updating asdf plugins=======\n"
   asdf plugin update --all
-  echo "\n======Update neovim packer plugins======\n"
-  # Clean unused, Update existing and install new plugins
-  vim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  echo "\n======Update neovim plugins======\n"
+  # Run install, clean and update vim plugins
+  vim --headless "+Lazy! sync" +qa
   echo "\n======Clean up system packages======\n"
   system-clean
   echo "\n\n======Finished system update======\n"
