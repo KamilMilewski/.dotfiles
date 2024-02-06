@@ -46,3 +46,5 @@ map('n', '<leader>sm', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_last_c
 map('n', '<leader>sn', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_last_failed()<CR> ]], { noremap = true })
 map('n', '<leader>so', [[<cmd>lua require('plugin/nvim_rspec').nrspec_override_command()<CR>]], { noremap = true })
 map('n', '<leader>sj', [[<cmd>lua require('plugin/nvim_rspec').create_spec()<CR>]], { noremap = true })
+
+-- lsp related keymaps are defined in .config/nvim/lua/lsp_config/lsp_shared_config.lua
