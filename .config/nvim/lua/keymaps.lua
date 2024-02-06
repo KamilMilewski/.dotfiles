@@ -38,3 +38,11 @@ map('n', '<leader>vz', '<cmd>:terminal g qs<CR>', { noremap = true })
 
 -- Open linter error in a 'popup'
 map('n', '<space>e', '<cmd>:lua vim.diagnostic.open_float(0, {scope="line"})<CR>', { noremap = true })
+
+-- nvim_rspec (nrspec) related
+map('n', '<leader>sf', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_current_file()<CR>]], { noremap = true })
+map('n', '<leader>sl', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_current_line()<CR> ]], { noremap = true })
+map('n', '<leader>sm', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_last_command()<CR> ]], { noremap = true })
+map('n', '<leader>sn', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_last_failed()<CR> ]], { noremap = true })
+map('n', '<leader>so', [[<cmd>lua require('plugin/nvim_rspec').nrspec_override_command()<CR>]], { noremap = true })
+map('n', '<leader>sj', [[<cmd>lua require('plugin/nvim_rspec').create_spec()<CR>]], { noremap = true })
