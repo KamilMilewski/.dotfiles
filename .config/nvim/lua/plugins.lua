@@ -1,4 +1,5 @@
 return require('packer').startup(function(use)
+
   -- Basic fzf integration. (FZF command)
   -- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   use 'junegunn/fzf'
@@ -152,10 +153,6 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator'
 
 
-  -- For nice dates auto-increment (Ctrl-a)
-  use 'tpope/vim-speeddating'
-
-
   -- Extends repeat (.) vim functionality so it becomes aware of some Tpope plugin actions, like vim-surround
   use 'tpope/vim-repeat'
 
@@ -219,7 +216,10 @@ return require('packer').startup(function(use)
   use 'tpope/vim-abolish'
 
 
+  --
   -- Completion engine sources(List of compatible sources: https://github.com/topics/nvim-cmp):
+  --
+
   -- LSP source
   use {
     'hrsh7th/cmp-nvim-lsp',

@@ -89,10 +89,6 @@ endfunction
 nnoremap <leader>u :GDiffFiles?<CR>
 
 
-" Speeddating related
-au VimEnter * :SpeedDatingFormat %d.%m.%Y
-
-
 " Quick-scope related
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
