@@ -67,7 +67,6 @@ local plugins = {
   -- Collection of common configurations for Nvim built-in LSP
   'neovim/nvim-lspconfig',
 
-
   -- Git plugin
   'tpope/vim-fugitive',
 
@@ -85,7 +84,7 @@ local plugins = {
 	  lualine_a = {'mode'},
 	  lualine_b = {'branch', 'GitCheckForBranchChanges()', 'diff', 'diagnostics'},
 	  lualine_c = {'filename'},
-	  lualine_x = {'encoding', 'fileformat', 'filetype'},
+	  lualine_x = {'LspProgress()', 'encoding', 'fileformat', 'filetype'},
 	  lualine_y = {'progress'},
 	  lualine_z = {'location'}
 	},

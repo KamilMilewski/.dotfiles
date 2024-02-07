@@ -20,3 +20,15 @@ function GitCheckForBranchChanges()
   return (GitUntrackedStatusCache .. GitStagedStatusCache)
 end
 
+function LspProgress()
+  local lsp = vim.lsp.util.get_progress_messages()[1]
+  if lsp then
+    local name = lsp.name or ""
+    local percentage = lsp.percentage or 0
+    local title = lsp.title or ""
+
+    return string.format("%s: %s (%s%%%%)", name, title, percentage)
+  end
+
+  return ""
+end
