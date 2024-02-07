@@ -9,11 +9,14 @@ windows:
     - shell_command:
       - git status
       focus: true
-    - shell_command:
-      - RAISE_API_EXCEPTIONS=true ENABLE_TRAILBLAZER_OPERATIONS_WTF=true bes
+    - pane
     - pane
     - shell_command:
       - mysql-start
+    - shell_command:
+      - RAISE_API_EXCEPTIONS=true ENABLE_TRAILBLAZER_OPERATIONS_WTF=true bes
+    - shell_command:
+      - bun start:vite
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/tap/tap
