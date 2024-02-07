@@ -6,6 +6,7 @@ require('lsp_config/ruby_lsp_config')
 require('lsp_config/lua_lsp_config')
 require('lsp_config/typescript_lsp_config')
 require('autocomplete_config')
+require('treesitter_config')
 
 function CleanCode()
   vim.api.nvim_command('w')

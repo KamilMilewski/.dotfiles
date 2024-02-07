@@ -13,6 +13,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  -- Treesitter integration
+  'nvim-treesitter/nvim-treesitter',
+
   -- Basic fzf integration. (FZF command)
   'junegunn/fzf',
 
