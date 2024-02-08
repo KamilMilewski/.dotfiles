@@ -27,10 +27,10 @@ local plugins = {
   -- Color Theme
   'lifepillar/vim-solarized8',
 
-
+  'kyazdani42/nvim-web-devicons',
   -- File explorer
-  -- NOTE: 'kyazdani42/nvim-web-devicons' provides file icons. 'nerd-fonts-complete' AUR package has been
-  -- installed for this to work, which is ~ 2Gb. Consider removing this package when uninstalling this plugin.
+  -- NOTE: 'kyazdani42/nvim-web-devicons' provides file icons. Nerd fonts are required for this to work
+  -- https://www.nerdfonts.com/
   {
     'kyazdani42/nvim-tree.lua',
     config = function()
@@ -52,7 +52,8 @@ local plugins = {
 	  ignore = false
 	}
       }
-    end
+    end,
+    dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
 
 
@@ -84,7 +85,7 @@ local plugins = {
 	  lualine_a = {'mode'},
 	  lualine_b = {'branch', 'GitCheckForBranchChanges()', 'diff', 'diagnostics'},
 	  lualine_c = {'filename'},
-	  lualine_x = {'LspProgress()', 'encoding', 'fileformat', 'filetype'},
+	  lualine_x = {'LspProgress()', 'encoding', 'filetype'},
 	  lualine_y = {'progress'},
 	  lualine_z = {'location'}
 	},
