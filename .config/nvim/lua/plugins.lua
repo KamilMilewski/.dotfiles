@@ -16,6 +16,7 @@ local plugins = {
   -- Treesitter integration
   'nvim-treesitter/nvim-treesitter',
 
+
   -- Basic fzf integration. (FZF command)
   'junegunn/fzf',
 
@@ -26,6 +27,7 @@ local plugins = {
 
   -- Color Theme
   'lifepillar/vim-solarized8',
+
 
   'kyazdani42/nvim-web-devicons',
   -- File explorer
@@ -232,10 +234,7 @@ local plugins = {
     build = './install.sh',
     dependencies = {'hrsh7th/nvim-cmp'}
   },
-
 }
-local opts = {
-
-}
+local opts = {}
 
 require("lazy").setup(plugins, opts)
