@@ -10,7 +10,8 @@ windows:
       - git status
       focus: true
     - pane
-    - pane
+    - shell_command:
+      - bundle exec rails console
     - shell_command:
       - mysql-start
     - shell_command:
