@@ -19,8 +19,8 @@ alias g="git"
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim='nvim'
 alias vi='nvim'
-alias run='rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons'
-alias chrome="google-chrome-unstable &> /dev/null &"
+alias run='rofi -combi-modi window,drun,browser_bookmarks -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons -modes window,drun,combi,"browser_bookmarks:~/Misc/dotfiles/rofi_browser_bookmarks.sh"'
+alias chrome="google-chrome-stable &> /dev/null &"
 alias pacman-installed-explictly='pacman -Qqe | fzf'
 alias pacman-installed-all='pacman -Qq | fzf'
 
