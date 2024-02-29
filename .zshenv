@@ -23,6 +23,7 @@ alias run='rofi -combi-modi window,drun,browser_bookmarks -theme solarized -font
 alias chrome="google-chrome-stable &> /dev/null &"
 alias pacman-installed-explictly='pacman -Qqe | fzf'
 alias pacman-installed-all='pacman -Qq | fzf'
+alias top-resources="echo '---TOP CPU---' && ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6 && echo '\n---TOP MEMORY---' && ps -Ao user,uid,comm,pid,%mem,tty --sort=-%mem | head -n 6"
 
 # ruby/rails
 alias be="bundle exec"

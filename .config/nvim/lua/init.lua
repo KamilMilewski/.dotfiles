@@ -25,3 +25,10 @@ end
 -- nvim-lspconfig related
 -- Uncomment line below when debugging LSP. Causes degraded performance and disk usage.
 -- vim.lsp.set_log_level("debug")
+
+
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true

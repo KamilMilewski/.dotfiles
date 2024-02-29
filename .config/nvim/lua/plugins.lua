@@ -234,6 +234,9 @@ local plugins = {
     build = './install.sh',
     dependencies = {'hrsh7th/nvim-cmp'}
   },
+
+  -- copilot auto suggestions
+  'github/copilot.vim',
 }
 local opts = {}
 
