@@ -47,7 +47,7 @@ local on_attach = function(client, bufnr)
   setup_diagnostics(client, bufnr)
 end
 
-require'lspconfig'.ruby_ls.setup{
+require'lspconfig'.ruby_lsp.setup{
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
