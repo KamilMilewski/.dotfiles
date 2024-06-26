@@ -1,0 +1,26 @@
+session_name: tap
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/algrano/webapp
+   shell_command_before:
+    - export DB_HOST=localhost && export DB_USERNAME=kamil_admin && export DB_password=supersecret
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - pane
+    - shell_command:
+      - bundle exec rails console
+    - shell_command:
+      - pg_ctl start
+    - shell_command:
+      - bes
+    - shell_command:
+      - git status
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/algrano/webapp
+   shell_command_before:
+    - export DB_HOST=localhost && export DB_USERNAME=kamil_admin && export DB_password=supersecret
+    - vim

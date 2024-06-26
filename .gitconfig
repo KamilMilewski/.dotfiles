@@ -17,6 +17,7 @@
 	d = !git status -s && git diff
 	dc = !git status -s && git diff --cached
 	pf = push --force-with-lease
+	pff = push --force
 	cob = checkout -b
 	syncf = !git fetch upstream && git checkout master && git rebase upstream/master && git push # as `git sync with forked repo`
 	qs = !git add . && git commit --amend --no-edit # as 'git quick save'
