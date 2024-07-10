@@ -4,7 +4,7 @@ windows:
    layout: tiled
    start_directory: ~/Work/algrano/webapp
    shell_command_before:
-    - export DB_HOST=localhost && export DB_USERNAME=kamil_admin && export DB_password=supersecret
+    - set -a && source .env && set +a && env
    panes:
     - shell_command:
       - git status
@@ -17,10 +17,10 @@ windows:
     - shell_command:
       - bes
     - shell_command:
-      - git status
+      - bundle exec rails jobs:work
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/algrano/webapp
    shell_command_before:
-    - export DB_HOST=localhost && export DB_USERNAME=kamil_admin && export DB_password=supersecret
+    - set -a && source .env && set +a && env
     - vim
