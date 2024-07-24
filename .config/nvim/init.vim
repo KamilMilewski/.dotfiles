@@ -99,4 +99,3 @@ command Cfpf :let @+=expand("%:p")
 command Cfpr :let @+=expand("%:.p")
 " Format JSON
 command! -range Formatjson <line1>,<line2>!python -m json.tool
-

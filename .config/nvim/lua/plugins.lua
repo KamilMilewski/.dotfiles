@@ -147,9 +147,10 @@ require("lazy").setup({
     -- Highlight letters to jump when using f/F movements
     {
       'unblevable/quick-scope',
-	vim.cmd [[
-	  " Trigger a highlight in the appropriate direction when pressing these keys:
-	  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+      init = function()
+        vim.cmd [[
+          " Trigger a highlight in the appropriate direction when pressing these keys:
+          let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 	  augroup qs_colors
 	    autocmd!
@@ -157,6 +158,7 @@ require("lazy").setup({
 	    autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 	  augroup END
 	]]
+      end
     },
 
 
