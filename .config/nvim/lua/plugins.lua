@@ -18,11 +18,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- Treesitter integration
-    'nvim-treesitter/nvim-treesitter',
+    { 'nvim-treesitter/nvim-treesitter' },
 
 
     -- Basic fzf integration. (FZF command)
-    'junegunn/fzf',
+    { 'junegunn/fzf' },
 
 
     -- Extra fzf commands
@@ -30,10 +30,10 @@ require("lazy").setup({
 
 
     -- Color Theme
-    'lifepillar/vim-solarized8',
+    { 'lifepillar/vim-solarized8' },
 
 
-    'kyazdani42/nvim-web-devicons',
+    { 'kyazdani42/nvim-web-devicons' },
     -- File explorer
     -- NOTE: 'kyazdani42/nvim-web-devicons' provides file icons. Nerd fonts are required for this to work
     -- https://www.nerdfonts.com/
@@ -72,10 +72,10 @@ require("lazy").setup({
 
 
     -- Collection of common configurations for Nvim built-in LSP
-    'neovim/nvim-lspconfig',
+    { 'neovim/nvim-lspconfig' },
 
     -- Git plugin
-    'tpope/vim-fugitive',
+    { 'tpope/vim-fugitive' },
 
 
     -- Fast status line written in lua
@@ -101,7 +101,7 @@ require("lazy").setup({
 
 
     -- For commenting/uncommenting with different file types handling.
-    'tpope/vim-commentary',
+    { 'tpope/vim-commentary' },
 
 
     -- For auto pairing(ending) brackets.
@@ -112,11 +112,11 @@ require("lazy").setup({
 
 
     -- Like auto pairs, but for method definitions and 'if' statements
-    'tpope/vim-endwise',
+    { 'tpope/vim-endwise' },
 
 
     -- To add/modify/remove surround stuff like ({"''"})
-    'tpope/vim-surround',
+    { 'tpope/vim-surround' },
 
 
     -- For being able to select ruby blocks(functions, classes, etc...)
@@ -137,11 +137,11 @@ require("lazy").setup({
     -- For unified pane switching for tmux and vim. Thanks to this one can just do
     -- ctrl-hjkl to move between panes both in vim and tmux(with corresponding tmux
     -- plugin installed)
-    'christoomey/vim-tmux-navigator',
+    { 'christoomey/vim-tmux-navigator' },
 
 
     -- Extends repeat (.) vim functionality so it becomes aware of some Tpope plugin actions, like vim-surround
-    'tpope/vim-repeat',
+    { 'tpope/vim-repeat' },
 
 
     -- Highlight letters to jump when using f/F movements
@@ -161,44 +161,44 @@ require("lazy").setup({
 
 
     -- Display sign columns by modified (in git terms columns)
-    'mhinz/vim-signify',
+    { 'mhinz/vim-signify' },
 
 
     -- HAML syntax highlighting
-    'tpope/vim-haml',
+    { 'tpope/vim-haml' },
 
 
     -- Faster html tags writing
-    'mattn/emmet-vim',
+    { 'mattn/emmet-vim' },
 
 
     -- Provides:
     -- - line swap through [e and ]e
     -- - navigate quickfix list with [q and ]q
-    'tpope/vim-unimpaired',
+    { 'tpope/vim-unimpaired' },
 
 
     -- CoffeScript syntax highlighting
-    'kchmck/vim-coffee-script',
+    { 'kchmck/vim-coffee-script' },
 
 
     -- TypeScript support
-    'HerringtonDarkholme/yats.vim',
+    { 'HerringtonDarkholme/yats.vim' },
 
 
     -- A syntax highlighting for JavaScript
-    'yuezk/vim-js',
+    { 'yuezk/vim-js' },
 
 
     -- The React syntax highlighting and indenting. Also supports the typescript tsx file.
-    'maxmellon/vim-jsx-pretty',
+    { 'maxmellon/vim-jsx-pretty' },
 
     --
     -- Autocompletion related:
     --
 
     -- Completion engine for nvim
-    'hrsh7th/nvim-cmp',
+    { 'hrsh7th/nvim-cmp' },
 
 
     --Many things, but here mostly to convert from snake to camel case, etc
@@ -211,7 +211,7 @@ require("lazy").setup({
     --dot.case (cr.),
     --space case (cr<space>),
     --and Title Case (crt)
-    'tpope/vim-abolish',
+    { 'tpope/vim-abolish' },
 
 
     --
