@@ -89,6 +89,13 @@ function string.starts(String,Start)
    return string.sub(String,1,string.len(Start))==Start
 end
 
+local generic_spec_content = [[
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe YourConstantHere do
+end]]
 function M.create_spec()
   -- HANDLED CASES:
   -- app/controllers/api/v1/users_controller.rb
@@ -185,6 +192,7 @@ function M.create_spec()
 	return string.format("bin/rails generate job_spec --file_path %s", path)
       end
     },
+    -- Generic specs below (won't have ruby generator run for them)
     {
       ["match_file_path"]       = function (path) return string.starts(path, "app/") end,
       ["get_file_path"]         = function (path)
@@ -197,14 +205,23 @@ function M.create_spec()
 
 	local directory_path = string.gsub(path, '%w+_spec.rb\z', "")
 
-	local spec_content = [[
-# frozen_string_literal: true
+	return string.format('mkdir -p %s && echo "%s" > %s', directory_path, generic_spec_content, path)
+      end,
+      ["message"]  	 = "\nSpec file created"
+    },
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "engines/") end,
+      ["get_file_path"]         = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	return  string.gsub(path, "engines/", "spec/")
+      end,
+      ["get_spec_file_command"] = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	path = string.gsub(path, "engines/", "spec/")
 
-require "rails_helper"
+	local directory_path = string.gsub(path, '%w+_spec.rb\z', "")
 
-RSpec.describe YourConstantHere do
-end]]
-	return string.format('mkdir -p %s && echo "%s" > %s', directory_path, spec_content, path)
+	return string.format('mkdir -p %s && echo "%s" > %s', directory_path, generic_spec_content, path)
       end,
       ["message"]  	 = "\nSpec file created"
     },
