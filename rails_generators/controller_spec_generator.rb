@@ -21,7 +21,7 @@ class ControllerSpecGenerator < Rails::Generators::Base
         let(:#{resource_name.singularize}) { create :#{resource_name.singularize}, trial: trial }
 
         describe "#index" do
-          let(:path) { "/api/v1/trials/#\{trial.id\}/#{controller_name.gsub(/_controller\z/, "")}" }
+          let(:path) { "/api/v1/trials/#\{trial.id}/#{controller_name.gsub(/_controller\z/, "")}" }
 
           it "returns unauthorized when user isn't signed in" do
             get_json path, params: {}
