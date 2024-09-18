@@ -40,6 +40,9 @@ system-update() {
   echo "################################################################################
 ############################ Starting system update ############################
 ################################################################################"
+  # store last system update date so it could be accessed later on with command system-last-update
+  echo "$(date)" >> /tmp/last_system_update_date
+
   echo "\n======Updating mirrors list======\n"
   sudo reflector --latest 5 --country 'Poland,Germany,' --sort rate --protocol https --save /etc/pacman.d/mirrorlist
   echo "\n======Updating system packages (Pacman)======\n"
@@ -67,7 +70,7 @@ system-clean() {
   echo "\n=======Finished cleaning up system======\n"
 }
 system-last-update() {
-  awk 'END{sub(/\[/,""); print $1}' /var/log/pacman.log
+  tail -n 1 /tmp/last_system_update_date
 }
 mysql-console() {
   echo "==================================================="
