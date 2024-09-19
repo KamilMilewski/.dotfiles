@@ -63,6 +63,8 @@ system-clean() {
   sudo paccache -rk 2
   echo "\n======Cleaning up pacman cache: remove all cache of uninstalled packages======\n"
   sudo paccache -ruk0
+  echo "\n======Cleaning up yay cache======\n"
+  sudo rm -rf ~/.cache/yay
   echo "\n======Pacman: remove orphaned packages======\n"
   sudo pacman -Qtdq | sudo pacman -Rns -
   echo "NOTE: If no orphans were found, the output is error: argument '-' specified with empty stdin.\n" \

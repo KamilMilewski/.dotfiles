@@ -28,6 +28,11 @@ set clipboard=unnamedplus
 " Do not jump on word highlighting (on shift-* press)
 nnoremap * :keepjumps normal! mi*`i<CR>
 
+" Disable Perl provider
+let g:loaded_perl_provider = 0
+" Disable Python provider
+let g:loaded_python3_provider = 0
+
 " Set hybrid line numbering (relative numbers + actual number at the current
 " line). Also return back normal numbering when entering insert mode or if
 " buffer focus lost.

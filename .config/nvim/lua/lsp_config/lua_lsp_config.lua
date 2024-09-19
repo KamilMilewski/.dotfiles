@@ -31,5 +31,13 @@ require'lspconfig'.lua_ls.setup {
   on_attach = require('lsp_config/lsp_shared_config').setup_keymaps,
   flags = {
     debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      diagnostics = {
+	  -- Get the language server to recognize the `vim` global
+	  globals = { "vim" },
+      }
+    }
   }
 }

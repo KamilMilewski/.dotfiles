@@ -47,3 +47,4 @@ o.backup = false
 
 -- line below allows to do ':set list' to display white space characters
 o.listchars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
+
