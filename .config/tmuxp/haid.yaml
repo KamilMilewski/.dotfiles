@@ -1,10 +1,8 @@
-session_name: algrano
+session_name: haid
 windows:
  - window_name: terminal
    layout: tiled
-   start_directory: ~/Work/algrano/webapp
-   shell_command_before:
-    - set -a && source .env && set +a && env
+   start_directory: ~/Work/haid
    panes:
     - shell_command:
       - git status
@@ -13,14 +11,13 @@ windows:
     - shell_command:
       - bundle exec rails console
     - shell_command:
-      - pg_ctl start
+      - git status
     - shell_command:
       - bes
     - shell_command:
-      - bundle exec rails jobs:work
+      - git status
  - window_name: editor
    layout: tiled
-   start_directory: ~/Work/algrano/webapp
+   start_directory: ~/Work/haid
    shell_command_before:
-    - set -a && source .env && set +a && env
     - vim
