@@ -9,7 +9,7 @@ require('treesitter_config')
 
 function CleanCode()
   vim.api.nvim_command('w')
-  vim.api.nvim_command("terminal bundle exec rubocop -A -c .rubocop_dev.yml %")
+  vim.api.nvim_command("terminal bundle exec rubocop -A -c .rubocop.yml %")
 end
 
 function CleanBuffers()
