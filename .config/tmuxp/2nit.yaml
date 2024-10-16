@@ -1,0 +1,26 @@
+session_name: 2nit
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/2n-website
+   shell_command_before:
+    - set -a && source .env && set +a && env
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - pane
+    - shell_command:
+      - bundle exec rails console
+    - shell_command:
+      - pg_ctl start
+    - shell_command:
+      - bes
+    - shell_command:
+      - vite dev
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/2n-website
+   shell_command_before:
+    - set -a && source .env && set +a && env
+    - vim
