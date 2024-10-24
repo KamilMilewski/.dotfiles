@@ -1,0 +1,19 @@
+session_name: 2n-organization-and-culture
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/2n-organization-and-culture
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - pane
+    - shell_command:
+      - git status
+    - shell_command:
+      - git status
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/2n-organization-and-culture
+   shell_command_before:
+    - vim
