@@ -2,5 +2,5 @@
 /mess_around/*
 /lib/generators
 .irb_history
-
+.~lock*
 
