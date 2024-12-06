@@ -1,8 +1,8 @@
-session_name: 2nit
+session_name: kpkm-file-nest
 windows:
  - window_name: terminal
    layout: tiled
-   start_directory: ~/Work/2n-website
+   start_directory: ~/Work/kpkm-file-nest
    shell_command_before:
     - set -a && source .env && set +a && env
    panes:
@@ -20,7 +20,7 @@ windows:
       - bundle exec vite dev
  - window_name: editor
    layout: tiled
-   start_directory: ~/Work/2n-website
+   start_directory: ~/Work/kpkm-file-nest
    shell_command_before:
     - set -a && source .env && set +a && env
     - vim
