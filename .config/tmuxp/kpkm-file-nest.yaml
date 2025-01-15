@@ -17,7 +17,7 @@ windows:
     - shell_command:
       - bes
     - shell_command:
-      - bundle exec vite dev
+      - bin/rails tailwindcss:watch
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/kpkm-file-nest
