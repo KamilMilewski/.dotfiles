@@ -1,12 +1,12 @@
 [user]
-	name = Kamil Milewski
-	email = kamil.milewski@hotmail.com
+    name = Kamil Milewski
+    email = kamil.milewski@hotmail.com
 [core]
-	editor = nvim
-	excludesFile = ~/.gitignore
-	pager = delta # git-delta related
+    editor = nvim
+    excludesFile = ~/.gitignore
+    pager = delta # git-delta related
 [credential]
-	helper = cache --timeout=36000
+    helper = cache --timeout=36000
 [interactive]
     diffFilter = delta --color-only # git-delta related
 [delta]
@@ -21,23 +21,23 @@
 [diff]
     colorMoved = default # git-delta related
 [alias]
-  st = !printf '>-> git status\n' && git status
-	co = checkout
-	cof = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
-	brd = !git for-each-ref --format='%(refname:short)' refs/heads | fzf --multi | xargs -p git branch -D
-	p = push
-	l = log
-	po = push --set-upstream origin HEAD # as 'git push outside'
-	d = !git status -s && git diff
-	dc = !git status -s && git diff --cached
-	pf = push --force-with-lease
-	pff = push --force
-	cob = checkout -b
-	syncf = !git fetch upstream && git checkout master && git rebase upstream/master && git push # as `git sync with forked repo`
-	qs = !git add . && git commit --amend --no-edit # as 'git quick save'
-	qsf = !git add . && git commit --amend --no-edit --no-verify # as 'git quick save with force (skips git hooks)'
-	ns = !git add . && git commit # as 'git new save'
-	br = branch --sort=-committerdate
-	bcp = !git branch --show-current | tr -d '\n' | xclip -selection clipboard # as 'git branch copy'
-	res = !git reset --hard && git clean -df
+    st = !printf '>-> git status\n' && git status
+    co = checkout
+    cof = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
+    brd = !git for-each-ref --format='%(refname:short)' refs/heads | fzf --multi | xargs -p git branch -D
+    p = push
+    l = log
+    po = push --set-upstream origin HEAD # as 'git push outside'
+    d = !git status -s && git diff
+    dc = !git status -s && git diff --cached
+    pf = push --force-with-lease
+    pff = push --force
+    cob = checkout -b
+    syncf = !git fetch upstream && git checkout master && git rebase upstream/master && git push # as `git sync with forked repo`
+    qs = !git add . && git commit --amend --no-edit # as 'git quick save'
+    qsf = !git add . && git commit --amend --no-edit --no-verify # as 'git quick save with force (skips git hooks)'
+    ns = !git add . && git commit # as 'git new save'
+    br = branch --sort=-committerdate
+    bcp = !git branch --show-current | tr -d '\n' | xclip -selection clipboard # as 'git branch copy'
+    res = !git reset --hard && git clean -df
 
