@@ -1,0 +1,26 @@
+session_name: cohort-builder
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/customer-gumed-cohort-builder-app
+   shell_command_before:
+    - set -a && source .env && set +a && env
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - pane
+    - shell_command:
+      - bundle exec rails console
+    - shell_command:
+      - pg_ctl start
+    - shell_command:
+      - bes
+    - shell_command:
+      - bin/rails tailwindcss:watch
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/customer-gumed-cohort-builder-app
+   shell_command_before:
+    - set -a && source .env && set +a && env
+    - vim
