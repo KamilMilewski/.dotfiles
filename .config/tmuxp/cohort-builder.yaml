@@ -9,15 +9,22 @@ windows:
     - shell_command:
       - git status
       focus: true
-    - pane
+    - shell_command:
+      - git status
+    - shell_command:
+      - git status
     - shell_command:
       - bundle exec rails console
     - shell_command:
-      - pg_ctl start
+      - SERVER_BUNDLE_ONLY=yes bin/shakapacker --watch
+    - shell_command:
+      - bin/rails tailwindcss:watch
     - shell_command:
       - bes
     - shell_command:
-      - bin/rails tailwindcss:watch
+      - bin/shakapacker-dev-server
+    - shell_command:
+      - pg_ctl start
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/customer-gumed-cohort-builder-app

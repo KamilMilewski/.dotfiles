@@ -92,7 +92,7 @@ end
 local generic_spec_content = [[
 # frozen_string_literal: true
 
-require "rails_helper"
+require \"rails_helper\"
 
 RSpec.describe YourConstantHere do
 end]]
@@ -182,7 +182,7 @@ function M.create_spec()
     {
       ["match_file_path"]       = function (path) return string.starts(path, "app/controllers/api/v1/") end,
       ["get_file_path"]         = function (path)
-	path =  string.gsub(path, "app/controllers/", "spec/requests/")
+	path =  string.gsub(path, "app/controllers/", "spec/controllers/")
 	return string.gsub(path, ".rb", "_spec.rb")
       end,
       ["get_spec_file_command"] = function (path)

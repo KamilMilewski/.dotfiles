@@ -80,7 +80,7 @@ nnoremap <leader>i :GFiles?<CR>
 " Search in files that changed between current and master branch
 command! -nargs=* GDiffFiles call s:GDiffFiles(<q-args>)
 function! s:GDiffFiles(...) abort
-  let l:git_command = 'git diff --name-only master..HEAD'
+  let l:git_command = 'git diff --name-only main..HEAD'
   let l:files = systemlist(l:git_command)
   let l:query = join(a:000, ' ')
   let l:selected_file = fzf#run({
