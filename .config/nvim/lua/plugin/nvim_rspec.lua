@@ -97,6 +97,11 @@ require \"rails_helper\"
 RSpec.describe YourConstantHere do
 end]]
 function M.create_spec()
+  -- NOTE: what to watch out for:
+  -- - for this to work you have to link rails_generators dir from this repo onto lib/generators in project you are
+  -- working on!!!
+  --
+  --
   -- HANDLED CASES:
   -- app/controllers/api/v1/users_controller.rb
   -- -- spec/requests/api/v1/users_controller_spec.rb

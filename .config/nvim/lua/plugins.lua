@@ -30,7 +30,7 @@ require("lazy").setup({
 
 
     -- Color Theme
-    { 'lifepillar/vim-solarized8' },
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
 
 
     { 'kyazdani42/nvim-web-devicons' },
@@ -83,7 +83,7 @@ require("lazy").setup({
       'nvim-lualine/lualine.nvim',
       config = function()
 	require('lualine').setup {
-	  theme = 'solarized_dark',
+	  theme = 'gruvbox',
 	  globalstatus = true,
 	  extensions = {'nvim-tree', 'fzf', 'fugitive'},
 	  ignore_focus = {'NvimTree', 'fzf'},

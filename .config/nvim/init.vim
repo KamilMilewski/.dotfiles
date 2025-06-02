@@ -48,12 +48,6 @@ augroup END
 " So vimgrep command will ignore irrelevant dirs
 set wildignore+=*/node_modules/*
 
-" Solarized8 (Color Theme) related:
-set termguicolors
-set background=dark
-autocmd vimenter * ++nested colorscheme solarized8
-let g:solarized_extra_hi_groups = 1
-
 " Nvim Tree related:
 " NOTE: rest of the config is in .config/nvim/lua/plugins.lua
 nnoremap <leader>n :NvimTreeToggle<CR>

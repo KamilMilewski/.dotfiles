@@ -24,3 +24,7 @@ end
 -- nvim-lspconfig related
 -- Uncomment line below when debugging LSP. Causes degraded performance and disk usage.
 -- vim.lsp.set_log_level("debug")
+
+-- Gruvbox color themer related
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
