@@ -3,3 +3,9 @@ size = 8.0
 
 [window]
 startup_mode = "Maximized"
+
+# https://github.com/alacritty/alacritty-theme
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/gruvbox_material_hard_dark.toml"
+]
