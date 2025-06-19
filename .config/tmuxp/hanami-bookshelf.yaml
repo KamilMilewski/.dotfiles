@@ -1,0 +1,26 @@
+session_name: hanami-bookshelf
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/Projects/hanami_bookshelf
+   shell_command_before:
+    - set -a && source .env && set +a && env
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - pane
+    - shell_command:
+      - git status
+    - shell_command:
+      - git status
+    - shell_command:
+      - git status
+    - shell_command:
+      - git status
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/Projects/hanami_bookshelf
+   shell_command_before:
+    - set -a && source .env && set +a && env
+    - vim

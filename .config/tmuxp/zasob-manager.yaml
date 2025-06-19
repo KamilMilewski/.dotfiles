@@ -1,0 +1,23 @@
+session_name: zasob-manager
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/Projects/zasob-manager
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - pane
+    - shell_command:
+      - git status
+    - shell_command:
+      - pg_ctl --silent start
+    - shell_command:
+      - bundle exec hanami server
+    - shell_command:
+      - npm --prefix frontend run dev
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/Projects/zasob-manager
+   shell_command_before:
+    - vim
