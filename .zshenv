@@ -8,7 +8,7 @@ alias ls='ls --color=auto'
 alias cls='printf "\033c"'
 alias grep='grep --color'
 alias wifi='nmtui'
-alias notes='vim -c "cd %:p:h" -- ~/Work/notes/other_notes.md'
+alias notes='vim -c "cd %:p:h" -- ~/Misc/notes/other_notes.md'
 alias notes-status="(cd ~/Misc/notes && git status && git diff)"
 alias notes-save="(cd ~/Misc/notes && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
 alias scratchpad-status="(cd ~/Misc/global-scratchpad && git status && git diff)"

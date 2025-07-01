@@ -74,10 +74,21 @@ nnoremap <leader>i :GFiles?<CR>
 " Search in files that changed between current and master branch
 command! -nargs=* GDiffFiles call s:GDiffFiles(<q-args>)
 function! s:GDiffFiles(...) abort
-  let l:git_command = 'git diff --name-only main..HEAD'
+  " Get the default branch (main or master or otherwise)
+  let l:default_branch = systemlist('git symbolic-ref refs/remotes/origin/HEAD')[0]
+  let l:default_branch = substitute(l:default_branch, 'refs/remotes/origin/', '', '')
+
+  " Fallback to 'main' if detection fails
+  if empty(l:default_branch)
+    let l:default_branch = 'main'
+  endif
+
+  " Get list of changed files since default branch
+  let l:git_command = 'git diff --name-only ' . l:default_branch . '..HEAD'
   let l:files = systemlist(l:git_command)
-  let l:query = join(a:000, ' ')
-  let l:selected_file = fzf#run({
+
+  " Run fzf with preview using bat
+  call fzf#run({
         \ 'source': l:files,
         \ 'sink': 'e',
         \ 'options': '--preview "bat --color=always --style=numbers,changes --line-range :500 {}"',
