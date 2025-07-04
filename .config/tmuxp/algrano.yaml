@@ -2,7 +2,7 @@ session_name: algrano
 windows:
  - window_name: terminal
    layout: tiled
-   start_directory: ~/Work/algrano/webapp
+   start_directory: ~/Work/Projects/algrano
    shell_command_before:
     - set -a && source .env && set +a && env
    panes:
@@ -15,12 +15,12 @@ windows:
     - shell_command:
       - pg_ctl start
     - shell_command:
-      - bes
+      - bin/dev
     - shell_command:
-      - bundle exec rails jobs:work
+      - git status
  - window_name: editor
    layout: tiled
-   start_directory: ~/Work/algrano/webapp
+   start_directory: ~/Work/Projects/algrano
    shell_command_before:
     - set -a && source .env && set +a && env
     - vim
