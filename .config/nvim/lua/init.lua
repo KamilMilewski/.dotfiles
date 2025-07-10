@@ -9,7 +9,12 @@ require('treesitter_config')
 
 function CleanCode()
   vim.api.nvim_command('w')
-  vim.api.nvim_command("terminal bundle exec rubocop -A -c .rubocop.yml %")
+
+  if vim.fn.filereadable('.rubocop.yml') == 1 then
+    vim.api.nvim_command("terminal bundle exec rubocop -A -c .rubocop.yml %")
+  else
+    vim.api.nvim_command("terminal bundle exec rubocop -A %")
+  end
 end
 
 function CleanBuffers()
@@ -29,3 +34,55 @@ end
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
 
+-- Copy yaml path under cursor (Cyp - as Copy yaml path)
+function Cyp()
+  local ts_utils = require('nvim-treesitter.ts_utils')
+  local node = ts_utils.get_node_at_cursor()
+  local path = {}
+
+  while node do
+    if node:type() == 'block_mapping_pair' then
+      local key_node = node:child(0)
+      if key_node then
+        local key_text = vim.treesitter.get_node_text(key_node, 0)
+        table.insert(path, 1, key_text)
+      end
+    end
+    node = node:parent()
+  end
+
+  local result = table.concat(path, '.')
+  vim.fn.setreg('+', result) -- Copy to system clipboard
+  print("YAML Path: " .. result)
+end
+
+vim.api.nvim_set_keymap('n', '<leader>yp', [[:lua Cyp()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_create_user_command('Cyp', Cyp, {})
+
+
+-- Copy constant class (Ccn - as Copy constant name)
+local function Ccn()
+  local ts_utils = require('nvim-treesitter.ts_utils')
+  local node = ts_utils.get_node_at_cursor()
+  local path = {}
+
+  while node do
+    local type = node:type()
+    if type == 'class' or type == 'module' then
+      -- Child 1 is the constant name
+      local name_node = node:child(1)
+      if name_node then
+        local name = vim.treesitter.get_node_text(name_node, 0)
+        table.insert(path, 1, name)
+      end
+    end
+    node = node:parent()
+  end
+
+  local result = table.concat(path, '::')
+  vim.fn.setreg('+', result)
+  print("Constant name: " .. result)
+end
+
+vim.api.nvim_create_user_command('Ccn', Ccn, {})
+vim.keymap.set('n', '<leader>yc', ':Ccn<CR>', { noremap = true, silent = true })
