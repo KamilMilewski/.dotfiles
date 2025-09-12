@@ -103,9 +103,10 @@ set updatetime=100
 
 
 " Custom commands
-" Copy File Path(full) to system clipboard.
-command Cfpf :let @+=expand("%:p")
-" Copy File Path(Relative) to system clipboard.
-command Cfpr :let @+=expand("%:.p")
+" Copy full file path with line number
+command Cfpf :let @+=expand("%:p") . ":" . line(".")
+" Copy relative file path with line number
+command Cfpr :let @+=expand("%:.") . ":" . line(".")
+
 " Format JSON
 command! -range Formatjson <line1>,<line2>!python -m json.tool

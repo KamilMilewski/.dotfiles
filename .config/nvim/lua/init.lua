@@ -34,11 +34,19 @@ end
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
 
--- Copy yaml path under cursor (Cyp - as Copy yaml path)
-function Cyp()
-  local ts_utils = require('nvim-treesitter.ts_utils')
+
+
+
+local ts_utils = require('nvim-treesitter.ts_utils')
+
+local function get_yaml_path()
   local node = ts_utils.get_node_at_cursor()
   local path = {}
+
+  -- Climb to the nearest block_mapping_pair if starting on a value or scalar
+  while node and node:type() ~= 'block_mapping_pair' do
+    node = node:parent()
+  end
 
   while node do
     if node:type() == 'block_mapping_pair' then
@@ -51,25 +59,23 @@ function Cyp()
     node = node:parent()
   end
 
+  if #path == 0 then
+    print("No YAML path found")
+    return
+  end
+
   local result = table.concat(path, '.')
-  vim.fn.setreg('+', result) -- Copy to system clipboard
+  vim.fn.setreg('+', result)
   print("YAML Path: " .. result)
 end
 
-vim.api.nvim_set_keymap('n', '<leader>yp', [[:lua Cyp()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_create_user_command('Cyp', Cyp, {})
-
-
--- Copy constant class (Ccn - as Copy constant name)
-local function Ccn()
-  local ts_utils = require('nvim-treesitter.ts_utils')
+local function get_ruby_constant_path()
   local node = ts_utils.get_node_at_cursor()
   local path = {}
 
   while node do
     local type = node:type()
     if type == 'class' or type == 'module' then
-      -- Child 1 is the constant name
       local name_node = node:child(1)
       if name_node then
         local name = vim.treesitter.get_node_text(name_node, 0)
@@ -84,5 +90,26 @@ local function Ccn()
   print("Constant name: " .. result)
 end
 
-vim.api.nvim_create_user_command('Ccn', Ccn, {})
-vim.keymap.set('n', '<leader>yc', ':Ccn<CR>', { noremap = true, silent = true })
+-- Unified context-aware function
+local yaml_like_filetypes = {
+  yaml = true,
+  yml = true,
+  ['eruby.yaml'] = true,
+  ['yaml.erb'] = true,
+}
+
+local function CopyContextPath()
+  local ft = vim.bo.filetype
+
+  if yaml_like_filetypes[ft] then
+    get_yaml_path()
+  elseif ft == 'ruby' then
+    get_ruby_constant_path()
+  else
+    print("Unsupported filetype: " .. ft)
+  end
+end
+
+-- Keybinding and command
+vim.api.nvim_create_user_command('Cp', CopyContextPath, {}) -- Cp - as Copy path
+vim.keymap.set('n', '<leader>yp', ':Cp<CR>', { noremap = true, silent = true })
