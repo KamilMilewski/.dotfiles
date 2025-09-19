@@ -1,7 +1,10 @@
 require('plugins')
 require('settings')
 require('keymaps')
+
 require('plugin_config/lualine')
+require('plugin_config/vim-rails')
+
 require('lsp_config/ruby_lsp_config')
 require('lsp_config/lua_lsp_config')
 require('lsp_config/project_root_detection_config')
