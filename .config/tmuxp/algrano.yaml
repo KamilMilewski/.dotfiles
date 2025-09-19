@@ -17,7 +17,7 @@ windows:
     - shell_command:
       - bin/dev
     - shell_command:
-      - git status
+      - bundle exec rails jobs:work
  - window_name: editor
    layout: tiled
    start_directory: ~/Work/Projects/algrano
