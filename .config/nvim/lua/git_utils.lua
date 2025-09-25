@@ -33,14 +33,32 @@ vim.api.nvim_create_user_command("ResetToMaster", function()
 
   local branch = get_default_branch()
 
-  local cmd = { "git", "restore", "--source=" .. branch, "--", file }
+  -- get current cursor position
+  local cursor = vim.api.nvim_win_get_cursor(0)
+
+  -- get blob content from git
+  local cmd = { "git", "show", branch .. ":" .. vim.fn.fnamemodify(file, ":.") }
+
   vim.fn.jobstart(cmd, {
+    stdout_buffered = true,
+    stderr_buffered = true,
+    on_stdout = function(_, data)
+      if not data then return end
+      -- replace buffer content
+      vim.api.nvim_buf_set_lines(0, 0, -1, false, data)
+      -- restore cursor
+      vim.api.nvim_win_set_cursor(0, cursor)
+    end,
+    on_stderr = function(_, data)
+      if data and #data > 0 then
+        vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR)
+      end
+    end,
     on_exit = function(_, code)
       if code == 0 then
-        vim.notify("Reset " .. file .. " to " .. branch .. " (unstaged)", vim.log.levels.INFO)
-        vim.cmd("edit!")
+        vim.notify("Loaded " .. file .. " from " .. branch .. " into buffer (unsaved)", vim.log.levels.INFO)
       else
-        vim.notify("Failed to reset " .. file .. " to " .. branch, vim.log.levels.ERROR)
+        vim.notify("Failed to load " .. file .. " from " .. branch, vim.log.levels.ERROR)
       end
     end,
   })
