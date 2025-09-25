@@ -33,13 +33,11 @@ vim.api.nvim_create_user_command("ResetToMaster", function()
 
   local branch = get_default_branch()
 
-  vim.notify("branch=[" .. branch .. "]")
-
-  local cmd = { "git", "checkout", branch, "--", file }
+  local cmd = { "git", "restore", "--source=" .. branch, "--", file }
   vim.fn.jobstart(cmd, {
     on_exit = function(_, code)
       if code == 0 then
-        vim.notify("Reset " .. file .. " to " .. branch, vim.log.levels.INFO)
+        vim.notify("Reset " .. file .. " to " .. branch .. " (unstaged)", vim.log.levels.INFO)
         vim.cmd("edit!")
       else
         vim.notify("Failed to reset " .. file .. " to " .. branch, vim.log.levels.ERROR)
