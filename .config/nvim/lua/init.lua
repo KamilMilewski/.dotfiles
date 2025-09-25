@@ -12,6 +12,7 @@ require('autocomplete_config')
 require('treesitter_config')
 require('rails_migrations_helpers')
 require('copy_path_config')
+require('git_utils')
 
 function CleanCode()
   vim.api.nvim_command('w')
