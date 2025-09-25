@@ -138,6 +138,13 @@ function M.create_spec()
 	return string.gsub(path, "spec/engines/", "engines/")
       end
     },
+    {
+      ["match_file_path"] = function (path) return string.starts(path, "spec/lib/") end,
+      ["get_file_path"]   = function (path)
+	path = string.gsub(path, "_spec.rb", ".rb")
+	return string.gsub(path, "spec/lib/", "lib/")
+      end
+    },
     { -- a default branch for generic, simple case where spec file path closely reflects path to the tested file
       ["match_file_path"] = function () return true end,
       ["get_file_path"]   = function (path)
@@ -230,6 +237,22 @@ function M.create_spec()
       ["get_spec_file_command"] = function (path)
 	path = string.gsub(path, ".rb", "_spec.rb")
 	path = string.gsub(path, "engines/", "spec/engines/")
+
+	local directory_path = string.gsub(path, '%w+_spec.rb\z', "")
+
+	return string.format('mkdir -p %s && echo "%s" > %s', directory_path, generic_spec_content, path)
+      end,
+      ["message"]  	 = "\nSpec file created"
+    },
+    {
+      ["match_file_path"]       = function (path) return string.starts(path, "lib/") end,
+      ["get_file_path"]         = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	return  string.gsub(path, "lib/", "spec/lib/")
+      end,
+      ["get_spec_file_command"] = function (path)
+	path = string.gsub(path, ".rb", "_spec.rb")
+	path = string.gsub(path, "lib/", "spec/lib/")
 
 	local directory_path = string.gsub(path, '%w+_spec.rb\z', "")
 
