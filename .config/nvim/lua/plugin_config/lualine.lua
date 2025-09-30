@@ -21,14 +21,28 @@ function GitCheckForBranchChanges()
 end
 
 function LspProgress()
-  -- local lsp = vim.lsp.util.get_progress_messages()[1]
-  -- if lsp then
-  --   local name = lsp.name or ""
-  --   local percentage = lsp.percentage or 0
-  --   local title = lsp.title or ""
+  -- 1) Prefer the aggregated progress string (returns "" when nothing's happening)
+  if vim.lsp.status then
+    local s = vim.lsp.status()
+    if type(s) == "string" and s ~= "" then
+      return s
+    end
+  end
 
-  --   return string.format("%s: %s (%s%%%%)", name, title, percentage)
-  -- end
+  -- 2) Otherwise list attached clients using the new API
+  local bufnr = vim.api.nvim_get_current_buf()
+  local clients = {}
+  if vim.lsp.get_clients then
+    clients = vim.lsp.get_clients({ bufnr = bufnr })
+  end
 
-  return "TODO: fix lsp progress"
+  if not clients or #clients == 0 then
+    return ""
+  end
+
+  local names = {}
+  for _, client in ipairs(clients) do
+    table.insert(names, client.name)
+  end
+  return "[" .. table.concat(names, ", ") .. "]"
 end

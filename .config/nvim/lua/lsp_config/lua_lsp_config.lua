@@ -1,4 +1,6 @@
--- config from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
+local LspSharedConfig = require("lsp_config/lsp_shared_config")
+
+-- config from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls (modified)
 require'lspconfig'.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
@@ -28,7 +30,7 @@ require'lspconfig'.lua_ls.setup {
     end
     return true
   end,
-  on_attach = require('lsp_config/lsp_shared_config').setup_keymaps,
+  on_attach = LspSharedConfig.on_attach,
   flags = {
     debounce_text_changes = 150,
   },

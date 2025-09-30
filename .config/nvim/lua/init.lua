@@ -5,9 +5,10 @@ require('keymaps')
 require('plugin_config/lualine')
 require('plugin_config/vim-rails')
 
+-- LSP related:
 require('lsp_config/ruby_lsp_config')
 require('lsp_config/lua_lsp_config')
-require('lsp_config/project_root_detection_config')
+
 require('autocomplete_config')
 require('treesitter_config')
 require('rails_migrations_helpers')
