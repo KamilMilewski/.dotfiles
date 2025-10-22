@@ -18,7 +18,6 @@ alias dotfiles-status="(cd ~/Misc/dotfiles && git status && git diff)"
 alias dotfiles-reset="(cd ~/Misc/dotfiles && git reset --hard)"
 alias dotfiles-save="(cd ~/Misc/dotfiles && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
 alias g="git"
-alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias vim='nvim'
 alias vi='nvim'
 alias run='rofi -combi-modi window,drun,browser_bookmarks -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons -modes window,drun,combi,"browser_bookmarks:~/Misc/dotfiles/rofi_browser_bookmarks.sh"'
@@ -30,7 +29,6 @@ alias top-cpu="watch -n 1 \"echo '---TOP CPU---' && ps -Ao user,uid,comm,pid,pcp
 # ruby/rails
 alias be="bundle exec"
 alias ber="bundle exec rspec"
-alias berf="bundle exec rspec --only-failures"
 alias bec="bundle exec rails console"
 alias bes="bundle exec rails server"
 alias beg="bundle exec rails generate"
@@ -74,23 +72,3 @@ system-clean() {
 system-last-update() {
   tail -n 1 ~/Temp/last_system_update_dates
 }
-mysql-console() {
-  echo "==================================================="
-  echo "type 'USE <database name>;' to select database"
-  echo "type 'SHOW databases;' to list available databases"
-  echo "type 'DROP DATABASE \`<database name>\`;' to remove database"
-  echo "==================================================="
-  mysql -h localhost -P 3306 --protocol=tcp -u root -psupersecret
-}
-mysql-start() {
-  sudo systemctl start docker && \
-  docker rm -f mysql && \
-  docker run \
-    --name=mysql \
-    --publish 3306:3306 \
-    --volume=/home/kamil/Misc/docker_volumes/mysql_data:/var/lib/mysql \
-    --env MYSQL_ROOT_HOST='%' \
-    --env MYSQL_ROOT_PASSWORD='supersecret' \
-    -d mysql/mysql-server:latest
-}
-

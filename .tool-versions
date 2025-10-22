@@ -1,5 +1,5 @@
 # global versions config for asdf
-ruby 3.4.4
+ruby 3.4.7
 nodejs 24.2.0
 lua-language-server 3.7.4
 postgres 17.5

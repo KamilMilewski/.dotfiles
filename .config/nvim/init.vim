@@ -107,6 +107,3 @@ set updatetime=100
 command Cfpf :let @+=expand("%:p") . ":" . line(".")
 " Copy relative file path with line number
 command Cfpr :let @+=expand("%:.") . ":" . line(".")
-
-" Format JSON
-command! -range Formatjson <line1>,<line2>!python -m json.tool
