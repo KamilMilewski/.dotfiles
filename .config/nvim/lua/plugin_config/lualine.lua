@@ -25,7 +25,7 @@ function LspProgress()
   if vim.lsp.status then
     local s = vim.lsp.status()
     if type(s) == "string" and s ~= "" then
-      return s
+      return "vim.lsp.status(): " .. s
     end
   end
 
@@ -37,7 +37,7 @@ function LspProgress()
   end
 
   if not clients or #clients == 0 then
-    return ""
+    return "no LSP clients"
   end
 
   local names = {}
