@@ -1,4 +1,3 @@
--- lua/lsp_config/lsp_shared_config.lua
 local LspSharedConfig = {}
 
 local function setup_keymaps(_, bufnr)
