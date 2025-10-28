@@ -25,6 +25,7 @@ alias chrome="google-chrome-stable &> /dev/null &"
 alias pacman-installed-explictly='pacman -Qqe | fzf'
 alias pacman-installed-all='pacman -Qq | fzf'
 alias top-cpu="watch -n 1 \"echo '---TOP CPU---' && ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6 && echo '---TOP MEMORY---' && ps -Ao user,uid,comm,pid,%mem,tty --sort=-%mem | head -n 6\""
+alias hpr="dbus-run-session Hyprland"
 
 # ruby/rails
 alias be="bundle exec"
