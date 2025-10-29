@@ -35,6 +35,15 @@ alias bes="bundle exec rails server"
 alias beg="bundle exec rails generate"
 alias bek="bundle exec rake"
 
+# Allows to fuzzy search rails routes and copies selected one to system clipboard
+# awk '{print $1}' - get first string from selected line
+# tr -d '[:space:]' - get rid of surrounding whitespaces
+# tee >(xclip -selection clipboard) - copy to system clipboard & display copied result in terminal
+# echo - added at the end so terminal won't add 'no new line indicator'
+rails-routes-selector() {
+  be rails routes | fzf | awk '{print $1}' | tr -d '[:space:]' | tee >(xclip -selection clipboard); echo
+}
+
 system-update() {
   echo "################################################################################
 ############################ Starting system update ############################
