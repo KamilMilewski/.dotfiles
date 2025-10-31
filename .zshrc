@@ -106,3 +106,9 @@ bindkey '^ ' autosuggest-accept
 # fs.inotify.max_user_instances=8192
 # fs.inotify.max_user_watches=524288
 ulimit -Sn 10000
+
+
+# This is to cache ssh passwords, so that user is being asked only first time for it (for example when operating git)
+# There is also corresponding config under ~/.ssh/config (AddKeysToAgent)
+# REFERENCE: https://wiki.archlinux.org/title/SSH_keys#Start_ssh-agent_with_systemd_user
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
