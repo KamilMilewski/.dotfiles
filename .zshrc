@@ -112,3 +112,7 @@ ulimit -Sn 10000
 # There is also corresponding config under ~/.ssh/config (AddKeysToAgent)
 # REFERENCE: https://wiki.archlinux.org/title/SSH_keys#Start_ssh-agent_with_systemd_user
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+
+screen-capture-region() {
+  grim -g "$(slurp)" - | swappy -f -
+}
