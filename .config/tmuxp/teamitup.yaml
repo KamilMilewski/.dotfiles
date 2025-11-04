@@ -1,0 +1,27 @@
+session_name: teamitup
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/Projects/teamitup
+   # shell_command_before:
+   #  - set -a && source .env && set +a && env
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - shell_command:
+      - git status
+    - shell_command:
+      - bundle exec rails console
+    - shell_command:
+      - git status
+    - shell_command:
+      - bes
+    - shell_command:
+      - git status
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/Projects/teamitup
+   shell_command_before:
+    # - set -a && source .env && set +a && env
+    - vim
