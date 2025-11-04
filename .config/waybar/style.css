@@ -1,3 +1,5 @@
+@define-color box-color #101e21;
+
 /* --- Global Styles --- */
 * {
   font-family: 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif;
@@ -31,7 +33,7 @@
 /* --- CPU + Memory Group (Single Seamless Block) --- */
 #cpu,
 #memory {
-  background-color: #1a1b26;
+  background-color: @box-color;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px; 
   box-shadow: none;
@@ -106,9 +108,9 @@
 }
 
 #clock {
-  background-color: #1a1b26;
+  background-color: @box-color;
   padding: 0.3rem 0.7rem;
-  margin: 5px 0px;
+  margin: 5px 5px 5px 0px;
   border-radius: 6px; /* This module is always rounded */
   /* box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2); */
   box-shadow: none;
@@ -167,7 +169,7 @@
 #network,
 #custom-lock,
 #battery {
-  background-color: #1a1b26;
+  background-color: @box-color;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px; 
   border-radius: 0;
