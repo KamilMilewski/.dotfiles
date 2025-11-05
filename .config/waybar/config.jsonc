@@ -16,8 +16,9 @@
     "network",
     "pulseaudio", 
     "backlight",
+    "tray",
     "battery",
-    "clock"
+    "clock",
   ],
 
   "hyprland/workspaces": {
@@ -129,6 +130,10 @@
     "format" : ""
   },
 
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  }
   // "custom/pomodoro": {
   //   "format": "{}",
   //   "return-type": "json",

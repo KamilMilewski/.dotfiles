@@ -41,7 +41,7 @@ alias bek="bundle exec rake"
 # tee >(xclip -selection clipboard) - copy to system clipboard & display copied result in terminal
 # echo - added at the end so terminal won't add 'no new line indicator'
 rails-routes-selector() {
-  be rails routes | fzf | awk '{print $1}' | tr -d '[:space:]' | tee >(xclip -selection clipboard); echo
+  be rails routes | fzf --header-lines=1 | awk '{print $1}' | tr -d '[:space:]' | tee >(xclip -selection clipboard); echo
 }
 
 system-update() {

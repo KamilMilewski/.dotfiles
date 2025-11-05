@@ -98,6 +98,7 @@
 #backlight,
 #network,
 #custom-lock,
+#tray,
 #battery {
   background-color: @box-color;
   padding: 0.3rem 0.7rem;
@@ -118,6 +119,7 @@
 #custom-lock:hover,
 #clock:hover,
 #memory:hover,
+#tray:hover,
 #battery:hover {
   background-color: rgb(41, 42, 53);
 }
