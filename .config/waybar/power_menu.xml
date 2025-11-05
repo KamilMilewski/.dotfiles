@@ -12,11 +12,16 @@
       </object>
     </child>
     <child>
+      <object class="GtkMenuItem" id="suspend">
+        <property name="label">  Suspend</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkSeparatorMenuItem" id="delimiter1"/>
     </child>
     <child>
-      <object class="GtkMenuItem" id="suspend">
-        <property name="label">  Suspend</property>
+      <object class="GtkMenuItem" id="lock">
+        <property name="label">  Lock Screen</property>
       </object>
     </child>
   </object>
