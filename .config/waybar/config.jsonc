@@ -46,9 +46,9 @@
 
   "clock": {
     "timezone": "Europe/Warsaw",
-    "format": "{:%H:%M:%S  -  %d-%m-%Y %a}",
+    "format": "{:%H:%M:%S %a %d-%m-%Y}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%d %B %Y}",
+    "format-alt": "{:%A / %d %B %Y}",
     "interval": 1
   },
 
