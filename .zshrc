@@ -116,3 +116,9 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 screen-capture-region() {
   grim -g "$(slurp)" - | swappy -f -
 }
+screen-record-region() {
+  wf-recorder -g "$(slurp)"
+}
+screen-record() {
+  wf-recorder
+}
