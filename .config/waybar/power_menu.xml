@@ -2,7 +2,7 @@
 <interface>
   <object class="GtkMenu" id="menu">
     <child>
-      <object class="GtkMenuItem" id="shutdown">
+      <object class="GtkMenuItem" id="poweroff">
 	<property name="label">  Power Off</property>
       </object>
     </child>

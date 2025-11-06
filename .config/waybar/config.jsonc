@@ -125,7 +125,7 @@
     "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
     "menu-actions": {
       "lock": "hyprlock",
-      "shutdown": "shutdown",
+      "poweroff": "poweroff",
       "reboot": "reboot",
       "suspend": "systemctl suspend",
       // "hibernate": "systemctl hibernate"
