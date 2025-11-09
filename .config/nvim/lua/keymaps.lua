@@ -47,4 +47,21 @@ map('n', '<leader>sn', [[<cmd>lua require('plugin/nvim_rspec').nrspec_run_last_f
 map('n', '<leader>so', [[<cmd>lua require('plugin/nvim_rspec').nrspec_override_command()<CR>]], { noremap = true })
 map('n', '<leader>sj', [[<cmd>lua require('plugin/nvim_rspec').create_spec()<CR>]], { noremap = true })
 
+-- Yank current line without leading/trailing whitespace (to system clipboard, with highlight)
+vim.keymap.set('n', '<leader>yy', function()
+  local line = vim.fn.getline('.')
+  line = string.gsub(line, '^%s*(.-)%s*$', '%1')  -- trim both sides
+  vim.fn.setreg('+', line)                        -- copy to system clipboard
+
+  -- manually highlight the yanked line
+  local ns = vim.api.nvim_create_namespace('trimmed_yank')
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lnum = vim.fn.line('.') - 1  -- 0-based
+  local _id = vim.api.nvim_buf_add_highlight(bufnr, ns, 'IncSearch', lnum, 0, -1)
+
+  vim.defer_fn(function()
+    vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+  end, 150)  -- 150 ms like regular yank flash
+end, { desc = 'Yank line trimmed (clipboard)' })
+
 -- lsp related keymaps are defined in .config/nvim/lua/lsp_config/lsp_shared_config.lua

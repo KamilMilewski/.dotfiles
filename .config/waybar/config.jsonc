@@ -14,7 +14,7 @@
   "modules-right": [
     "bluetooth",
     "network",
-    "pulseaudio", 
+    "pulseaudio",
     "backlight",
     "tray",
     "battery",
@@ -33,7 +33,7 @@
   "bluetooth": {
     "format": "󰂲",
     "format-on": "{icon}",
-    "format-off": "{icon}", 
+    "format-off": "{icon}",
     "format-connected":"{icon}",
     "format-icons":{
         "on":"󰂯",
@@ -80,7 +80,7 @@
     "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
     "tooltip": false
   },
-  
+
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "",
@@ -106,7 +106,7 @@
     // "format-full": "",
     "format-icons": ["", "", "", "", ""]
   },
-  
+
   "custom/lock": {
     "tooltip": false,
     "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
