@@ -47,9 +47,18 @@
   "clock": {
     "timezone": "Europe/Warsaw",
     "format": "{:%H:%M:%S %a %d-%m-%Y}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%A / %d %B %Y}",
-    "interval": 1
+    "interval": 1,
+    "calendar": {
+      "mode": "month",
+      "format": {
+	"months": "<span color='#d3869b'><b>{}</b></span>",     // purple
+	"days": "<span color='#ebdbb2'><b>{}</b></span>",       // light fg
+	"weekdays": "<span color='#b8bb26'><b>{}</b></span>",   // green
+	"today": "<span color='#fabd2f'><b>{}</b></span>"       // yellow/orange accent
+      }
+    }
   },
 
   "network": {
