@@ -53,10 +53,10 @@
     "calendar": {
       "mode": "month",
       "format": {
-	"months": "<span color='#d3869b'><b>{}</b></span>",     // purple
-	"days": "<span color='#ebdbb2'><b>{}</b></span>",       // light fg
-	"weekdays": "<span color='#b8bb26'><b>{}</b></span>",   // green
-	"today": "<span color='#fabd2f'><b>{}</b></span>"       // yellow/orange accent
+	"months": "<span color='#d3869b'><b>{}</b></span>",
+	"days": "<span color='#ebdbb2'><b>{}</b></span>",
+	"weekdays": "<span color='#b8bb26'><b>{}</b></span>",
+	"today": "<span color='#fabd2f'><b>{}</b></span>"
       }
     }
   },
@@ -74,7 +74,7 @@
     "interval": 1,
     "format": "  {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15} {usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-    "on-click": "alacritty -e btop"
+    "on-click": "hyprctl dispatch exec '[float;center;size 60% 50%] kitty -e btop'"
   },
 
   "memory": {
