@@ -1,10 +1,9 @@
 if [ "$(tty)" = "/dev/tty1" -o "$(tty)" = "/dev/vc/1" ] ; then
   # NOTE: run Hyprland after login
-  # dbus-run-session Hyprland
 
-  # if uwsm check may-start; then
+  if uwsm check may-start; then
     exec uwsm start hyprland-uwsm.desktop
-  # fi
+  fi
 fi
 
 if [ "$(tty)" = "/dev/tty2" -o "$(tty)" = "/dev/vc/2" ] ; then

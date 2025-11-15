@@ -19,13 +19,12 @@ alias dotfiles-reset="(cd ~/Misc/dotfiles && git reset --hard)"
 alias dotfiles-save="(cd ~/Misc/dotfiles && git pull --no-rebase && git add . && git commit -m 'save point' && git push)"
 alias g="git"
 alias vim='nvim'
-alias vi='nvim'
 alias run='rofi -combi-modi window,drun,browser_bookmarks -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons -modes window,drun,combi,"browser_bookmarks:~/Misc/dotfiles/rofi_browser_bookmarks.sh"'
 alias chrome="google-chrome-stable &> /dev/null &"
 alias pacman-installed-explictly='pacman -Qqe | fzf'
 alias pacman-installed-all='pacman -Qq | fzf'
 alias top-cpu="watch -n 1 \"echo '---TOP CPU---' && ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6 && echo '---TOP MEMORY---' && ps -Ao user,uid,comm,pid,%mem,tty --sort=-%mem | head -n 6\""
-alias hpr="dbus-run-session Hyprland"
+alias hpr="uwsm start hyprland-uwsm.desktop"
 
 # ruby/rails
 alias be="bundle exec"
