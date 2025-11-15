@@ -1,3 +1,5 @@
+// NOTE: Modules list:
+// https://github.com/Alexays/Waybar/wiki
 {
   "layer": "top",
   "position": "top",
@@ -15,7 +17,7 @@
 
   "modules-right": [
     "bluetooth",
-    "network",
+    // "network",
     "pulseaudio",
     "backlight",
     "tray",
@@ -63,14 +65,15 @@
     }
   },
 
-  "network": {
-    "format-wifi": "󰤢",
-    "format-ethernet": "󰈀 ",
-    "format-disconnected": "󰤠 ",
-    "interval": 5,
-    "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "nm-connection-editor"
-  },
+  // NOTE: for now this is being handled by nm-applet. One can also invoke nm-connection-editor from there.
+  // "network": {
+  //   "format-wifi": "󰤢",
+  //   "format-ethernet": "󰈀 ",
+  //   "format-disconnected": "󰤠 ",
+  //   "interval": 5,
+  //   "tooltip-format": "{essid} ({signalStrength}%)",
+  //   "on-click": "nm-connection-editor"
+  // },
 
   "cpu": {
     "interval": 1,
@@ -164,54 +167,8 @@
 
 
 
-
-
-
-
-
-
 // // -*- mode: jsonc -*-
 // {
-//     // "layer": "top", // Waybar at top layer
-//     // "position": "bottom", // Waybar position (top|bottom|left|right)
-//     "height": 25, // Waybar height (to be removed for auto height)
-//     // "width": 1280, // Waybar width
-//     "spacing": 4, // Gaps between modules (4px)
-//     // Choose the order of the modules
-//     "modules-left": [
-// 	"hyprland/workspaces",
-//     ],
-//     "modules-center": [
-//         "hyprland/window"
-//     ],
-//     "modules-right": [
-//         "mpd",
-//         // "idle_inhibitor",
-//         "pulseaudio",
-//         "network",
-//         "power-profiles-daemon",
-//         "cpu",
-//         "memory",
-//         "backlight",
-//         "keyboard-state",
-//         "battery",
-//         "battery#bat2",
-//         "clock",
-//         "tray",
-//         "custom/power"
-//     ],
-//     // Modules configuration
-//     "hyprland/workspaces": {
-//         "disable-scroll": true,
-//         "all-outputs": true,
-//         "warp-on-scroll": false,
-//         "format": "{name}: {icon}",
-//         "format-icons": {
-//             "urgent": "",
-//             "active": "",
-//             "default": ""
-//         }
-//     },
 //     "keyboard-state": {
 //         "numlock": true,
 //         "capslock": true,
@@ -227,61 +184,12 @@
 //     "hyprland/window": {
 // 	"separate-outputs": true
 //     },
-//     "mpd": {
-//         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-//         "format-disconnected": "Disconnected ",
-//         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-//         "unknown-tag": "N/A",
-//         "interval": 5,
-//         "consume-icons": {
-//             "on": " "
-//         },
-//         "random-icons": {
-//             "off": "<span color=\"#f53c3c\"></span> ",
-//             "on": " "
-//         },
-//         "repeat-icons": {
-//             "on": " "
-//         },
-//         "single-icons": {
-//             "on": "1 "
-//         },
-//         "state-icons": {
-//             "paused": "",
-//             "playing": ""
-//         },
-//         "tooltip-format": "MPD (connected)",
-//         "tooltip-format-disconnected": "MPD (disconnected)"
-//     },
 //     "idle_inhibitor": {
 //         "format": "{icon}",
 //         "format-icons": {
 //             "activated": "",
 //             "deactivated": ""
 //         }
-//     },
-//     "tray": {
-//         // "icon-size": 21,
-//         "spacing": 10,
-//         // "icons": {
-//         //   "blueman": "bluetooth",
-//         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-//         // }
-//     },
-//     "clock": {
-//         "timezone": "Europe/Warsaw",
-// 	"format": "{:%H:%M %d-%m-%Y}",
-//         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-//         "format-alt": "{:%Y-%m-%d}"
-//     },
-//     "cpu": {
-//         "format": "{usage}% ",
-//         "tooltip": false,
-// 	"interval": 2
-//     },
-//     "memory": {
-//         "format": "{}% ",
-// 	"interval": 2
 //     },
 //     "temperature": {
 //         // "thermal-zone": 2,
@@ -365,16 +273,4 @@
 //         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
 //         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
 //     },
-//     "custom/power": {
-//         "format" : "⏻ ",
-// 		"tooltip": false,
-// 		"menu": "on-click",
-// 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-// 		"menu-actions": {
-// 			"shutdown": "shutdown",
-// 			"reboot": "reboot",
-// 			"suspend": "systemctl suspend",
-// 			"hibernate": "systemctl hibernate"
-// 		}
-//     }
 // }
