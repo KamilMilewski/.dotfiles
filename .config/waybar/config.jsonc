@@ -9,7 +9,9 @@
     "memory"
   ],
 
-  "modules-center": ["hyprland/window"],
+  "modules-center": [
+    "hyprland/window"
+  ],
 
   "modules-right": [
     "bluetooth",
@@ -35,11 +37,11 @@
     "format-on": "{icon}",
     "format-off": "{icon}",
     "format-connected":"{icon}",
-    "format-icons":{
-        "on":"󰂯",
-        "off": "󰂲",
-        "connected": "󰂱",
-        },
+    "format-icons": {
+      "on":"󰂯",
+       "off": "󰂲",
+       "connected": "󰂱",
+    },
     "on-click": "blueman-manager",
     "tooltip-format-connected":"{device_enumerate}"
   },
