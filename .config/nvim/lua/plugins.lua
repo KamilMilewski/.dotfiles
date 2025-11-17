@@ -232,13 +232,5 @@ require("lazy").setup({
       'hrsh7th/cmp-buffer',
       dependencies = { 'hrsh7th/nvim-cmp'}
     },
-
-
-    -- Tabnine source (basic AI completions)
-    {
-      'tzachar/cmp-tabnine',
-      build = './install.sh',
-      dependencies = {'hrsh7th/nvim-cmp'}
-    }
   }
 })

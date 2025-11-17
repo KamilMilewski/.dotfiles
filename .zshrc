@@ -37,7 +37,7 @@ source ~/.bash_locale
 setopt noflowcontrol
 
 # vi mode
-bindkey -v
+bindkey -e
 export KEYTIMEOUT=1
 
 # Edit line in vim with ctrl-e:
