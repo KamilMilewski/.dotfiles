@@ -10,7 +10,7 @@ windows:
       - git status
       focus: true
     - shell_command:
-      - while true; do lt --port 3000 --subdomain kamil-milewski-development-localtunel || true; echo "Restarting localtunnel..."; sleep 2; done
+      - ngrok http 3000
     - shell_command:
       - bundle exec rails console
     - shell_command:
