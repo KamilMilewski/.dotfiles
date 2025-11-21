@@ -30,7 +30,7 @@ HISTORY_IGNORE="git checkout -b '*"
 
 # due to some weird bug, tmuxp won't run without this:
 # https://github.com/tmux-python/tmuxp/issues/405
-source ~/.bash_locale
+# source ~/.bash_locale
 
 # To unbind ctrl-s (ctrl-s more or less just freezes the terminal, its a redundant functionality from ancient times).
 # Thanks to this we can bind ctrl-s to something useful, like 'exit nvim terminal insert mode' for example.
