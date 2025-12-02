@@ -107,3 +107,6 @@ screen-record-region() {
 screen-record() {
   wf-recorder
 }
+remove-from-shell-history() {
+  selected=$(fzf < "/home/kamil/.histfile") && pattern=$(printf '%q' "$selected") && sed -i "/^$pattern$/d" "/home/kamil/.histfile"
+}
