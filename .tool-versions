@@ -4,3 +4,5 @@ nodejs 24.2.0
 lua-language-server 3.7.4
 postgres 17.7
 lua 5.1
+elixir 1.19.4-otp-28
+erlang 28.2
