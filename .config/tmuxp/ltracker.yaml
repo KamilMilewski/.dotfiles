@@ -10,7 +10,7 @@ windows:
     - shell_command:
       - git status
     - shell_command:
-      - git status
+      - iex
     - shell_command:
       - pg_ctl start
     - shell_command:

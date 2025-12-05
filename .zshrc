@@ -102,7 +102,7 @@ screen-capture-region() {
   grim -g "$(slurp)" - | swappy -f -
 }
 screen-record-region() {
-  wf-recorder -g "$(slurp)"
+  wf-recorder -g "$(slurp)" -f ~/Videos/screen-recording-capture/recording.mp4
 }
 screen-record() {
   wf-recorder
