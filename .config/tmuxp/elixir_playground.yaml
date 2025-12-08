@@ -1,0 +1,25 @@
+session_name: elixir_playground
+windows:
+ - window_name: terminal
+   layout: tiled
+   start_directory: ~/Work/Projects/elixir_playground
+   panes:
+    - shell_command:
+      - git status
+      focus: true
+    - shell_command:
+      - git status
+    - shell_command:
+      - iex -S mix
+    - shell_command:
+      - pg_ctl start
+    - shell_command:
+      - git status
+    - shell_command:
+      - git status
+ - window_name: editor
+   layout: tiled
+   start_directory: ~/Work/Projects/elixir_playground
+   shell_command_before:
+    - vim
+
