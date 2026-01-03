@@ -1,6 +1,9 @@
 export EDITOR=nvim
 export VISUAL=nvim
 
+# Enable command history for Elixir
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # General aliases
 alias ls='ls --color=auto'
 # It scrolls down the terminal window to the point there is nothing shown. So it works like clear but without actually
