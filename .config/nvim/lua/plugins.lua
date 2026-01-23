@@ -232,5 +232,8 @@ require("lazy").setup({
       'hrsh7th/cmp-buffer',
       dependencies = { 'hrsh7th/nvim-cmp'}
     },
+
+    -- Copilot integration
+    { 'github/copilot.vim' }
   }
 })
