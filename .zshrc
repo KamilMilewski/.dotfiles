@@ -75,9 +75,11 @@ PROMPT='
 # end of prompt customization
 
 # ASDF (version manager) related
-# https://github.com/asdf-vm/asdf
-# https://asdf-vm.com/#/core-manage-asdf
-. $HOME/.asdf/asdf.sh
+#
+# Old:
+# . $HOME/.asdf/asdf.sh
+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # FZF (fuzzy search) related
 # To follow symbolic link and don't exclude hidden files (except .git dir). Use find alternative - fd.

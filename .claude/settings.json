@@ -1,0 +1,19 @@
+{
+  "model": "opus[1m]",
+  "theme": "dark",
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "msg=\"$(jq -r '.message // \"Claude needs your input\"')\"; notify-send \"🤖 Claude Code\" \"$msg\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

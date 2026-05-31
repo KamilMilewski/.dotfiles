@@ -71,14 +71,30 @@ system-update() {
 system-clean() {
   echo "\n======Cleaning up pacman cache: keep only last 2 recent versions of cached packages======\n"
   sudo paccache -rk 2
+
   echo "\n======Cleaning up pacman cache: remove all cache of uninstalled packages======\n"
   sudo paccache -ruk0
+
   echo "\n======Cleaning up yay cache======\n"
   sudo rm -rf ~/.cache/yay
+
   echo "\n======Pacman: remove orphaned packages======\n"
   sudo pacman -Qtdq | sudo pacman -Rns -
+
   echo "NOTE: If no orphans were found, the output is error: argument '-' specified with empty stdin.\n" \
        " This is expected as no arguments were passed to pacman -Rns."
+
+  echo "\n======Cleaning up user cache dir======\n"
+  find ~/.cache -type f -mtime +10 -delete
+  find ~/.cache -type d -empty -delete
+
+  echo "\n======Cleaning up npm======\n"
+  npm cache clean --force || true
+  rm -rf ~/.npm/_npx
+
+  echo "\n======Vacuuming journalctl======\n"
+  sudo journalctl --vacuum-time=7d || true
+
   echo "\n=======Finished cleaning up system======\n"
 }
 system-last-update() {

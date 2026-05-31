@@ -3,4 +3,11 @@
 /lib/generators
 .irb_history
 .~lock*
+/data.ms
 
+
+**/.claude/settings.local.json
+
+# Claude Code user config: track settings.json only — never secrets, transcripts, sessions, etc.
+/.claude/*
+!/.claude/settings.json

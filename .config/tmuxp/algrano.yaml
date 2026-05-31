@@ -14,7 +14,8 @@ windows:
     - shell_command:
       - bundle exec rails console
     - shell_command:
-      - pg_ctl start
+      - pg_ctl -s -l /tmp/postgres.log start
+      # - meilisearch --master-key="supersecret"
     - shell_command:
       - bin/dev
     - shell_command:
