@@ -1,8 +1,18 @@
 {
+  "statusLine": {
+    "type": "command",
+    "command": "sh /home/kamil/.claude/statusline-command.sh"
+  },
   "model": "opus[1m]",
   "theme": "dark",
   "enabledPlugins": {
     "ruby-lsp@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(standardrb *)",
+      "Bash(standardrb)"
+    ]
   },
   "hooks": {
     "Notification": [
