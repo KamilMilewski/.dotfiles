@@ -24,6 +24,16 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh /home/kamil/.claude/generate-topic.sh"
+          }
+        ]
+      }
     ]
   }
 }
