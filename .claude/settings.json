@@ -11,7 +11,19 @@
   "permissions": {
     "allow": [
       "Bash(standardrb *)",
-      "Bash(standardrb)"
+      "Bash(standardrb)",
+      "Bash(bundle exec rspec *)",
+      "Bash(bundle exec parallel_rspec *)",
+      "Bash(bundle exec standardrb *)",
+      "Bash(grep *)",
+      "Bash(jq *)",
+      "Bash(command -v *)",
+      "Bash(tmux show-options *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Read(//home/kamil/.claude/**)",
+      "Read(//home/kamil/Misc/dotfiles/**)"
     ]
   },
   "hooks": {

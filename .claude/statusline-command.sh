@@ -71,14 +71,15 @@ fi
 
 # --- render ---
 # cwd in bold blue, model in dim magenta, bars in dim cyan.
-# Auto-topic stands out: bold bright amber on a subtle background with a ✦
-# marker, so the dynamic session title is unmistakable. Explicit /rename names
-# and the git-branch fallback stay quiet (dim gray) since those are routine.
+# The topic position always stands out in bold bright amber so the session
+# title is unmistakable regardless of source. Auto-generated topics additionally
+# get a ✦ marker to distinguish them from an explicit /rename name or the
+# git-branch fallback.
 printf "\033[1;34m%s\033[0m" "$display_cwd"
 if [ "$is_auto" = 1 ]; then
   printf "\033[1;38;5;214m ✦%s\033[0m" "$git_info"
 else
-  printf "\033[38;5;243m%s\033[0m" "$git_info"
+  printf "\033[1;38;5;214m%s\033[0m" "$git_info"
 fi
 if [ -n "$model" ]; then
   printf "\033[38;5;243m | \033[0m\033[38;5;139m%s\033[0m" "$model"
