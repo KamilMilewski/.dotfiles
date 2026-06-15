@@ -1,13 +1,15 @@
 ---
-name: allow-command
+name: allowlist-command-unitrak
 description: >
-  Diagnose why a Bash command triggered a Claude Code permission prompt and add
-  the missing command(s) to the user allowlist in dotfiles, then commit & push.
-  Use when the user asks to "allow" a command, "stop prompting" for something,
-  "add a permission", "allowlist X", or asks why a command prompted for approval.
+  Add a Bash command to the Claude Code permission allowlist in dotfiles so it
+  stops triggering approval prompts, and diagnose why a command is prompting in
+  the first place. This is specifically about whitelisting commands — not general
+  config edits. Use when the user asks to "allow" / "allowlist" / "whitelist" a
+  command, "stop prompting" for something, "add a permission", or asks why a
+  command prompted for approval.
 ---
 
-# allow-command
+# allowlist-command-unitrak
 
 Stop a Bash command from triggering permission prompts by adding it to the
 user-level allowlist, which lives in the dotfiles repo.
@@ -76,5 +78,8 @@ when the path is fine — it needs its own `Bash(cd *)` rule (or just drop the
 - This skill itself lives in `~/.claude/skills/` → symlinked into
   `/home/kamil/Misc/dotfiles/.claude/skills/`, so it's private to the user
   (tracked only in dotfiles) and never committed to any project repo.
+- **Naming convention:** the user's private (dotfiles-tracked) skills carry a
+  `-unitrak` suffix, e.g. `allowlist-command-unitrak`. New private skills should
+  follow it.
 - Don't allowlist genuinely destructive commands (`rm -rf`, `git push --force`,
   etc.) just to silence a prompt — flag those instead.
