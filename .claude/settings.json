@@ -22,6 +22,7 @@
       "Bash(cat *)",
       "Bash(ls *)",
       "Bash(find *)",
+      "Bash(cd *)",
       "Bash(jq *)",
       "Bash(command -v *)",
       "Bash(tmux show-options *)",
