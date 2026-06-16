@@ -24,6 +24,7 @@
       "Bash(find *)",
       "Bash(cd *)",
       "Bash(jq *)",
+      "Bash(base64 *)",
       "Bash(command -v *)",
       "Bash(tmux show-options *)",
       "Bash(git add *)",
