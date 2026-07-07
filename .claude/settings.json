@@ -5,6 +5,9 @@
   },
   "model": "opus[1m]",
   "theme": "dark",
+  "attribution": {
+    "pr": ""
+  },
   "enabledPlugins": {
     "ruby-lsp@claude-plugins-official": true
   },
