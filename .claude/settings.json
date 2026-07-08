@@ -21,6 +21,7 @@
       "Bash(grep *)",
       "Bash(echo *)",
       "Bash(head *)",
+      "Bash(head)",
       "Bash(tail *)",
       "Bash(cat *)",
       "Bash(ls *)",
