@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+#
+# load-production-dump
+#
+# Pick a database dump from ~/Downloads and load it into the local
+# PostgreSQL instance as a database named "production_dump".
+#
+# The file extension is ignored — the format is detected from the file's
+# contents (magic bytes), so any of the formats pg_dump can produce works:
+#   - custom / tar format (pg_dump -Fc, "PGDMP" magic) -> pg_restore
+#   - plain SQL                                        -> psql
+#   - any of the above gzipped                         -> gunzip | tool
+#
+# Connection uses the same env vars as the Algrano app (config/database.yml),
+# falling back to sensible local defaults:
+#   DB_HOST, DB_PORT (5432), DB_USERNAME (postgres), DB_PASSWORD
+#
+# Usage:
+#   load-production-dump            # interactive picker
+#   load-production-dump FILE       # load a specific file
+#
+set -euo pipefail
+
+DOWNLOADS="${HOME}/Downloads"
+DB_NAME="production_dump"
+
+# --- connection settings (mirror config/database.yml) -----------------------
+PGHOST="${DB_HOST:-localhost}"
+PGPORT="${DB_PORT:-5432}"
+PGUSER="${DB_USERNAME:-postgres}"
+export PGHOST PGPORT PGUSER
+[ -n "${DB_PASSWORD:-}" ] && export PGPASSWORD="${DB_PASSWORD}"
+
+die() { printf '\033[31m%s\033[0m\n' "$*" >&2; exit 1; }
+info() { printf '\033[36m%s\033[0m\n' "$*"; }
+
+# Render a duration in seconds as a short relative age (e.g. "3m ago").
+human_age() {
+  local s=$1
+  if   [ "$s" -lt 60 ];    then echo "${s}s ago"
+  elif [ "$s" -lt 3600 ];  then echo "$((s / 60))m ago"
+  elif [ "$s" -lt 86400 ]; then echo "$((s / 3600))h ago"
+  else echo "$((s / 86400))d ago"
+  fi
+}
+
+# --- pick the dump file -----------------------------------------------------
+dump=""
+if [ "$#" -ge 1 ]; then
+  dump="$1"
+  [ -f "$dump" ] || die "File not found: $dump"
+else
+  [ -d "$DOWNLOADS" ] || die "No ~/Downloads directory found."
+
+  # List every file in ~/Downloads, newest first. The format is detected later
+  # from the file's contents, so the extension is irrelevant here — we just
+  # show the modified time (absolute + relative) so the latest download is
+  # obvious at the top of the list.
+  now=$(date +%s)
+  paths=()
+  disp=()
+  while IFS=$'\t' read -r epoch bytes path; do
+    [ -z "$path" ] && continue
+    secs=${epoch%.*}
+    ts=$(date -d "@${secs}" "+%Y-%m-%d %H:%M")
+    age=$(human_age "$((now - secs))")
+    size=$(numfmt --to=iec --suffix=B "$bytes" 2>/dev/null || echo "${bytes}B")
+    paths+=("$path")
+    disp+=("$(printf "%s  %-8s  %9s  %s" "$ts" "$age" "$size" "$(basename "$path")")")
+  done < <(find "$DOWNLOADS" -maxdepth 1 -type f -printf "%T@\t%s\t%p\n" 2>/dev/null | sort -rn)
+
+  [ "${#paths[@]}" -gt 0 ] || die "No files found in $DOWNLOADS"
+
+  if command -v fzf >/dev/null 2>&1; then
+    # Feed "index<TAB>display" to fzf; hide the index column with --with-nth=2..
+    sel=$(
+      for i in "${!disp[@]}"; do printf "%s\t%s\n" "$i" "${disp[$i]}"; done |
+        fzf --delimiter=$'\t' --with-nth=2.. --reverse --height=40% \
+          --prompt="dump → ${DB_NAME} > " \
+          --header="newest first   (modified   age   size   name)"
+    ) || die "Aborted."
+    dump=${paths[${sel%%$'\t'*}]}
+  else
+    info "fzf not found — falling back to a numbered menu."
+    PS3="Select a dump to load into '${DB_NAME}': "
+    select choice in "${disp[@]}"; do
+      [ -n "${choice:-}" ] && { dump=${paths[$((REPLY - 1))]}; break; }
+      echo "Invalid selection, try again."
+    done
+  fi
+fi
+
+info "Selected: $dump"
+
+# --- confirm destructive recreate -------------------------------------------
+if psql -lqtA 2>/dev/null | cut -d'|' -f1 | grep -qx "$DB_NAME"; then
+  read -r -p "Database '${DB_NAME}' already exists and will be DROPPED. Continue? [y/N] " ans
+  [[ "$ans" =~ ^[Yy]$ ]] || die "Aborted."
+fi
+
+info "Recreating database '${DB_NAME}'..."
+dropdb --if-exists "$DB_NAME"
+createdb "$DB_NAME"
+
+# The app's schema_search_path uses a 'heroku_ext' schema; Heroku dumps expect
+# it to exist before extensions are restored into it.
+psql -d "$DB_NAME" -v ON_ERROR_STOP=1 -c "CREATE SCHEMA IF NOT EXISTS heroku_ext;" >/dev/null
+
+# --- restore ----------------------------------------------------------------
+# Decide the tool by content, not just extension: gzip magic -> gunzip first;
+# then "PGDMP" magic -> custom/tar (pg_restore); otherwise treat as plain SQL.
+restore_plain() { psql -d "$DB_NAME" -v ON_ERROR_STOP=1 -f /dev/stdin; }
+restore_archive() {
+  # --no-owner / --no-privileges keep restore clean against a local role.
+  pg_restore --no-owner --no-privileges --if-exists --clean \
+    --exit-on-error -d "$DB_NAME" /dev/stdin
+}
+
+info "Restoring into '${DB_NAME}' (this can take a while)..."
+
+magic="$(head -c4 "$dump" | od -An -tx1 | tr -d ' \n')"
+if [ "$magic" = "1f8b0808" ] || [ "${magic:0:4}" = "1f8b" ]; then
+  # gzipped — peek at the decompressed magic to choose the tool
+  inner="$(gunzip -c "$dump" 2>/dev/null | head -c5)"
+  if [ "$inner" = "PGDMP" ]; then
+    # pg_restore can't read a pipe for custom format reliably; decompress to a temp file.
+    tmp="$(mktemp --suffix=.dump)"
+    trap 'rm -f "$tmp"' EXIT
+    gunzip -c "$dump" > "$tmp"
+    pg_restore --no-owner --no-privileges --clean --if-exists \
+      --exit-on-error -d "$DB_NAME" "$tmp"
+  else
+    gunzip -c "$dump" | restore_plain
+  fi
+else
+  case "$(head -c5 "$dump")" in
+    PGDMP)
+      pg_restore --no-owner --no-privileges --clean --if-exists \
+        --exit-on-error -d "$DB_NAME" "$dump"
+      ;;
+    *)
+      psql -d "$DB_NAME" -v ON_ERROR_STOP=1 -f "$dump"
+      ;;
+  esac
+fi
+
+info "Done. Loaded '$dump' into database '${DB_NAME}' on ${PGHOST}:${PGPORT}."

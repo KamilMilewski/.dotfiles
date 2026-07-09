@@ -81,6 +81,9 @@ PROMPT='
 
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+# Personal scripts (symlinked from ~/Misc/dotfiles/utils)
+export PATH="$HOME/.local/bin:$PATH"
+
 # FZF (fuzzy search) related
 # To follow symbolic link and don't exclude hidden files (except .git dir). Use find alternative - fd.
 export FZF_DEFAULT_COMMAND='fd --no-ignore --type f --hidden --follow --exclude .git'
