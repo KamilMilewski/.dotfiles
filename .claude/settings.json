@@ -24,6 +24,7 @@
       "Bash(head)",
       "Bash(tail *)",
       "Bash(cat *)",
+      "Bash(sed *)",
       "Bash(ls *)",
       "Bash(find *)",
       "Bash(cd *)",
