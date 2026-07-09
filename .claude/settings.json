@@ -69,7 +69,11 @@
       "Bash(gh api -X GET *)",
       "Bash(gh status)",
       "Read(//home/kamil/.claude/**)",
-      "Read(//home/kamil/Misc/dotfiles/**)"
+      "Read(//home/kamil/Misc/dotfiles/**)",
+      "Edit(tmp/**)",
+      "Write(tmp/**)",
+      "Edit(**/tmp/**)",
+      "Write(**/tmp/**)"
     ]
   },
   "hooks": {
