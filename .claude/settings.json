@@ -20,6 +20,7 @@
       "Bash(bundle exec standardrb *)",
       "Bash(grep *)",
       "Bash(echo *)",
+      "Bash(echo)",
       "Bash(head *)",
       "Bash(head)",
       "Bash(tail *)",
