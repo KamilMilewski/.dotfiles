@@ -18,6 +18,8 @@
       "Bash(bundle exec rspec *)",
       "Bash(bundle exec parallel_rspec *)",
       "Bash(bundle exec standardrb *)",
+      "Bash(yarn build)",
+      "Bash(yarn build *)",
       "Bash(grep *)",
       "Bash(rg *)",
       "Bash(rg)",
