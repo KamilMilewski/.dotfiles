@@ -116,7 +116,9 @@
       "Edit(tmp/**)",
       "Write(tmp/**)",
       "Edit(**/tmp/**)",
-      "Write(**/tmp/**)"
+      "Write(**/tmp/**)",
+      "Edit(//tmp/**)",
+      "Write(//tmp/**)"
     ]
   },
   "hooks": {
