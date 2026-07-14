@@ -28,6 +28,8 @@
       "Bash(head *)",
       "Bash(head)",
       "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(wc)",
       "Bash(cat *)",
       "Bash(sed *)",
       "Bash(ls *)",
