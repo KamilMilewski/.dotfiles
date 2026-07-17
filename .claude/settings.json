@@ -143,7 +143,7 @@
       "Bash(gh api --method GET *)",
       "Bash(gh api -X GET *)",
       "Bash(gh status)",
-      "mcp__playwright__browser_click",
+      "mcp__playwright",
       "Read(//home/kamil/.claude/**)",
       "Read(//home/kamil/Misc/dotfiles/**)",
       "Edit(tmp/**)",
