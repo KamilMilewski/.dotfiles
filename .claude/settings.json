@@ -148,6 +148,7 @@
       "mcp__playwright",
       "Read(//home/kamil/.claude/**)",
       "Read(//home/kamil/Misc/dotfiles/**)",
+      "Read(//home/kamil/.local/bin/*)",
       "Edit(tmp/**)",
       "Write(tmp/**)",
       "Edit(**/tmp/**)",
